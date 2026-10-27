@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko" data-time="Nuit">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARCANA</title>
+  <meta name="description" content="감각의 약장, ARCANA. 오늘의 상태를 묻고, 맞는 서랍을 열어 리추얼을 처방합니다." />
+  <link rel="icon" type="image/png" href="assets/img/logo-emblem.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ───────── NAV : 메뉴 자체가 약장 ───────── -->
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="ARCANA 홈"><span class="logo-emblem" aria-hidden="true"></span>ARCANA</a>
+  <nav class="nav__drawers" aria-label="주 메뉴">
+    <a class="nav__drawer" href="#apothicaire"><span>N°01–04</span><i></i></a>
+    <a class="nav__drawer" href="#roles"><span>Le Tiroir</span><i></i></a>
+    <a class="nav__drawer" href="#bottle"><span>Bottle</span><i></i></a>
+    <a class="nav__drawer" href="#coffret"><span>Package</span><i></i></a>
+    <a class="nav__drawer" href="#rituel"><span>Le Rituel</span><i></i></a>
+    <a class="nav__drawer" href="#herbier"><span>L'Herbier</span><i></i></a>
+  </nav>
+  <div class="nav__tools">
+    <div class="timeswitch" role="group" aria-label="시간대 톤">
+      <button data-time="Matin" title="Matin · 아침빛">Matin</button>
+      <button data-time="Midi" title="Midi · 한낮">Midi</button>
+      <button data-time="Nuit" title="Nuit · 해 질 녘">Nuit</button>
+    </div>
+    <button class="soundtoggle" id="soundToggle" aria-pressed="false" title="관리의 소리 켜기">♪</button>
+    <button class="btn btn--seal js-consult">Consultation</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ───────── COVER (PPT 1p) ───────── -->
+  <section class="cover" aria-label="ARCANA">
+    <div class="cover__slides" id="coverSlides">
+      <img class="cover__img is-on" src="assets/img/cover.jpg" alt="한지 등불과 마른 꽃 옆, 월넛 판 위에 놓인 ARCANA 다섯 보틀" style="object-position:center 60%" />
+      <img class="cover__img" src="assets/img/bottles-blossom.jpg" alt="매화 가지 너머 빛을 받은 다섯 보틀" style="object-position:center 55%" loading="lazy" />
+      <img class="cover__img" src="assets/img/store-counter.jpg" alt="창살 패널과 빛이 드는 선반이 있는 ARCANA 매장" style="object-position:center 45%" loading="lazy" />
+      <img class="cover__img" src="assets/img/pkg-tray.jpg" alt="골드 엠보싱 세트 박스 속 다섯 보틀" style="object-position:center 50%" loading="lazy" />
+      <img class="cover__img" src="assets/img/bottle-pedestal.jpg" alt="월넛 받침대 위 역광을 받은 보틀 하나" style="object-position:center 40%" loading="lazy" />
+      <img class="cover__img" src="assets/img/pkg-chest.jpg" alt="스무 칸 서랍 상자에서 꺼낸 보틀" style="object-position:center 50%" loading="lazy" />
+      <img class="cover__img" src="assets/img/store-wall.jpg" alt="香選 현판 옆 칸칸이 빛나는 진열 벽" style="object-position:center 30%" loading="lazy" />
+      <img class="cover__img" src="assets/img/bottles-hanji.jpg" alt="한지 벽 앞 월넛 판 위의 다섯 보틀" style="object-position:center 62%" loading="lazy" />
+    </div>
+    <div class="cover__in">
+      <p class="cover__eyebrow">The Sensory Apothecary</p>
+      <h1 class="cover__mark"><span class="logo-main" role="img" aria-label="ARCANA"></span></h1>
+      <p class="cover__slogan">From Essence to Ritual</p>
+      <p class="cover__ko">감각의 약장 — 오늘의 서랍을 열어, 나를 위한 처방을 꺼낸다</p>
+    </div>
+    <div class="cover__ctrl" aria-label="화보 넘기기">
+      <button class="cover__arrow" id="coverPrev" aria-label="이전 화보">‹</button>
+      <span class="cover__count"><b id="coverNo">01</b> / <span id="coverTot">08</span></span>
+      <div class="cover__dots" id="coverDots"></div>
+      <button class="cover__arrow" id="coverNext" aria-label="다음 화보">›</button>
+    </div>
+    <div class="cover__foot"><span>From Essence to Ritual · ARCANA</span><span><span class="js-greet">오늘 밤, 당신의 피부에게</span> · <span class="js-clock"></span></span></div>
+  </section>
+
+  <!-- ───────── INTRO ───────── -->
+  <section class="intro">
+    <p class="intro__text">ARCANA는 옛 약제사의 서랍처럼 원료를 칸마다 나눠 담고, 오늘의 상태에 맞는 서랍을 열어 리추얼을 처방하는 웰에이징 스킨케어입니다. 모든 처방의 바탕에는 해 질 녘에 꽃잎을 여는 달맞이꽃이 있습니다.</p>
+    <div class="intro__cta">
+      <button class="btn btn--primary js-consult">오늘의 처방 받기</button>
+      <a class="btn btn--ghost" href="#apothicaire">약장 둘러보기</a>
+    </div>
+  </section>
+
+  <!-- ───────── YOUR PATH TO ARCANA : 한 서랍의 5단계 ───────── -->
+  <section class="path" aria-labelledby="pathTitle">
+    <div class="path__head">
+      <h2 id="pathTitle" class="path__title">Your path to ARCANA</h2>
+      <div class="path__tabs" id="pathTabs" role="tablist" aria-label="서랍 선택"></div>
+      <a class="path__all" href="#apothicaire">All products</a>
+    </div>
+    <div class="path__wrap">
+      <div class="path__track" id="pathTrack"></div>
+      <button class="path__next" id="pathNext" aria-label="다음 제품 보기">›</button>
+    </div>
+    <div class="path__bar"><i id="pathBar"></i></div>
+  </section>
+
+  <!-- ───────── DUO : 원료 / 진열장 ───────── -->
+  <section class="duo">
+    <a class="duo__tile" href="#bottle" style="background-image:url(assets/img/bottles-blossom.jpg)">
+      <span class="duo__text">One bottle,<br/>five rituals</span>
+    </a>
+    <div class="duo__tile duo__tile--cab">
+      <div class="minicab" id="heroCab"></div>
+      <span class="duo__hint">진열장의 한 줄 = 하나의 서랍 · 줄을 눌러 열어보세요</span>
+    </div>
+  </section>
+
+  <!-- ───────── CONCEPT ───────── -->
+  <section class="concept" id="concept">
+    <div class="wrap concept__grid">
+      <div class="reveal">
+        <p class="label">The Sensory Apothecary · 감각의 약장</p>
+        <h2 class="h2">옛 약제사의 서랍 속에<br/>숨겨두던 젊음의 비방</h2>
+      </div>
+      <div class="concept__body reveal">
+        <p>ARCANA는 라틴어로 ‘숨겨진 비밀’. 연금술에서 단수형 <em>Arcanum</em>은 영원한 젊음을 주는 비약을 뜻한다.</p>
+        <p>옛 약방의 격자 서랍장. 서랍마다 원료가 하나씩 담기고, 그날의 나에게 맞는 서랍을 열어 하루의 리추얼을 처방한다. 매일의 처방이 쌓이면 나에게 물려줄 나만의 약장이 된다.</p>
+        <ul class="promises">
+          <li><b>Less, but precise</b>오늘 필요한 것만 정확하게</li>
+          <li><b>Ritual, not routine</b>체크리스트가 아니라 감각이 깨어나는 시간</li>
+          <li><b>Care that connects</b>스킨케어·영양·휴식을 하나의 흐름으로</li>
+          <li><b>Aging as archive</b>매일의 돌봄이 나만의 에이징 방식이 됨</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── LE SECRET : 반복되는 A, 하나의 틈 ───────── -->
+  <section class="secret" aria-label="ARCANA, 숨겨진 비밀">
+    <div class="secret__grid" id="secretGrid"></div>
+  </section>
+
+  <!-- ───────── 서랍의 역할 ───────── -->
+  <section class="roles" id="roles">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">Le Tiroir · 서랍의 역할</p>
+        <h2 class="h2">서랍 하나가 하는 여덟 가지 일</h2>
+        <p class="sechead__sub">서랍을 열어 각각의 역할을 꺼내보세요. 숨긴다 + 나눈다 + 꺼내준다가 ARCANA의 구조, 내 영역이 된다가 무드입니다.</p>
+      </header>
+      <div class="chest reveal" id="rolesChest"></div>
+    </div>
+  </section>
+
+  <!-- ───────── PRODUCT · ONE BOTTLE (PPT 14p) ───────── -->
+  <section class="bottle-sec" id="bottle">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">Product · One Bottle</p>
+        <h2 class="h2">하나의 병, 다섯 가지 투명도</h2>
+        <p class="sechead__sub">모든 제품은 같은 보틀을 씁니다. 제형은 유리의 투명도로, 서랍은 라벨의 라인 컬러로 구분합니다.</p>
+      </header>
+      <figure class="onebottle reveal">
+        <img src="assets/img/bottles-hanji.jpg" alt="한지 벽 앞 월넛 판 위의 다섯 보틀 — 투명, 골드, 로즈, 프로스트, 오팔" loading="lazy" />
+        <figcaption class="onebottle__cols" id="finishCols"></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ───────── L'APOTHICAIRE : 4 × 5 약장 ───────── -->
+  <section class="apo" id="apothicaire">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">L'Apothicaire · 4 서랍 × 5 제형 = 20</p>
+        <h2 class="h2">칸칸이 나뉜 약장</h2>
+        <p class="sechead__sub">가로 한 줄은 하나의 서랍(고민), 세로 한 줄은 하나의 제형. 기준을 바꾸면 같은 약장이 다르게 열립니다.</p>
+      </header>
+
+      <div class="apo__toolbar reveal">
+        <div class="seg" role="tablist" aria-label="보기 기준">
+          <button class="is-on" data-mode="drawer" role="tab" aria-selected="true">Shop by Drawer <small>고민별</small></button>
+          <button data-mode="category" role="tab" aria-selected="false">Shop by Category <small>제형별</small></button>
+        </div>
+        <p class="apo__note">모든 제품의 바탕 — <b>N°00 달맞이꽃 오일</b></p>
+      </div>
+
+      <div class="lattice-frame reveal"><div class="cabinet" id="cabinet" data-mode="drawer"></div></div>
+    </div>
+  </section>
+
+  <!-- ───────── PACKAGE (PPT 18p) ───────── -->
+  <section class="pkg-sec" id="coffret">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">Package</p>
+        <h2 class="h2">서랍은 간직하고, 보틀만 채운다</h2>
+        <p class="sechead__sub">Keep the drawer, refill the bottle</p>
+      </header>
+      <div class="pkg reveal">
+        <figure class="pkg__a"><img src="assets/img/pkg-tray.jpg" alt="골드 엠보싱 서랍 세트 박스 속 다섯 보틀" loading="lazy"/></figure>
+        <figure class="pkg__b"><img src="assets/img/pkg-chest.jpg" alt="스무 칸 서랍이 달린 ARCANA 약장 상자, 몇 칸이 열려 보틀이 보인다" loading="lazy"/></figure>
+        <ul class="pkg__list">
+          <li><b>Coffret</b><span>서랍 세트 박스 = 한 서랍의 5단계. 꽃살 창살 무늬를 골드 엠보싱으로 눌렀다.</span></li>
+          <li><b>L'Apothicaire</b><span>스무 칸 서랍 상자. 4 서랍 × 5 제형, 집 안의 작은 약장이 된다.</span></li>
+          <li><b>Refill</b><span>상자는 버리지 않는다. 다 쓴 칸에는 보틀만 다시 채운다.</span></li>
+          <li><b>Inside</b><span>Ordonnance 처방전 · L'Herbier 표본 카드 4종 동봉</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── LE RITUEL ───────── -->
+  <section class="rituel" id="rituel">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">Le Rituel · 시간대 라인</p>
+        <h2 class="h2">아침에서 밤으로, 리추얼이 피어난다</h2>
+        <p class="sechead__sub">시간대는 제품 이름이 아니라 사용법입니다. 봉오리 → 반쯤 열림 → 활짝 핀 꽃.</p>
+      </header>
+      <div class="lines" id="lines"></div>
+    </div>
+  </section>
+
+  <!-- ───────── L'HERBIER ───────── -->
+  <section class="herbier" id="herbier">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">L'Herbier · 원료 표본집</p>
+        <h2 class="h2">서랍마다 하나의 원료, 하나의 장소</h2>
+        <p class="sechead__sub">표본 카드를 넘겨보세요. 모으면 나만의 L'Herbier가 됩니다.</p>
+      </header>
+      <div class="specimens" id="specimens"></div>
+    </div>
+  </section>
+
+  <!-- ───────── LA BOUTIQUE : 하나의 동작, 세 개의 무대 ───────── -->
+  <section class="boutique" id="boutique">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">La Boutique · Web · Store · Package</p>
+        <h2 class="h2">하나의 동작, 세 개의 무대</h2>
+        <p class="sechead__sub">웹에서 당기던 서랍이 매장에서는 빛이 드는 약장으로, 집에서는 원목 상자로 이어집니다.</p>
+      </header>
+      <div class="scenes reveal">
+        <figure class="scene-card scene-card--wide"><img src="assets/img/store-counter.jpg" alt="창살 패널과 빛이 드는 선반이 있는 ARCANA 매장 카운터" loading="lazy"/><figcaption><b>Store</b>The Apothecary Counter — 창살 아래 상담 테이블에서 서랍을 고른다</figcaption></figure>
+        <figure class="scene-card"><img src="assets/img/store-wall.jpg" alt="香選 현판 옆, 칸칸이 빛나는 보틀 진열 벽과 월넛 카운터" loading="lazy"/><figcaption><b>香選</b>향을 고르는 벽, 4 × 5</figcaption></figure>
+        <figure class="scene-card"><img src="assets/img/store-glass.jpg" alt="반투명 유리 너머 칸칸이 빛나는 보틀 선반" loading="lazy"/><figcaption><b>Light</b>칸 안에서 새어 나오는 빛</figcaption></figure>
+        <figure class="scene-card"><img src="assets/img/bottle-pedestal.jpg" alt="월넛 받침대 위에 역광을 받은 ARCANA 보틀 하나" loading="lazy"/><figcaption><b>Object</b>다 쓴 뒤에도 남는 오브제</figcaption></figure>
+        <figure class="scene-card"><img src="assets/img/pkg-boxes.jpg" alt="골드 엠보싱 세트 박스가 비스듬히 늘어선 모습" loading="lazy"/><figcaption><b>Coffret</b>꽃살 엠보싱 상자</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── CTA ───────── -->
+  <section class="finale">
+    <div class="finale__img" style="background-image:url(assets/img/bottle-pedestal.jpg)"></div>
+    <div class="finale__inner reveal">
+      <div class="logo-lock" role="img" aria-label="ARCANA"></div>
+      <h2 class="h2">오늘은 이것만 하면 돼요.</h2>
+      <p>고민 · 시간대 · 컨디션, 세 가지만 알려주세요.<br/>당신을 위해 조제하겠습니다.</p>
+      <button class="btn btn--primary js-consult">Consultation 시작</button>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span class="wordmark wordmark--sm">ARCANA</span>
+  <span>From Essence to Ritual · 감각의 약장</span>
+  <span>© 2026 ARCANA — Conceptual Design, Brand Development</span>
+</footer>
+
+<!-- ───────── 서랍 패널 (아래에서 당겨져 나오는 서랍) ───────── -->
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet__backdrop" data-close></div>
+  <div class="sheet__drawer" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet__front">
+      <span class="holder holder--lg"><span id="sheetFrame">N°00</span></span><span class="cup cup--lg"></span>
+      <button class="sheet__close" data-close aria-label="서랍 닫기">닫기 ×</button>
+    </div>
+    <div class="sheet__inside" id="sheetBody"></div>
+  </div>
+</div>
+
+<!-- ───────── CONSULTATION (02–06) ───────── -->
+<div class="consult" id="consult" aria-hidden="true">
+  <div class="consult__bar">
+    <span class="wordmark wordmark--sm">ARCANA</span>
+    <ol class="consult__steps" id="consultSteps">
+      <li>오늘을 묻다</li><li>서랍이 반응하다</li><li>서랍을 당기다</li><li>서랍 속을 보다</li><li>처방을 받다</li>
+    </ol>
+    <button class="consult__close" id="consultClose" aria-label="상담 닫기">닫기 ×</button>
+  </div>
+  <div class="consult__stage" id="consultStage"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
