@@ -174,14 +174,14 @@
       const nx = (n + imgs.length) % imgs.length; if (nx === cur) return;
       imgs.forEach((im) => im.classList.remove('is-prev'));
       imgs[cur].classList.remove('is-on'); imgs[cur].classList.add('is-prev'); dots.children[cur].classList.remove('is-on');
-      const old = imgs[cur]; setTimeout(() => old.classList.remove('is-prev'), 1700);
+      const old = imgs[cur]; setTimeout(() => old.classList.remove('is-prev'), 2600);
       cur = nx;
       imgs[cur].loading = 'eager';
       imgs[cur].classList.add('is-on'); dots.children[cur].classList.add('is-on');
       no.textContent = String(cur + 1).padStart(2, '0');
     };
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const play = () => { clearInterval(timer); if (!reduce) timer = setInterval(() => go(cur + 1), 5200); };
+    const play = () => { clearInterval(timer); if (!reduce) timer = setInterval(() => go(cur + 1), 6000); };
     $('#coverPrev').addEventListener('click', () => { go(cur - 1); play(); });
     $('#coverNext').addEventListener('click', () => { go(cur + 1); play(); });
     [...dots.children].forEach((b, i) => b.addEventListener('click', () => { go(i); play(); }));
