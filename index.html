@@ -6,12 +6,14 @@
   <title>ARCANA</title>
   <meta name="description" content="감각의 약장, ARCANA. 오늘의 상태를 묻고, 맞는 서랍을 열어 리추얼을 처방합니다." />
   <link rel="icon" type="image/png" href="assets/img/logo-emblem.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/motion.css" />
 </head>
 <body>
+<div class="aura" aria-hidden="true"><i class="aura__b aura__b--1"></i><i class="aura__b aura__b--2"></i><i class="aura__b aura__b--3"></i><i class="aura__b aura__b--4"></i><i class="aura__b aura__b--5"></i></div>
+<div class="loader" id="loader" aria-hidden="true"><div class="loader__in"><span class="loader__mark"></span><span class="loader__word">ARCANA</span><span class="loader__line"><i></i></span></div></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
 <!-- ───────── NAV : 메뉴 자체가 약장 ───────── -->
 <header class="nav" id="nav">
@@ -253,7 +255,7 @@
 </footer>
 
 <!-- ───────── 서랍 패널 (아래에서 당겨져 나오는 서랍) ───────── -->
-<div class="sheet" id="sheet" aria-hidden="true">
+<div class="sheet" id="sheet" aria-hidden="true" data-lenis-prevent>
   <div class="sheet__backdrop" data-close></div>
   <div class="sheet__drawer" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="sheet__front">
@@ -265,7 +267,7 @@
 </div>
 
 <!-- ───────── CONSULTATION (02–06) ───────── -->
-<div class="consult" id="consult" aria-hidden="true">
+<div class="consult" id="consult" aria-hidden="true" data-lenis-prevent>
   <div class="consult__bar">
     <span class="wordmark wordmark--sm">ARCANA</span>
     <ol class="consult__steps" id="consultSteps">
@@ -278,5 +280,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>

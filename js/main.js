@@ -30,7 +30,8 @@
       g.gain.setValueAtTime(gain, t); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
       o.connect(g).connect(c.destination); o.start(); o.stop(t + dur);
     },
-    click() { if (this.on) { this.noise(.04, 3200, 4, .5); setTimeout(() => this.noise(.03, 1800, 6, .35), 45); } },
+    _t: 0,
+    click() { const n = performance.now(); if (n - this._t < 90) return; this._t = n; if (this.on) { this.noise(.04, 3200, 4, .5); setTimeout(() => this.noise(.03, 1800, 6, .35), 45); } },
     tok() { if (this.on) this.tone(980, .12, .12); },
     slide() { if (this.on) this.noise(.5, 700, .8, .18); },
     thump() { if (this.on) { this.tone(110, .35, .5); this.noise(.12, 500, 1, .4); } },
@@ -170,8 +171,11 @@
     dots.innerHTML = imgs.map((_, i) => `<button aria-label="${i + 1}번 화보" class="${i ? '' : 'is-on'}"></button>`).join('');
     let cur = 0, timer = null;
     const go = (n) => {
-      imgs[cur].classList.remove('is-on'); dots.children[cur].classList.remove('is-on');
-      cur = (n + imgs.length) % imgs.length;
+      const nx = (n + imgs.length) % imgs.length; if (nx === cur) return;
+      imgs.forEach((im) => im.classList.remove('is-prev'));
+      imgs[cur].classList.remove('is-on'); imgs[cur].classList.add('is-prev'); dots.children[cur].classList.remove('is-on');
+      const old = imgs[cur]; setTimeout(() => old.classList.remove('is-prev'), 1700);
+      cur = nx;
       imgs[cur].loading = 'eager';
       imgs[cur].classList.add('is-on'); dots.children[cur].classList.add('is-on');
       no.textContent = String(cur + 1).padStart(2, '0');
@@ -614,4 +618,5 @@
   }
 
   setTime(currentLine); tick(); onScroll();
+  window.ArcanaSound = Sound;
 })();

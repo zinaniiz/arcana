@@ -1,0 +1,214 @@
+/* ═════════════════════════════════════════════════════════════════
+   ARCANA · MOTION & TYPE LAYER
+   - 서체 통일: 라틴 = 로고와 같은 Cormorant Garamond (자체 호스팅) / 한글 = 아리따 부리
+   - 배경: 아이보리 위로 천천히 흐르는 비정형 그라데이션 (aura)
+   - 인트로 로더 · 화보 와이프 전환 · 스크롤 리빌 · 패럴랙스 · 커서 · 딸깍 프레스
+   ═════════════════════════════════════════════════════════════════ */
+
+/* ── 서체 ── */
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-500-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 600; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 600; font-display: swap; src: url("../assets/fonts/cormorant-garamond-latin-ext-600-italic.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root, html[data-time] {
+  --display: "Cormorant Garamond", "Cormorant", Georgia, "Arita Buri KR", serif;
+  --serif: var(--display);
+  --sans: "Arita Buri KR", var(--display);
+  --mono: "Courier Prime", "Courier New", monospace;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-io: cubic-bezier(.76, 0, .24, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* 라틴 제목 · 라벨 · 숫자 = 로고와 같은 세리프 */
+.nav__mark, .wordmark, .cover__slogan, .cover__eyebrow, .duo__text, .line h3, .dhead h3, .pdetail h3,
+.cab__head b, .cab__row b, .pitem__row, .pitem__row b, .comp b, .fcol b, .spec__cap b, .spec__big, .ord__rx,
+.scene-card figcaption b, .pkg__list b, .promises b, .role__frame small, .secret__slit b, .path__title, .path__all,
+.label, .eyebrow, .sechead::before, .nav__drawer, .btn, .seg button, .timeswitch button, .cover__count, .cover__foot,
+.foot, .holder > span, .cab__corner, .dhead__no, .line__meta, .pitem__sub, .path__tabs button, .tag, .chip, .coffret__no {
+  font-family: var(--display) !important;
+  font-variant-numeric: lining-nums;
+}
+/* 크기 보정: 세리프는 같은 px에서 작아 보여 한 단계 키운다 */
+.label, .eyebrow, .path__title, .cover__eyebrow { font-size: 14px !important; font-weight: 600 !important; letter-spacing: .26em !important; }
+.nav__drawer { font-size: 13.5px !important; font-weight: 600 !important; letter-spacing: .2em !important; }
+.btn { font-size: 14px !important; font-weight: 600 !important; letter-spacing: .18em !important; }
+.timeswitch button, .seg button { font-size: 14px !important; font-weight: 600 !important; letter-spacing: .06em !important; }
+.sechead::before { font-size: 17px !important; font-weight: 500 !important; }
+.sechead__sub { font-family: var(--display) !important; font-size: 19px !important; font-style: italic; }
+.sechead__sub:lang(ko), .sechead__sub { font-family: var(--display), var(--kr) !important; }
+.holder > span { font-size: 12px !important; font-weight: 700 !important; letter-spacing: .1em !important; }
+.cell .holder > span { font-size: 11px !important; }
+.pitem__row { font-size: 18px !important; font-weight: 600 !important; letter-spacing: .01em; }
+.pitem__sub, .path__tabs button, .path__all, .dhead__no, .line__meta { font-size: 12.5px !important; font-weight: 600 !important; }
+.cab__head b, .fcol b { font-size: 21px !important; font-weight: 600 !important; }
+.cab__row b { font-size: 21px !important; }
+.line h3 { font-size: 52px !important; font-weight: 500 !important; font-style: italic !important; letter-spacing: -.01em !important; }
+.promises b { font-size: 20px !important; font-weight: 600 !important; font-style: italic !important; }
+.pkg__list b, .scene-card figcaption b { font-size: 14px !important; font-weight: 700 !important; }
+.cover__slogan { font-weight: 500 !important; font-style: italic; font-size: clamp(32px, 4vw, 56px) !important; letter-spacing: 0 !important; }
+.cover__foot, .cover__count { font-size: 14px !important; font-weight: 600 !important; }
+.foot { font-size: 13px !important; font-weight: 600 !important; }
+.spec__big { font-size: 16px !important; }
+.spec__cap b { font-size: 23px !important; font-style: italic !important; font-weight: 500 !important; }
+.duo__text { font-weight: 500 !important; font-style: italic !important; }
+.nav__mark { font-weight: 600 !important; font-size: 22px !important; }
+.secret__slit b { font-size: clamp(14px, 1.7vw, 19px) !important; }
+em { font-family: var(--display); font-weight: 600; font-size: 1.1em; }
+
+/* ── 배경: 아이보리 위 비정형 그라데이션 ── */
+html { background: #F4EFE6; }
+body, html[data-time] body, html[data-time="Nuit"] body { background: transparent !important; }
+.aura { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #F4EFE6; }
+.aura::after { content: ''; position: absolute; inset: 0; opacity: .35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .4 0 0 0 0 .34 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.aura__b { position: absolute; display: block; width: 62vmax; height: 62vmax; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; filter: blur(70px); opacity: .62; will-change: transform, border-radius; }
+.aura__b--1 { background: radial-gradient(closest-side, #EADBC1, transparent); top: -22vmax; left: -14vmax; animation: blobA 34s ease-in-out infinite alternate, morph 22s ease-in-out infinite; }
+.aura__b--2 { background: radial-gradient(closest-side, #F3E7C3, transparent); top: 18vh; right: -24vmax; animation: blobB 41s ease-in-out infinite alternate, morph 27s ease-in-out infinite reverse; }
+.aura__b--3 { background: radial-gradient(closest-side, #ECD9D0, transparent); bottom: -30vmax; left: 12vw; width: 70vmax; height: 52vmax; animation: blobC 38s ease-in-out infinite alternate, morph 31s ease-in-out infinite; opacity: .5; }
+.aura__b--4 { background: radial-gradient(closest-side, #E2E1DA, transparent); top: 40vh; left: -20vmax; width: 46vmax; height: 46vmax; animation: blobD 29s ease-in-out infinite alternate, morph 19s ease-in-out infinite reverse; opacity: .55; }
+.aura__b--5 { background: radial-gradient(closest-side, #FBF8F1, transparent); top: 10vh; left: 30vw; width: 40vmax; height: 40vmax; animation: blobB 45s ease-in-out infinite alternate-reverse, morph 24s ease-in-out infinite; opacity: .8; }
+@keyframes blobA { 0% { transform: translate(0, 0) rotate(0) scale(1); } 50% { transform: translate(18vw, 12vh) rotate(40deg) scale(1.15); } 100% { transform: translate(6vw, 28vh) rotate(80deg) scale(.9); } }
+@keyframes blobB { 0% { transform: translate(0, 0) rotate(0) scale(1); } 50% { transform: translate(-22vw, 18vh) rotate(-35deg) scale(1.2); } 100% { transform: translate(-8vw, -10vh) rotate(-70deg) scale(.95); } }
+@keyframes blobC { 0% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(20vw, -16vh) rotate(25deg) scale(1.1); } 100% { transform: translate(-12vw, -6vh) rotate(55deg) scale(.92); } }
+@keyframes blobD { 0% { transform: translate(0, 0); } 50% { transform: translate(26vw, -10vh) scale(1.25); } 100% { transform: translate(14vw, 20vh) scale(.85); } }
+@keyframes morph {
+  0% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  33% { border-radius: 63% 37% 41% 59% / 56% 62% 38% 44%; }
+  66% { border-radius: 36% 64% 52% 48% / 38% 51% 49% 62%; }
+  100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+}
+/* 섹션 배경을 비워 흐름이 비치게 */
+.intro, .path, .concept, .roles, .bottle-sec, .apo, .pkg-sec, .rituel, .herbier, .boutique { background: transparent !important; }
+.secret { background: color-mix(in srgb, #FAF7F1 55%, transparent) !important; backdrop-filter: blur(6px); }
+.duo__tile--cab { background: color-mix(in srgb, #ECE5D9 70%, transparent) !important; }
+.nav, .nav.is-solid { background: color-mix(in srgb, #FAF7F1 72%, transparent) !important; backdrop-filter: blur(18px) saturate(1.1); }
+
+/* ── 인트로 로더 : 서랍이 열리듯 위로 ── */
+.loader { position: fixed; inset: 0; z-index: 200; background: #F4EFE6; display: grid; place-items: center; transition: transform 1.1s var(--ease-io), visibility 0s 1.1s; }
+.loader__in { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.loader__mark { width: 74px; height: 62px; background: #B39565; -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; opacity: 0; transform: scale(.9); animation: ldIn 1s var(--ease-out) .1s forwards; }
+.loader__word { font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: .5em; padding-left: .5em; color: #B39565; opacity: 0; animation: ldIn 1s var(--ease-out) .3s forwards; }
+.loader__line { width: 140px; height: 1px; background: rgba(179,149,101,.25); overflow: hidden; }
+.loader__line i { display: block; height: 100%; background: #B39565; transform: scaleX(0); transform-origin: left; animation: ldLine 1.1s var(--ease-io) .2s forwards; }
+@keyframes ldIn { to { opacity: 1; transform: none; } }
+@keyframes ldLine { to { transform: scaleX(1); } }
+.loader.is-done { transform: translateY(-101%); visibility: hidden; }
+.loader.is-skip { display: none; }
+
+/* ── 첫 화면 텍스트 등장 ── */
+.js-motion .cover__in > * { opacity: 0; transform: translateY(28px); }
+.js-motion.is-ready .cover__in > * { opacity: 1; transform: none; transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out); }
+.js-motion.is-ready .cover__in > *:nth-child(2) { transition-delay: .12s; }
+.js-motion.is-ready .cover__in > *:nth-child(3) { transition-delay: .24s; }
+.js-motion.is-ready .cover__in > *:nth-child(4) { transition-delay: .36s; }
+.js-motion .cover__foot, .js-motion .cover__ctrl { opacity: 0; }
+.js-motion.is-ready .cover__foot, .js-motion.is-ready .cover__ctrl { opacity: 1; transition: opacity 1.4s var(--ease-out) .6s; }
+
+/* ── 화보: 서랍이 밀려 열리듯 오른쪽에서 와이프 ── */
+.cover__slides .cover__img { opacity: 1 !important; visibility: hidden; clip-path: inset(0 0 0 100%); transform: scale(1.12); transition: none !important; z-index: 0; }
+.cover__slides .cover__img.is-prev { visibility: visible; clip-path: inset(0 0 0 0); z-index: 1; transform: scale(1) translateX(-4%); transition: transform 1.6s var(--ease-io) !important; }
+.cover__slides .cover__img.is-on { visibility: visible; z-index: 2; clip-path: inset(0 0 0 0); transform: scale(1); transition: clip-path 1.5s var(--ease-io), transform 7s var(--ease-out) !important; }
+.cover__dots button { transition: width .7s var(--ease-out), background .5s !important; }
+
+/* ── 스크롤 리빌 ── */
+.rv-pre { opacity: 0; transform: translateY(46px); }
+.rv-in { opacity: 1; transform: none; transition: opacity 1.3s var(--ease-out), transform 1.3s var(--ease-out); }
+.split-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.split-w > span { display: inline-block; transform: translateY(0); }
+.split-pre .split-w > span { transform: translateY(105%); }
+.split-in .split-w > span { transform: none; transition: transform 1.2s var(--ease-out); transition-delay: calc(var(--i) * 55ms); }
+.img-pre, .img-in { position: relative; }
+.img-pre::before, .img-in::before { content: ''; position: absolute; inset: 0; z-index: 4; background: #EFE8DC; transform-origin: 50% 0; pointer-events: none; }
+.img-in::before { transform: scaleY(0); transition: transform 1.3s var(--ease-io); }
+.img-pre img { transform: scale(1.18); }
+.img-in img { transform: scale(1); transition: transform 2.2s var(--ease-out); }
+.stagger-pre > * { opacity: 0; transform: translateY(34px); }
+.stagger-in > * { opacity: 1; transform: none; transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); transition-delay: calc(var(--si, 0) * 70ms); }
+.rule-draw { position: relative; }
+.sechead { border-bottom-color: transparent !important; }
+.sechead::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--rule); transform-origin: left; transform: scaleX(1); }
+.sechead { position: relative; }
+.split-pre.sechead::after, .sechead.line-pre::after { transform: scaleX(0); }
+.sechead.line-in::after { transform: scaleX(1); transition: transform 1.6s var(--ease-io) .1s; }
+
+/* 패럴랙스 대상: 여유 있게 확대 */
+.px { will-change: transform; }
+.scene-card, .pkg figure, .onebottle { overflow: hidden; }
+.scene-card img, .pkg img, .onebottle img { transform-origin: center; }
+
+/* 이미지 호버: 천천히 확대 */
+.scene-card img, .pkg img, .pitem__img svg, .spec__f .win { transition: transform 1.4s var(--ease-out), filter .8s; }
+@media (hover: hover) {
+  .scene-card:hover img, .pkg figure:hover img { filter: brightness(1.05) saturate(1.04); }
+  .duo__tile:hover { background-size: 108%; }
+}
+.duo__tile { background-size: 100%; transition: background-size 1.6s var(--ease-out); background-position: center; }
+@media (max-width: 760px) { .duo__tile { background-size: cover; } }
+
+/* nav 링크 밑줄이 왼쪽에서 그어진다 */
+.nav__drawer::before { display: block !important; opacity: 1 !important; transform: scaleX(0); transform-origin: right; transition: transform .6s var(--ease-out) !important; }
+.nav__drawer:hover::before, .nav__drawer:focus-visible::before { transform: scaleX(1); transform-origin: left; }
+.nav { transition: transform .7s var(--ease-out), background .5s !important; }
+.nav.is-hidden { transform: translateY(-100%); }
+
+/* ── 딸깍: 누르면 눌렸다가 스프링처럼 돌아온다 ── */
+button, a, .cell, .cab__row, .cab__head, .pitem, .role__face, .spec, .opt, .comp, .fcol, .minicab__d, .duo__tile, .scene-card { -webkit-tap-highlight-color: transparent; }
+.is-press { animation: press .42s var(--spring); }
+@keyframes press { 0% { transform: scale(1); } 28% { transform: scale(.955) translateY(1px); } 100% { transform: scale(1); } }
+.cell.is-press .cubby svg { animation: tick .5s var(--spring); }
+@keyframes tick { 0% { transform: translateY(-7px); } 30% { transform: translateY(2px); } 100% { transform: translateY(-7px); } }
+.ripple { position: fixed; z-index: 150; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; border: 1px solid #B39565; pointer-events: none; animation: ripple .7s var(--ease-out) forwards; }
+@keyframes ripple { from { transform: scale(1); opacity: .9; } to { transform: scale(7); opacity: 0; } }
+
+/* 서랍 앞판: 누르면 실제로 안쪽으로 밀렸다 나온다 */
+.cell:active, .role__face:active, .cab__row:active { box-shadow: inset 0 3px 8px rgba(0,0,0,.28) !important; }
+
+/* ── 커서 (마우스 환경) ── */
+.cursor { position: fixed; left: 0; top: 0; z-index: 300; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #3A3632; pointer-events: none; opacity: 0; display: grid; place-items: center;
+  transition: width .45s var(--ease-out), height .45s var(--ease-out), margin .45s var(--ease-out), background .4s, opacity .3s; }
+.cursor__label { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .2em; color: #F6F1E6; opacity: 0; transition: opacity .3s; padding-left: .2em; }
+.cursor.is-on { opacity: 1; }
+.cursor.is-link { width: 44px; height: 44px; margin: -22px 0 0 -22px; background: rgba(179,149,101,.18); border: 1px solid rgba(179,149,101,.7); }
+.cursor.is-label { width: 78px; height: 78px; margin: -39px 0 0 -39px; background: rgba(58,54,50,.88); border: 0; }
+.cursor.is-label .cursor__label { opacity: 1; }
+.cursor.is-down { transform: scale(.82); }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+/* 마그네틱 버튼 */
+.btn, .cover__arrow, .path__next { transition: transform .5s var(--ease-out), background .4s, color .4s, border-color .4s !important; }
+
+/* 버튼: 채움이 아래에서 차오른다 */
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn::after { content: ''; position: absolute; inset: 0; z-index: -1; background: #B39565; transform: translateY(101%); transition: transform .6s var(--ease-out); }
+.btn:hover::after { transform: none; }
+.btn--ghost:hover { color: #FAF7F1 !important; border-color: #B39565 !important; }
+.btn--primary:hover { border-color: #B39565 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aura__b { animation: none !important; }
+  .loader { display: none !important; }
+  .js-motion .cover__in > *, .js-motion .cover__foot, .js-motion .cover__ctrl { opacity: 1 !important; transform: none !important; }
+  .rv-pre, .stagger-pre > *, .split-pre .split-w > span { opacity: 1 !important; transform: none !important; }
+  .img-pre::before { display: none !important; }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+html, body { overflow-x: clip; }
+@media (max-width: 920px) { .nav__drawer { font-size: 12.5px !important; letter-spacing: .14em !important; } }
+.cover__slides { z-index: 0; } .cover::after { z-index: 1; } .cover__in { z-index: 2 !important; } .cover__ctrl, .cover__foot { z-index: 3 !important; }
+@media (max-width: 760px) { .cover__ctrl { bottom: 120px; } }
+@media (max-width: 760px) { .cover__ctrl { top: 16px; bottom: auto !important; left: auto !important; right: 16px !important; } }

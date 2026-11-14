@@ -860,7 +860,7 @@ body { font-weight: 400; }
    디돈 세리프 · 골드 헤어라인 이중 테 · 까나쥬 패턴 · 넓은 여백 · 가운데 정렬 챕터
    ═════════════════════════════════════════════════════════ */
 :root {
-  --serif: 'Bodoni Moda', 'Cormorant Garamond', 'Noto Serif KR', serif;
+  --serif: 'Cormorant Garamond', 'Noto Serif KR', serif;
   --bg: #F5EFE4; --bg-2: #ECE3D4; --surface: #FAF6EE; --text: #2A221D; --muted: #857868; --line: rgba(42,34,29,.14);
   --gold: #B08D57; --gold-hi: #D9BE87; --bordeaux: #6A1F2B;
   --frame: 0 0 0 1px var(--gold), 0 0 0 5px var(--surface), 0 0 0 6px rgba(176,141,87,.55);
@@ -952,9 +952,9 @@ main { counter-reset: ch; }
 :root {
   --kr: "Arita Buri KR", "AritaBuri", "Noto Serif KR", serif;
   --serif-kr: var(--kr);
-  --sans: "Helvetica Neue", Helvetica, Arial, var(--kr);
+  --sans: var(--display), var(--kr);
   --serif: "Cormorant Garamond", "Cormorant", Georgia, var(--kr);
-  --mono: "Helvetica Neue", Helvetica, Arial, var(--kr);
+  --mono: var(--display), var(--kr);
   --bg: #EEE7DC; --bg-2: #E6DDCE; --surface: #FAF7F1; --card: #FAF7F1;
   --text: #3A3632; --muted: #7A7064; --line: rgba(58,54,50,.16); --rule: #D5C9B6;
   --ink: #3A3632; --ink-2: #2E2A27;
@@ -975,7 +975,7 @@ html[data-time="Nuit"] body { background: linear-gradient(160deg, #26231F, #2C28
 
 /* 라벨 · 숫자 : Helvetica 트래킹 대문자 */
 .label, .eyebrow, .intro__time, .path__title, .path__all, .pitem__sub, .coffret__no, .dhead__no, .spec__cap .no, .cab__corner, .line__meta, .holder > span, .cell__frame, .meta dt, .ord__rows, .foot, .nav__drawer, .cover__eyebrow, .cover__foot {
-  font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; }
+  font-family: var(--display), var(--kr) !important; }
 .label { color: var(--text) !important; font-weight: 700 !important; font-size: 12px !important; letter-spacing: .28em !important; }
 
 /* 한글 제목 · 본문 : 아리따 부리 */
@@ -988,24 +988,24 @@ main { counter-reset: ch; }
 section { position: relative; }
 .concept, .roles, .apo, .bottle-sec, .pkg-sec, .rituel, .herbier, .boutique { padding-block: clamp(80px, 10vw, 140px) !important; border-top: 0 !important; background-image: none !important; }
 .sechead { counter-increment: ch; display: grid !important; grid-template-columns: 1fr auto; align-items: start; text-align: left !important; max-width: none !important; margin: 0 0 clamp(32px, 4vw, 48px) !important; gap: 14px 24px !important; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
-.sechead::before { content: counter(ch, decimal-leading-zero) " / 07" !important; order: 0 !important; grid-column: 2; grid-row: 1; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: normal !important; font-size: 14px !important; color: var(--muted) !important; letter-spacing: .02em; }
+.sechead::before { content: counter(ch, decimal-leading-zero) " / 07" !important; order: 0 !important; grid-column: 2; grid-row: 1; font-family: var(--display), sans-serif !important; font-style: normal !important; font-size: 14px !important; color: var(--muted) !important; letter-spacing: .02em; }
 .sechead .label { grid-column: 1; grid-row: 1; order: 0 !important; display: block !important; margin: 0 !important; }
 .sechead .label::before, .sechead .label::after { display: none !important; }
 .sechead .h2 { grid-column: 1 / -1; margin: 6px 0 0 !important; }
-.sechead__sub { grid-column: 1 / -1; margin: 0 !important; max-width: 64ch !important; justify-self: start !important; font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; font-style: italic; color: var(--muted) !important; font-size: 16px !important; padding: 0 !important; }
+.sechead__sub { grid-column: 1 / -1; margin: 0 !important; max-width: 64ch !important; justify-self: start !important; font-family: var(--display), var(--kr) !important; font-style: italic; color: var(--muted) !important; font-size: 16px !important; padding: 0 !important; }
 
 /* ── 버튼 · 컨트롤 ── */
-.btn { border-radius: 0 !important; font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; font-weight: 600 !important; font-size: 12px !important; letter-spacing: .2em !important; text-transform: uppercase; padding: 15px 28px !important; box-shadow: none !important; }
+.btn { border-radius: 0 !important; font-family: var(--display), var(--kr) !important; font-weight: 600 !important; font-size: 12px !important; letter-spacing: .2em !important; text-transform: uppercase; padding: 15px 28px !important; box-shadow: none !important; }
 .btn--primary, html[data-time="Nuit"] .btn--primary, .hero .btn--primary, .finale .btn--primary { background: var(--ink) !important; color: #F4EFE6 !important; border: 1px solid var(--ink) !important; }
 html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: var(--ink) !important; border-color: #F4EFE6 !important; }
 .btn--primary:hover { background: var(--ink-2) !important; }
 .btn--ghost { border: 1px solid var(--text) !important; color: var(--text) !important; background: transparent !important; }
 .btn--seal { font-style: normal !important; }
 .seg { border: 1px solid var(--rule); padding: 3px; }
-.seg button { font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; font-size: 13px !important; font-weight: 600 !important; }
+.seg button { font-family: var(--display), var(--kr) !important; font-size: 13px !important; font-weight: 600 !important; }
 .seg button.is-on { background: var(--ink) !important; color: #F4EFE6 !important; }
 .timeswitch { border-color: var(--rule) !important; }
-.timeswitch button { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: normal !important; font-size: 11px !important; letter-spacing: .08em; font-weight: 600 !important; }
+.timeswitch button { font-family: var(--display), sans-serif !important; font-style: normal !important; font-size: 11px !important; letter-spacing: .08em; font-weight: 600 !important; }
 
 /* ── NAV ── */
 .nav, .nav.is-solid { background: color-mix(in srgb, var(--surface) 88%, transparent) !important; backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule) !important; color: var(--text) !important; }
@@ -1035,11 +1035,11 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 /* ── YOUR PATH ── */
 .path { background: transparent !important; border-top: 1px solid var(--rule) !important; }
 .path__title { font-size: 12px !important; font-weight: 700 !important; letter-spacing: .28em !important; }
-.path__tabs button { font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; letter-spacing: .06em !important; }
+.path__tabs button { font-family: var(--display), var(--kr) !important; letter-spacing: .06em !important; }
 .path__tabs button.is-on { border-bottom-color: var(--text) !important; }
 .pitem__img { background: var(--surface) !important; border: 1px solid var(--line); height: 280px !important; }
 .pitem__img svg { width: 132px !important; height: 220px !important; filter: drop-shadow(0 12px 14px rgba(58,40,24,.18)) !important; }
-.pitem__row { font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; font-weight: 700; text-transform: none !important; font-size: 15px !important; }
+.pitem__row { font-family: var(--display), var(--kr) !important; font-weight: 700; text-transform: none !important; font-size: 15px !important; }
 .pitem__row b { font-weight: 700 !important; font-family: inherit !important; }
 .pitem__row em { font-family: inherit !important; }
 .path__next { border-radius: 0 !important; border-color: var(--rule) !important; background: var(--surface) !important; }
@@ -1049,7 +1049,7 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 .duo__tile:first-child::after { display: none; }
 .duo__text { font-family: var(--serif) !important; font-style: normal !important; font-weight: 500 !important; font-size: clamp(28px, 3.2vw, 46px) !important; letter-spacing: 0 !important; text-transform: none !important; }
 .duo__tile--cab { background: var(--bg-2) !important; background-image: none !important; }
-.duo__hint { color: var(--muted) !important; font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; }
+.duo__hint { color: var(--muted) !important; font-family: var(--display), var(--kr) !important; }
 .minicab { box-shadow: 0 30px 50px -30px rgba(58,40,24,.45) !important; }
 .minicab__d { left: 2.3% !important; width: 95% !important; top: calc(3.6% + var(--i) * 19.6%) !important; height: 19.4% !important; }
 .minicab__d:hover, .minicab__d:focus-visible { box-shadow: inset 0 0 0 2px rgba(255,248,232,.95), 0 0 40px rgba(255,236,200,.5) !important; }
@@ -1060,7 +1060,7 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 /* ── CONCEPT ── */
 .promises { border-top: 1px solid var(--rule) !important; }
 .promises li { border-bottom-color: var(--rule) !important; }
-.promises b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 16px !important; }
+.promises b { font-family: var(--display), sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 16px !important; }
 
 /* ── LE SECRET 亞 (PPT 11p) ── */
 .secret, html[data-time="Nuit"] .secret { background: var(--surface) !important; background-image: none !important; border-block: 1px solid var(--rule); }
@@ -1076,19 +1076,19 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 .role__face::before { display: none !important; }
 .role__frame { border: 0 !important; background: none !important; box-shadow: none !important; padding: 0 !important; }
 .role__frame b { font-weight: 600 !important; font-size: 20px !important; color: var(--text); }
-.role__frame small { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: italic !important; font-weight: 400 !important; color: var(--muted) !important; font-size: 15px !important; }
+.role__frame small { font-family: var(--display), sans-serif !important; font-style: italic !important; font-weight: 400 !important; color: var(--muted) !important; font-size: 15px !important; }
 .role .cup { display: none; }
 .role__in { background: var(--ink) !important; background-image: none !important; box-shadow: none !important; }
 .role__in p, .role__in .k { color: #F4EFE6 !important; font-family: var(--kr) !important; }
-.role__in .k { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: italic; text-transform: none; letter-spacing: 0; opacity: .7; font-size: 14px; }
+.role__in .k { font-family: var(--display), sans-serif !important; font-style: italic; text-transform: none; letter-spacing: 0; opacity: .7; font-size: 14px; }
 
 /* ── PRODUCT · ONE BOTTLE ── */
 .onebottle { margin: 0; }
 .onebottle img { width: 100%; aspect-ratio: 1644 / 700; object-fit: cover; object-position: center 62%; display: block; }
 .onebottle__cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 14px; }
 .fcol { border: 0; border-top: 2px solid var(--text); background: none; padding: 14px 0 0; text-align: center; color: var(--text); display: flex; flex-direction: column; gap: 4px; }
-.fcol b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 19px; }
-.fcol span { font-family: "Helvetica Neue", Helvetica, Arial, var(--kr); font-size: 14px; color: var(--muted); }
+.fcol b { font-family: var(--display), sans-serif; font-weight: 700; font-size: 19px; }
+.fcol span { font-family: var(--display), var(--kr); font-size: 14px; color: var(--muted); }
 .fcol:hover b { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 760px) { .onebottle__cols { grid-template-columns: repeat(2, 1fr); } .onebottle img { aspect-ratio: 4 / 3; } }
 
@@ -1097,7 +1097,7 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 .cabinet { background: transparent !important; box-shadow: none !important; padding: 0 !important; gap: 8px !important; }
 .cab__corner { color: var(--muted) !important; }
 .cab__head { background: transparent !important; border: 0 !important; box-shadow: none !important; text-align: center; align-items: center; color: var(--text) !important; }
-.cab__head b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-weight: 700 !important; font-size: 17px !important; }
+.cab__head b { font-family: var(--display), sans-serif !important; font-weight: 700 !important; font-size: 17px !important; }
 .cab__head small { color: var(--muted) !important; }
 .cab__head:hover, .cab__head.is-lit { background: var(--surface) !important; box-shadow: none !important; }
 .cab__row { border-radius: 0 !important; box-shadow: none !important; background-image: none !important; color: var(--ink) !important; }
@@ -1105,7 +1105,7 @@ html[data-time="Nuit"] .btn--primary { background: #F4EFE6 !important; color: va
 .cab__row[data-row="1"] { background-color: #D9C7AE !important; }
 .cab__row[data-row="2"] { background-color: #B9BCBF !important; }
 .cab__row[data-row="3"] { background-color: #F4EFE6 !important; border: 1px solid var(--line) !important; }
-.cab__row b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-weight: 700 !important; font-size: 16px !important; color: var(--ink) !important; }
+.cab__row b { font-family: var(--display), sans-serif !important; font-weight: 700 !important; font-size: 16px !important; color: var(--ink) !important; }
 .cab__row small { color: #5E564D !important; font-style: italic; }
 .cab__row .win { display: none !important; }
 .cell { background: var(--surface) !important; border: 1px solid var(--line) !important; box-shadow: none !important; padding: 0 0 10px !important; border-radius: 0 !important; }
@@ -1127,7 +1127,7 @@ html[data-time="Nuit"] .cell, html[data-time="Nuit"] .cell:hover { background: #
 .pkg__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .pkg__list li { padding: 18px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
 .pkg__list li:first-child { padding-top: 0; }
-.pkg__list b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; }
+.pkg__list b { font-family: var(--display), sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; }
 .pkg__list span { font-size: 16px; line-height: 1.8; }
 @media (max-width: 900px) { .pkg { grid-template-columns: 1fr 1fr; } .pkg__list { grid-column: 1 / -1; } .pkg img { min-height: 260px; } }
 @media (max-width: 560px) { .pkg { grid-template-columns: 1fr; } }
@@ -1137,12 +1137,12 @@ html[data-time="Nuit"] .cell, html[data-time="Nuit"] .cell:hover { background: #
 .line { background: var(--surface) !important; border: 1px solid var(--line) !important; box-shadow: none !important; padding: 0 0 28px !important; }
 .line[data-line="Nuit"] { background: var(--ink) !important; color: #F4EFE6; border-color: var(--ink) !important; }
 .line[data-line="Nuit"] .line__ko, .line[data-line="Nuit"] .line__meta, .line[data-line="Nuit"] li, .line[data-line="Nuit"] li small { color: #E6DED2 !important; border-color: rgba(244,239,230,.18) !important; }
-.line h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 40px !important; letter-spacing: -.02em; }
+.line h3 { font-family: var(--display), sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 40px !important; letter-spacing: -.02em; }
 .niche { background: var(--bg-2) !important; background-image: none !important; box-shadow: none !important; height: 210px !important; }
 .line[data-line="Nuit"] .niche { background: #2E2A27 !important; }
 .niche::before, .ledge { display: none !important; }
 .niche svg { width: 70px !important; height: 116px !important; }
-.line li b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-weight: 500 !important; }
+.line li b { font-family: var(--display), sans-serif !important; font-weight: 500 !important; }
 .line.is-now { box-shadow: 0 0 0 2px var(--text) !important; }
 .line__now { border-radius: 999px !important; }
 
@@ -1152,17 +1152,17 @@ html[data-time="Nuit"] .cell, html[data-time="Nuit"] .cell:hover { background: #
 .spec__f, .spec__b { background: var(--surface) !important; border: 1px solid var(--line) !important; box-shadow: none !important; color: var(--text) !important; }
 .spec__f .win { width: 100% !important; aspect-ratio: 5 / 4 !important; height: auto !important; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
 .spec__f .win::after { display: none; }
-.spec__big { display: inline-block; align-self: flex-start; background: var(--ink); color: #F4EFE6; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 14px !important; letter-spacing: .1em; padding: 6px 10px; }
+.spec__big { display: inline-block; align-self: flex-start; background: var(--ink); color: #F4EFE6; font-family: var(--display), sans-serif !important; font-style: normal !important; font-weight: 700 !important; font-size: 14px !important; letter-spacing: .1em; padding: 6px 10px; }
 .spec__big::before { content: 'N°'; }
 .spec__cap .rule { display: none !important; }
-.spec__cap b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-style: italic !important; font-weight: 400 !important; font-size: 19px !important; margin-top: 10px !important; }
+.spec__cap b { font-family: var(--display), sans-serif !important; font-style: italic !important; font-weight: 400 !important; font-size: 19px !important; margin-top: 10px !important; }
 .spec__cap small, .spec__cap .no { color: var(--muted) !important; }
 .spec__b p { color: var(--text) !important; font-weight: 300; }
 
 /* ── BOUTIQUE ── */
 .scene-card { box-shadow: none !important; background: transparent !important; }
 .scene-card figcaption { padding: 12px 0 0 !important; color: var(--muted) !important; }
-.scene-card figcaption b { font-family: "Helvetica Neue", Helvetica, Arial, var(--kr) !important; font-style: normal !important; font-weight: 700 !important; font-size: 12px !important; letter-spacing: .24em; text-transform: uppercase; color: var(--text) !important; }
+.scene-card figcaption b { font-family: var(--display), var(--kr) !important; font-style: normal !important; font-weight: 700 !important; font-size: 12px !important; letter-spacing: .24em; text-transform: uppercase; color: var(--text) !important; }
 
 /* ── FINALE ── */
 .finale::before { background: linear-gradient(90deg, rgba(30,24,20,.25), rgba(30,24,20,.7)) !important; }
@@ -1173,7 +1173,7 @@ html[data-time="Nuit"] .cell, html[data-time="Nuit"] .cell:hover { background: #
 
 /* ── FOOTER (PPT 하단 라인) ── */
 .foot { border-top: 1px solid var(--rule) !important; margin-inline: max(16px, 6.6vw); padding-inline: 0 !important; color: var(--muted) !important; letter-spacing: .16em !important; }
-.foot .wordmark { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-size: 12px !important; font-weight: 400 !important; letter-spacing: .16em !important; }
+.foot .wordmark { font-family: var(--display), sans-serif !important; font-size: 12px !important; font-weight: 400 !important; letter-spacing: .16em !important; }
 
 /* ── 서랍 패널 · 상담 ── */
 .sheet__front { background: var(--surface) !important; background-image: none !important; border-color: var(--rule) !important; }
@@ -1304,7 +1304,7 @@ html[data-time="Nuit"] .btn--primary { background: var(--text) !important; color
 .cover__slides { position: absolute; inset: 0; }
 .cover__slides .cover__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.6s var(--soft), transform 7s linear; }
 .cover__slides .cover__img.is-on { opacity: 1; transform: scale(1); }
-.cover__ctrl { position: absolute; z-index: 2; right: max(16px, 6.6vw); bottom: 84px; display: flex; align-items: center; gap: 14px; color: #F7F2EA; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: .08em; }
+.cover__ctrl { position: absolute; z-index: 2; right: max(16px, 6.6vw); bottom: 84px; display: flex; align-items: center; gap: 14px; color: #F7F2EA; font-family: var(--display), sans-serif; font-size: 13px; letter-spacing: .08em; }
 .cover__count b { font-weight: 700; }
 .cover__dots { display: flex; gap: 6px; }
 .cover__dots button { width: 18px; height: 2px; border: 0; padding: 0; background: rgba(247,242,234,.45); transition: width .5s, background .5s; }
