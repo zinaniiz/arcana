@@ -742,3 +742,35 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
   .plist__chips button { flex: none; }
   .pcard__add { font-size: 12px; padding: 10px 6px; }
 }
+
+/* ═══ 서랍의 역할: 亞 모양 서랍 앞판 + 로고 심볼 손잡이 ═══ */
+.roles .chest { gap: 12px !important; background: transparent !important; box-shadow: none !important; padding: 0 !important; }
+.role { filter: drop-shadow(0 16px 18px rgba(90,70,40,.13)); }
+.role__face, .role__in { clip-path: polygon(16px 0px, calc(100% - 16px) 0px, calc(100% - 16px) 16px, calc(100% - 0px) 16px, calc(100% - 0px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px), calc(100% - 16px) calc(100% - 0px), 16px calc(100% - 0px), 16px calc(100% - 16px), 0px calc(100% - 16px), 0px 16px, 16px 16px); border: 0 !important; }
+.role__face { background: linear-gradient(180deg, #FFFFFF 0%, #F7F2E9 100%) !important; box-shadow: none !important; }
+.role__face::before { content: '' !important; display: block !important; position: absolute; inset: 0; top: 0; left: 0; right: 0; height: auto; opacity: 1 !important; box-shadow: none !important; background: linear-gradient(180deg, #D7C3A0, #B3955F 60%, #CDB68C) !important; clip-path: polygon(evenodd, 21px 9px, calc(100% - 21px) 9px, calc(100% - 21px) 21px, calc(100% - 9px) 21px, calc(100% - 9px) calc(100% - 21px), calc(100% - 21px) calc(100% - 21px), calc(100% - 21px) calc(100% - 9px), 21px calc(100% - 9px), 21px calc(100% - 21px), 9px calc(100% - 21px), 9px 21px, 21px 21px, 21px 9px, 22px 10px, 22px 22px, 10px 22px, 10px calc(100% - 22px), 22px calc(100% - 22px), 22px calc(100% - 10px), calc(100% - 22px) calc(100% - 10px), calc(100% - 22px) calc(100% - 22px), calc(100% - 10px) calc(100% - 22px), calc(100% - 10px) 22px, calc(100% - 22px) 22px, calc(100% - 22px) 10px, 22px 10px, 22px 10px); pointer-events: none; transition: none; }
+.role:hover .role__face::before { background: linear-gradient(180deg, #E6D2A6, #A9864C) !important; }
+.role__face::after { content: none !important; }
+.role__num { top: 20px !important; left: 26px !important; }
+.role .cup { display: block !important; width: 30px !important; height: 30px !important; border-radius: 0 !important; box-shadow: none !important;
+  background: linear-gradient(145deg, #F6E7C1 0%, #D2B176 38%, #9C7838 72%, #E2C990 100%) !important;
+  -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; margin-top: 4px; transition: transform .6s var(--ease-out); }
+.role:hover .cup { transform: translateY(2px) scale(1.06); }
+.role__frame { clip-path: polygon(6px 0px, calc(100% - 6px) 0px, calc(100% - 6px) 6px, calc(100% - 0px) 6px, calc(100% - 0px) calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) calc(100% - 0px), 6px calc(100% - 0px), 6px calc(100% - 6px), 0px calc(100% - 6px), 0px 6px, 6px 6px); border: 0 !important; background: linear-gradient(180deg, #D9C6A2, #B3955F) !important; padding: 1px !important; animation: roleGlowClip 3.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.role__frame b, .role__frame small { background: #FFFDF8 !important; }
+.role__frame b { clip-path: polygon(5px 0px, calc(100% - 5px) 0px, calc(100% - 5px) 5px, calc(100% - 0px) 5px, calc(100% - 0px) calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), calc(100% - 5px) calc(100% - 0px), 5px calc(100% - 0px), 5px calc(100% - 5px), 0px calc(100% - 5px), 0px 5px, 5px 5px); clip-path: none; }
+.role__frame > b, .role__frame > small { position: relative; }
+.role__frame > b { padding: 8px 18px 2px !important; } .role__frame > small { padding: 0 18px 8px !important; }
+.role__frame { display: grid; }
+.role__frame b, .role__frame small { grid-column: 1; }
+@keyframes roleGlowClip { 0%, 100% { filter: brightness(1) drop-shadow(0 0 0 rgba(236,208,150,0)); } 45% { filter: brightness(1.06) drop-shadow(0 0 6px rgba(236,208,150,.9)); } }
+
+.role { filter: drop-shadow(0 8px 10px rgba(90,70,40,.10)); }
+.role__frame { background: #FFFDF8 !important; padding: 0 !important; }
+.role__frame b, .role__frame small { background: none !important; }
+.role__frame::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #D9C6A2, #B3955F); clip-path: polygon(evenodd, 6px 0px, calc(100% - 6px) 0px, calc(100% - 6px) 6px, calc(100% - 0px) 6px, calc(100% - 0px) calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) calc(100% - 0px), 6px calc(100% - 0px), 6px calc(100% - 6px), 0px calc(100% - 6px), 0px 6px, 6px 6px, 6px 0px, 7px 1px, 7px 7px, 1px 7px, 1px calc(100% - 7px), 7px calc(100% - 7px), 7px calc(100% - 1px), calc(100% - 7px) calc(100% - 1px), calc(100% - 7px) calc(100% - 7px), calc(100% - 1px) calc(100% - 7px), calc(100% - 1px) 7px, calc(100% - 7px) 7px, calc(100% - 7px) 1px, 7px 1px, 7px 1px); pointer-events: none; z-index: 1; }
+
+.roles .role__in, .roles .role__face { clip-path: polygon(16px 0px, calc(100% - 16px) 0px, calc(100% - 16px) 16px, calc(100% - 0px) 16px, calc(100% - 0px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px), calc(100% - 16px) calc(100% - 0px), 16px calc(100% - 0px), 16px calc(100% - 16px), 0px calc(100% - 16px), 0px 16px, 16px 16px) !important; }
+.roles .role__in { background: #F3EDE2 !important; }
+
+.roles .role__face::after { content: '' !important; position: absolute; inset: 0; background: #E2D5BE !important; clip-path: polygon(evenodd, 16px 0px, calc(100% - 16px) 0px, calc(100% - 16px) 16px, calc(100% - 0px) 16px, calc(100% - 0px) calc(100% - 16px), calc(100% - 16px) calc(100% - 16px), calc(100% - 16px) calc(100% - 0px), 16px calc(100% - 0px), 16px calc(100% - 16px), 0px calc(100% - 16px), 0px 16px, 16px 16px, 16px 0px, 17px 1px, 17px 17px, 1px 17px, 1px calc(100% - 17px), 17px calc(100% - 17px), 17px calc(100% - 1px), calc(100% - 17px) calc(100% - 1px), calc(100% - 17px) calc(100% - 17px), calc(100% - 1px) calc(100% - 17px), calc(100% - 1px) 17px, calc(100% - 17px) 17px, calc(100% - 17px) 1px, 17px 1px, 17px 1px); pointer-events: none; }

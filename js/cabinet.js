@@ -13,7 +13,7 @@
       { t: 'Shop', s: '라인별 · 제품별', go: 'shop' },
       { t: 'Le Rituel', s: '아침 · 한낮 · 밤의 순서', href: '#rituel' },
       { t: "L'Espace", s: '매장 공간', href: '#boutique' },
-      { t: 'Ordonnance', s: '처방전 갤러리', href: '#ordonnance' },
+      { t: 'Ordonnance', s: '처방전 받기', href: '#ordonnance' },
       { sep: true },
       { t: '처방받기', s: '오늘의 서랍 고르기', act: 'consult', kr: true },
       { t: '서랍장', s: '담아 둔 제품', act: 'cab', kr: true },
