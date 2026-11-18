@@ -25,21 +25,25 @@
       { t: '하나의 병, 다섯 가지 투명도', href: '#bottle', kr: true },
       { t: '패키지', href: '#coffret', kr: true },
     ] }] },
-    shop: { title: 'Shop', groups: [
-      { h: '카테고리', items: [
-        ...CATEGORIES.map((c) => ({ t: `${c.ko}`, s: c.fr, cat: c.key, kr: true })),
-        { t: '코프레 세트', s: 'Coffret · 5단계', href: '#coffret', kr: true },
-        { t: '모든 제품 보기', href: '#apothicaire', kr: true, all: true },
-      ] },
-      { h: '제품 라인', items: [
-        ...DRAWERS.map((d) => ({ t: d.fr, s: `N°${d.no} · ${d.concern} · ${d.ko}`, line: d.no })),
-        { t: '모든 제품 보기', href: '#apothicaire', kr: true, all: true },
-      ] },
+    shop: { title: 'Shop', items: [
+      { t: '카테고리', s: '스킨토너 · 로션 · 세럼 · 크림 · 미스트', go: 'shopCat', kr: true },
+      { t: '제품 라인', s: '미백 · 탄력 · 진정 · 장벽', go: 'shopLine', kr: true },
+      { sep: true },
+      { t: '코프레 세트', s: 'Coffret · 한 서랍의 5단계', href: '#coffret', kr: true },
+      { t: '모든 제품 보기', s: '20 Produits', list: 'all|all', kr: true },
     ] },
+    shopCat: { title: '카테고리', groups: [{ h: '카테고리', items: [
+      ...CATEGORIES.map((c) => ({ t: c.ko, s: c.fr, list: `cat|${c.key}`, kr: true })),
+      { t: '모든 제품 보기', list: 'cat|all', kr: true, all: true },
+    ] }] },
+    shopLine: { title: '제품 라인', groups: [{ h: '제품 라인', items: [
+      ...DRAWERS.map((d) => ({ t: d.fr, s: `N°${d.no} · ${d.concern} · ${d.ko}`, list: `line|${d.no}` })),
+      { t: '모든 제품 보기', list: 'line|all', kr: true, all: true },
+    ] }] },
   };
   const item = (i) => {
     if (i.sep) return '<li class="mp-sep" aria-hidden="true"></li>';
-    const attrs = i.go ? `data-go="${i.go}"` : i.href ? `data-href="${i.href}"` : i.cat ? `data-cat="${i.cat}"` : i.line ? `data-line="${i.line}"` : `data-act="${i.act}"`;
+    const attrs = i.go ? `data-go="${i.go}"` : i.list ? `data-list="${i.list}"` : i.href ? `data-href="${i.href}"` : i.cat ? `data-cat="${i.cat}"` : i.line ? `data-line="${i.line}"` : `data-act="${i.act}"`;
     return `<li><button class="mp-row${i.kr ? ' mp-row--kr' : ''}${i.all ? ' mp-row--all' : ''}" ${attrs}><span><b>${i.t}</b>${i.s ? `<small>${i.s}</small>` : ''}</span>${i.go ? '<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>' : ''}</button></li>`;
   };
   const render = (key) => {
@@ -62,7 +66,7 @@
     window.__lenis?.stop?.();
   };
   const closeMenu = () => { mp.classList.remove('is-on'); mp.setAttribute('aria-hidden', 'true'); opener?.setAttribute('aria-expanded', 'false'); unlock(); };
-  const unlock = () => { if (!mp.classList.contains('is-on') && !cab.classList.contains('is-on')) { html.classList.remove('is-locked'); window.__lenis?.start?.(); } };
+  const unlock = () => { if (!mp.classList.contains('is-on') && !cab.classList.contains('is-on') && !document.querySelector('.plist.is-on')) { html.classList.remove('is-locked'); window.__lenis?.start?.(); } };
   const goTo = (hash) => { const el = document.querySelector(hash === '#top' ? 'main' : hash); if (!el) return; if (window.__lenis) window.__lenis.scrollTo(el, { offset: -64 }); else el.scrollIntoView({ behavior: 'smooth' }); };
 
   opener?.addEventListener('click', () => openMenu());
@@ -72,7 +76,8 @@
     const r = e.target.closest('.mp-row'); if (!r) return;
     if (r.dataset.go) { stack.push(views.firstElementChild.dataset.view); show(r.dataset.go); return; }
     closeMenu();
-    if (r.dataset.href) setTimeout(() => goTo(r.dataset.href), 80);
+    if (r.dataset.list) { const [m, v] = r.dataset.list.split('|'); openList(m, v); }
+    else if (r.dataset.href) setTimeout(() => goTo(r.dataset.href), 80);
     else if (r.dataset.cat) window.ArcanaOpen.category(r.dataset.cat);
     else if (r.dataset.line) window.ArcanaOpen.drawer(r.dataset.line);
     else if (r.dataset.act === 'consult') window.ArcanaOpen.consult();
@@ -130,7 +135,7 @@
     else if (d.dec) { if (--items[d.dec].q <= 0) items.splice(d.dec, 1); save(); paint(); }
     else if (d.rm) { items.splice(d.rm, 1); save(); paint(); }
     else if (d.view) { const it = items[d.view]; closeCab(); it.k === 'coffret' ? window.ArcanaOpen.drawer(it.no) : window.ArcanaOpen.product(it.no, it.k); }
-    else if (d.c) { closeCab(); d.c === 'consult' ? window.ArcanaOpen.consult() : openMenu('shop'); }
+    else if (d.c) { closeCab(); d.c === 'consult' ? window.ArcanaOpen.consult() : openList(d.c === 'line' ? 'line' : 'cat', 'all'); }
     else if (t.id === 'cabGo') { t.textContent = '조제 요청이 접수되었어요'; t.disabled = true; }
   });
   addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeMenu(); closeCab(); } });
@@ -157,5 +162,69 @@
     if (src) { const o = src.textContent; src.textContent = '서랍장에 담았어요 ✓'; setTimeout(() => (src.textContent = o), 1600); }
   };
   window.ArcanaCart = { add, open: openCab };
+
+  /* ───────── 제품 목록 페이지 (카테고리 / 제품 라인) ───────── */
+  const pl = document.createElement('section');
+  pl.className = 'plist'; pl.setAttribute('aria-hidden', 'true'); pl.setAttribute('role', 'dialog');
+  document.body.appendChild(pl);
+  let plState = { m: 'cat', v: 'all' };
+  const cards = (m, v) => {
+    const out = [];
+    DRAWERS.forEach((d) => CATEGORIES.forEach((c) => {
+      if (m === 'cat' && v !== 'all' && c.key !== v) return;
+      if (m === 'line' && v !== 'all' && d.no !== v) return;
+      out.push({ d, c });
+    }));
+    if (m === 'cat') out.sort((a, b) => CATEGORIES.indexOf(a.c) - CATEGORIES.indexOf(b.c));
+    return out;
+  };
+  const paintList = () => {
+    const { m, v } = plState;
+    const head = m === 'cat'
+      ? (v === 'all' ? { k: '모든 제품', e: 'Tous les produits', p: '같은 병, 다섯 가지 제형. 고민에 맞춰 네 개의 서랍에서 고르세요.' } : (() => { const c = cat(v); return { k: c.ko, e: c.fr, p: c.how }; })())
+      : (v === 'all' ? { k: '모든 라인', e: 'Les Tiroirs', p: '네 개의 서랍, 네 가지 고민. 모든 서랍의 바탕에는 달맞이꽃이 있습니다.' } : (() => { const d = drw(v); return { k: d.fr, e: `N°${d.no} · ${d.concern} · ${d.ko}`, p: d.story, img: d.img }; })());
+    const chips = m === 'cat'
+      ? [['all', '전체'], ...CATEGORIES.map((c) => [c.key, c.ko])]
+      : [['all', '전체'], ...DRAWERS.map((d) => [d.no, `N°${d.no} ${d.concern}`])];
+    const list = cards(m, v);
+    pl.innerHTML = `
+      <div class="plist__bar"><button class="mp-ic" data-pclose aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><p>Shop</p><button class="mp-ic" data-pclose aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+      <div class="plist__in">
+        <header class="plist__head${head.img ? ' has-img' : ''}">
+          ${head.img ? `<img src="${head.img}" alt="" />` : ''}
+          <div><p class="plist__crumb">Shop · ${m === 'cat' ? '카테고리' : '제품 라인'}</p><h2>${head.k}</h2><span class="plist__en">${head.e}</span><p class="plist__lead">${head.p}</p></div>
+        </header>
+        <div class="plist__tabs" role="tablist">
+          <button role="tab" data-pm="cat" aria-selected="${m === 'cat'}">카테고리</button>
+          <button role="tab" data-pm="line" aria-selected="${m === 'line'}">제품 라인</button>
+        </div>
+        <div class="plist__chips">${chips.map(([k, t]) => `<button data-pv="${k}" class="${k === v ? 'is-on' : ''}">${t}</button>`).join('')}</div>
+        <p class="plist__count">${list.length}개의 제품</p>
+        <ul class="plist__grid">${list.map(({ d, c }) => `
+          <li class="pcard">
+            <button class="pcard__img" data-pp="${d.no}|${c.key}" aria-label="ARCANA N°${d.no} ${c.fr} 자세히 보기"><img src="assets/img/bottle/${c.key}.webp" alt="" loading="lazy" /><span class="pcard__no">N°${d.no}</span></button>
+            <div class="pcard__txt"><small>${c.ko} · ${d.concern}</small><b>ARCANA N°${d.no} ${c.fr}</b><span>${d.ko} · ${c.vol}</span><em>${won(c.price)}</em></div>
+            <button class="pcard__add" data-pa="${d.no}|${c.key}">서랍장에 담기</button>
+          </li>`).join('')}</ul>
+      </div>`;
+    pl.scrollTop = 0;
+  };
+  const openList = (m, v) => {
+    plState = { m, v }; paintList();
+    pl.classList.add('is-on'); pl.setAttribute('aria-hidden', 'false'); html.classList.add('is-locked', 'plist-open'); window.__lenis?.stop?.();
+  };
+  const closeList = () => { pl.classList.remove('is-on'); pl.setAttribute('aria-hidden', 'true'); html.classList.remove('plist-open'); unlock(); };
+  const _unlock = unlock;
+  pl.addEventListener('click', (e) => {
+    const t = e.target.closest('button'); if (!t) return;
+    const d = t.dataset;
+    if ('pclose' in d) closeList();
+    else if (d.pm) { plState = { m: d.pm, v: 'all' }; paintList(); }
+    else if (d.pv) { plState.v = d.pv; paintList(); }
+    else if (d.pp) { const [no, k] = d.pp.split('|'); window.ArcanaOpen.product(no, k); }
+    else if (d.pa) { const [no, k] = d.pa.split('|'); add(no, k, t); }
+  });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && pl.classList.contains('is-on') && !document.querySelector('.sheet.is-open')) closeList(); });
+  window.ArcanaList = openList;
   paintCount();
 })();
