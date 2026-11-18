@@ -212,3 +212,88 @@ html, body { overflow-x: clip; }
 .cover__slides { z-index: 0; } .cover::after { z-index: 1; } .cover__in { z-index: 2 !important; } .cover__ctrl, .cover__foot { z-index: 3 !important; }
 @media (max-width: 760px) { .cover__ctrl { bottom: 120px; } }
 @media (max-width: 760px) { .cover__ctrl { top: 16px; bottom: auto !important; left: auto !important; right: 16px !important; } }
+
+/* ═════════════════════════════════════════════════════════════
+   미색 톤 — 밝고 깨끗하게 (처방전 · 표본 카드 종이와 같은 결)
+   ═════════════════════════════════════════════════════════════ */
+:root, html[data-time], html[data-time="Midi"], html[data-time="Nuit"] {
+  --bg: #FBF9F4; --bg-2: #F5F1E8; --surface: #FFFEFB; --card: #FFFEFB;
+  --text: #2F2B27; --muted: #8A8175; --line: rgba(47,43,39,.10); --rule: #E3DBCB;
+  --gold: #B0915C; --logo: #B0915C; --foil-text: #9A7C49;
+}
+html { background: #FBF9F4; }
+.aura { background: #FBF9F4; }
+.aura::after { opacity: .18; }
+.aura__b { opacity: .38; filter: blur(80px); }
+.aura__b--1 { background: radial-gradient(closest-side, #F2E9D8, transparent); }
+.aura__b--2 { background: radial-gradient(closest-side, #F6EFD9, transparent); }
+.aura__b--3 { background: radial-gradient(closest-side, #F3E6E0, transparent); opacity: .3; }
+.aura__b--4 { background: radial-gradient(closest-side, #ECEBE6, transparent); opacity: .35; }
+.aura__b--5 { background: radial-gradient(closest-side, #FFFFFF, transparent); opacity: .9; }
+.loader { background: #FBF9F4; }
+.nav, .nav.is-solid { background: color-mix(in srgb, #FFFEFB 80%, transparent) !important; border-bottom-color: rgba(176,145,92,.25) !important; }
+.secret { background: color-mix(in srgb, #FFFEFB 70%, transparent) !important; }
+.duo__tile--cab { background: color-mix(in srgb, #F5F1E8 80%, transparent) !important; }
+.line[data-line="Nuit"] { background: #3A3530 !important; }
+.sheet__inside { background: #FBF9F4 !important; }
+.consult { background: #FBF9F4 !important; }
+.opt { background: #FFFEFB !important; border-color: var(--rule) !important; }
+.cab__head { background: #FFFEFB !important; }
+
+/* ── L'HERBIER : 실제 표본 카드 ── */
+.herb-hero { margin: 0 0 18px; overflow: hidden; }
+.herb-hero img { display: block; width: 100%; aspect-ratio: 3 / 1.25; object-fit: cover; object-position: center 40%; }
+.specimens { grid-template-columns: repeat(5, 1fr) !important; gap: 18px !important; background: none !important; padding: 0 !important; box-shadow: none !important; }
+.spec--card { aspect-ratio: auto !important; display: flex; flex-direction: column; gap: 12px; padding: 0 !important; border: 0; background: none !important; box-shadow: none !important; cursor: pointer; perspective: 1000px; }
+.spec__stack { position: relative; display: block; width: 100%; aspect-ratio: 425 / 678; filter: drop-shadow(0 18px 22px rgba(80,60,30,.12)); transition: transform .9s var(--spring); transform-style: preserve-3d; }
+.spec__face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .7s var(--ease-out); }
+.spec__face.is-on { opacity: 1; }
+.spec--card:hover .spec__stack { transform: translateY(-6px) rotate(-.6deg); }
+.spec--card.is-turn .spec__stack { animation: cardTurn .8s var(--ease-out); }
+@keyframes cardTurn { 0% { transform: rotateY(0); } 45% { transform: rotateY(-14deg) translateY(-4px); } 100% { transform: rotateY(0); } }
+.spec__meta { display: flex; align-items: center; gap: 10px; font-family: var(--display); color: var(--text); }
+.spec__meta b { font-family: "Noto Serif KR", var(--kr), serif; font-weight: 500; color: var(--gold); font-size: 15px; }
+.spec__meta span { font-size: 16px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.spec__meta i { display: flex; gap: 4px; }
+.spec__meta em { width: 5px; height: 5px; border-radius: 50%; border: 1px solid var(--gold); transition: background .4s; }
+.spec__meta em.is-on { background: var(--gold); }
+@media (max-width: 1000px) { .specimens { grid-template-columns: repeat(3, 1fr) !important; } }
+@media (max-width: 620px) { .specimens { grid-template-columns: repeat(2, 1fr) !important; } .herb-hero img { aspect-ratio: 4 / 3; } }
+
+/* ── L'ORDONNANCE 섹션 ── */
+.ordo-sec { padding-block: clamp(80px, 10vw, 140px); }
+.ordo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ordo figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.ordo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; filter: drop-shadow(0 18px 22px rgba(80,60,30,.12)); transition: transform 1s var(--ease-out); }
+.ordo figure:hover img { transform: translateY(-6px); }
+.ordo figcaption { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.ordo figcaption b { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--text); }
+.ordo-cta { display: flex; justify-content: center; margin-top: 44px; }
+@media (max-width: 900px) { .ordo { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── 상담 결과 : Ordonnance de Soin 카드 (엠보싱 프레임 위) ── */
+.ord.ord--card { width: min(520px, 100%); aspect-ratio: 1086 / 1448; padding: 0 !important; background: #F8F4EC url("../assets/img/ordo/frame.jpg") center / cover no-repeat !important; box-shadow: 0 30px 60px -30px rgba(80,60,30,.35) !important; border-radius: 0; color: #2F2B27; justify-self: center; position: relative; }
+.ord.ord--card::before { display: none; }
+.ord__in { position: absolute; left: 22%; right: 22%; top: 14%; bottom: 12%; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; }
+.ord__mark { width: 40px; height: 34px; background: var(--gold); -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; margin-bottom: 8px; }
+.ord__brand { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(20px, 3.2vw, 26px); letter-spacing: .32em; padding-left: .32em; color: var(--gold); line-height: 1.1; }
+.ord__kind { margin: 4px 0 6%; font-family: var(--display); font-weight: 600; font-size: clamp(9px, 1.4vw, 11px); letter-spacing: .38em; color: var(--gold); }
+.ord__lbl { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(8px, 1.3vw, 10.5px); letter-spacing: .3em; color: var(--gold); }
+.ord__lbl span { font-family: var(--kr); letter-spacing: 0; color: #2F2B27; font-weight: 500; margin-left: 4px; }
+.ord__name { margin: 2px 0 5%; min-height: 1.3em; width: 100%; font-family: var(--kr); font-size: clamp(18px, 3vw, 24px); letter-spacing: .12em; border-bottom: 1px dotted rgba(176,145,92,.6); padding-bottom: 2px; }
+.ord__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; width: 100%; margin-bottom: 5%; }
+.ord__val { margin: 2px 0 0; font-family: var(--display); font-weight: 600; font-size: clamp(13px, 2.2vw, 18px); color: var(--gold); letter-spacing: .1em; border-bottom: 1px dotted rgba(176,145,92,.6); padding-bottom: 2px; }
+.ord__val--han { font-family: "Noto Serif KR", var(--kr), serif; font-size: clamp(16px, 2.6vw, 22px); }
+.ord__elem { margin: 2px 0 6%; font-family: var(--display); font-weight: 600; font-size: clamp(9px, 1.5vw, 12px); letter-spacing: .14em; border-bottom: 1px dotted rgba(176,145,92,.6); padding-bottom: 3px; width: 100%; }
+.ord__steps { display: flex; justify-content: center; gap: 7%; width: 100%; margin-bottom: 5%; }
+.ord__step { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.ord__ring { display: grid; place-items: center; width: clamp(40px, 7vw, 54px); aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--gold); box-shadow: inset 0 0 0 3px #F8F4EC, inset 0 0 0 4px var(--gold); font-family: "Noto Serif KR", var(--kr), serif; color: var(--gold); font-size: clamp(15px, 2.4vw, 20px); }
+.ord__step b { font-family: var(--display); font-weight: 600; font-size: clamp(8px, 1.3vw, 10px); letter-spacing: .24em; color: var(--gold); }
+.ord__step small { font-family: var(--kr); font-size: clamp(9px, 1.4vw, 11.5px); color: #2F2B27; }
+.ord__say { margin: 0 0 3%; font-family: var(--kr); font-size: clamp(12px, 2vw, 15px); letter-spacing: .12em; }
+.ord__note { margin: 0 0 4% !important; padding: 0 !important; background: none !important; font-family: var(--kr); font-size: clamp(9px, 1.4vw, 11px) !important; line-height: 1.6 !important; color: var(--muted); }
+.ord__no { margin: auto 0 0; font-family: "Noto Serif KR", var(--kr), serif; font-size: clamp(9px, 1.5vw, 12px); letter-spacing: .3em; color: var(--gold); }
+.ord.ord--card .ord__seal { right: 6%; bottom: 4%; width: 84px; height: 84px; }
+.ord-wrap { grid-template-columns: 1fr !important; justify-items: center; gap: 22px !important; }
+.ord__actions { flex-direction: row !important; flex-wrap: wrap; justify-content: center; min-width: 0 !important; }
+.spec__meta { flex-wrap: nowrap !important; width: 100%; } .spec__meta span { font-size: 14px !important; letter-spacing: .08em !important; }

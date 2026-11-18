@@ -25,6 +25,7 @@
     <a class="nav__drawer" href="#coffret"><span>Package</span><i></i></a>
     <a class="nav__drawer" href="#rituel"><span>Le Rituel</span><i></i></a>
     <a class="nav__drawer" href="#herbier"><span>L'Herbier</span><i></i></a>
+    <a class="nav__drawer" href="#ordonnance"><span>Ordonnance</span><i></i></a>
   </nav>
   <div class="nav__tools">
     <div class="timeswitch" role="group" aria-label="시간대 톤">
@@ -49,6 +50,7 @@
       <img class="cover__img" src="assets/img/hero-06.jpg" alt="꽃잎처럼 열리는 스무 칸 서랍 상자" style="object-position:center 50%" loading="lazy" />
       <img class="cover__img" src="assets/img/hero-05.jpg" alt="꽃살 아치 아래 니치 벽과 상담 테이블" style="object-position:center 36%" loading="lazy" />
       <img class="cover__img" src="assets/img/hero-04.jpg" alt="빛이 드는 두 단 선반 위 스무 개의 보틀" style="object-position:center 50%" loading="lazy" />
+      <img class="cover__img" src="assets/img/hero-11.jpg" alt="체커보드 니치 벽에 빛이 드는 ARCANA 보틀과 다섯 제형" style="object-position:center 58%" loading="lazy" />
       <img class="cover__img" src="assets/img/hero-03.jpg" alt="까나쥬 엠보싱과 골드 엠블럼의 큐브 박스" style="object-position:center 50%" loading="lazy" />
       <img class="cover__img" src="assets/img/hero-08.jpg" alt="ARCANA 엠블럼을 가운데 둔 니치 진열 벽" style="object-position:center 40%" loading="lazy" />
       <img class="cover__img" src="assets/img/hero-10.jpg" alt="매장 선반에 나란히 놓인 ARCANA 보틀" style="object-position:center 62%" loading="lazy" />
@@ -61,7 +63,7 @@
     </div>
     <div class="cover__ctrl" aria-label="화보 넘기기">
       <button class="cover__arrow" id="coverPrev" aria-label="이전 화보">‹</button>
-      <span class="cover__count"><b id="coverNo">01</b> / <span id="coverTot">10</span></span>
+      <span class="cover__count"><b id="coverNo">01</b> / <span id="coverTot">11</span></span>
       <div class="cover__dots" id="coverDots"></div>
       <button class="cover__arrow" id="coverNext" aria-label="다음 화보">›</button>
     </div>
@@ -214,9 +216,28 @@
       <header class="sechead reveal">
         <p class="label">L'Herbier · 원료 표본집</p>
         <h2 class="h2">서랍마다 하나의 원료, 하나의 장소</h2>
-        <p class="sechead__sub">표본 카드를 넘겨보세요. 모으면 나만의 L'Herbier가 됩니다.</p>
+        <p class="sechead__sub">카드를 누르면 앞면 → 일러스트 → 뒷면으로 넘어갑니다. 제품마다 한 장씩 동봉되어, 모으면 나만의 L'Herbier가 됩니다.</p>
       </header>
+      <figure class="herb-hero reveal"><img src="assets/img/herbier/photo.jpg" alt="블라인드 엠보싱으로 찍은 L'Herbier 표본 카드 열다섯 장" loading="lazy" /></figure>
       <div class="specimens" id="specimens"></div>
+    </div>
+  </section>
+
+  <!-- ───────── L'ORDONNANCE : 처방전 시스템 ───────── -->
+  <section class="ordo-sec" id="ordonnance">
+    <div class="wrap">
+      <header class="sechead reveal">
+        <p class="label">L'Ordonnance · 處方文</p>
+        <h2 class="h2">상담지에서 처방전까지, 한 장의 종이로</h2>
+        <p class="sechead__sub">Consultation 카드에 오늘의 상태를 적으면, 서랍 번호와 리추얼이 적힌 처방전이 발행됩니다.</p>
+      </header>
+      <div class="ordo reveal">
+        <figure><img src="assets/img/ordo/consult.jpg" alt="상담지 — 서랍, 시간, 컨디션, 나만의 쉼을 체크하는 카드" loading="lazy" /><figcaption><b>Consultation</b>相談紙 · 오늘의 상태</figcaption></figure>
+        <figure><img src="assets/img/ordo/soin.jpg" alt="Ordonnance de Soin — 받는 분, 서랍, 시간, 원료, 水精膏 세 단계" loading="lazy" /><figcaption><b>Ordonnance de Soin</b>처방전</figcaption></figure>
+        <figure><img src="assets/img/ordo/nocturne.jpg" alt="Nocturne d'Églantine 夜潤方 — 라틴 처방 표기" loading="lazy" /><figcaption><b>Arcanum</b>秘方 · 라틴 처방</figcaption></figure>
+        <figure><img src="assets/img/ordo/vertical.jpg" alt="세로쓰기 處方文 夜潤方 — 밤에 윤기를 채우는 처방" loading="lazy" /><figcaption><b>處方文</b>세로쓰기 처방</figcaption></figure>
+      </div>
+      <div class="ordo-cta reveal"><button class="btn btn--primary js-consult">나의 처방전 받기</button></div>
     </div>
   </section>
 
@@ -231,7 +252,7 @@
       <div class="scenes reveal">
         <figure class="scene-card scene-card--wide"><img src="assets/img/store-counter.jpg" alt="창살 패널과 빛이 드는 선반이 있는 ARCANA 매장 카운터" loading="lazy"/><figcaption><b>Store</b>The Apothecary Counter — 창살 아래 상담 테이블에서 서랍을 고른다</figcaption></figure>
         <figure class="scene-card"><img src="assets/img/store-wall.jpg" alt="香選 현판 옆, 칸칸이 빛나는 보틀 진열 벽과 월넛 카운터" loading="lazy"/><figcaption><b>香選</b>향을 고르는 벽, 4 × 5</figcaption></figure>
-        <figure class="scene-card"><img src="assets/img/store-glass.jpg" alt="반투명 유리 너머 칸칸이 빛나는 보틀 선반" loading="lazy"/><figcaption><b>Light</b>칸 안에서 새어 나오는 빛</figcaption></figure>
+        <figure class="scene-card"><img src="assets/img/hero-11.jpg" alt="체커보드 니치 벽에 빛이 드는 ARCANA 보틀" loading="lazy"/><figcaption><b>Light</b>칸칸이 빛이 드는 니치 벽</figcaption></figure>
         <figure class="scene-card"><img src="assets/img/bottle-pedestal.jpg" alt="월넛 받침대 위에 역광을 받은 ARCANA 보틀 하나" loading="lazy"/><figcaption><b>Object</b>다 쓴 뒤에도 남는 오브제</figcaption></figure>
         <figure class="scene-card"><img src="assets/img/pkg-boxes.jpg" alt="골드 엠보싱 세트 박스가 비스듬히 늘어선 모습" loading="lazy"/><figcaption><b>Coffret</b>꽃살 엠보싱 상자</figcaption></figure>
       </div>

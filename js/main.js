@@ -363,16 +363,27 @@
     </article>`).join('');
 
   /* ───────── L'HERBIER ───────── */
-  const specs = [{ ...BASE, petal: '#EDE4B5', concern: '시그니처 베이스', sound: '—', co: '—' }, ...DRAWERS];
-  $('#specimens').innerHTML = specs.map((s) => `
-    <button class="spec" aria-label="${s.ko} 표본 카드 뒤집기">
-      <div class="spec__inner">
-        <div class="spec__f">${win(s.img, 'win--spec')}<div class="spec__cap"><span class="spec__big">${s.no}</span><i class="rule"></i><span class="no">TIROIR · ${s.concern}</span><b>${s.fr}</b><small>${s.ko} — ${s.origin}</small></div></div>
-        <div class="spec__b"><span class="no">SPECIMEN N°${s.no} — ${s.ko}</span><span class="spec__sound">${s.sound}</span><p>${s.story}</p>
-          <span class="row"><span>${s.origin}</span><span>${s.co !== '—' ? '+ ' + s.co : 'BASE'}</span></span></div>
-      </div>
+  /* 표본 카드: 실제 카드 디자인 (앞 · 일러스트 · 뒤) — 누를 때마다 다음 면으로 */
+  const HERB = [
+    { no: '00', fr: 'Onagre', ko: '달맞이꽃', ord: '本' },
+    { no: '01', fr: 'Mûrier Blanc', ko: '화이트 멀베리', ord: '壹' },
+    { no: '02', fr: 'Églantine', ko: '로즈힙', ord: '貳' },
+    { no: '03', fr: 'Fleur de Sureau', ko: '엘더플라워', ord: '參' },
+    { no: '04', fr: 'Trémelle', ko: '트레멜라', ord: '肆' },
+  ];
+  const FACES = ['front', 'art', 'back'];
+  $('#specimens').innerHTML = HERB.map((s) => `
+    <button class="spec spec--card" data-face="0" aria-label="${s.fr} ${s.ko} 표본 카드 — 눌러서 다음 면 보기">
+      <span class="spec__stack">${FACES.map((f, i) => `<img class="spec__face${i ? '' : ' is-on'}" src="assets/img/herbier/${s.no}-${f}.jpg" alt="${s.fr} 표본 카드 ${['앞면', '일러스트', '뒷면'][i]}" loading="lazy" />`).join('')}</span>
+      <span class="spec__meta"><b>${s.ord}</b><span>${s.fr}</span><i>${FACES.map((_, i) => `<em class="${i ? '' : 'is-on'}"></em>`).join('')}</i></span>
     </button>`).join('');
-  $$('.spec').forEach((s) => s.addEventListener('click', () => { s.classList.toggle('is-flip'); Sound.click(); }));
+  $$('.spec--card').forEach((b) => b.addEventListener('click', () => {
+    const n = (+b.dataset.face + 1) % 3; b.dataset.face = n;
+    $$('.spec__face', b).forEach((im, i) => im.classList.toggle('is-on', i === n));
+    $$('.spec__meta em', b).forEach((e, i) => e.classList.toggle('is-on', i === n));
+    b.classList.remove('is-turn'); void b.offsetWidth; b.classList.add('is-turn');
+  }));
+
   const fs = $('#finaleSeal'); if (fs) fs.innerHTML = seal(96);
 
   /* ───────── PACKAGE ───────── */
@@ -580,39 +591,50 @@
   function renderOrd() {
     resetListeners(); setStep(4);
     const d = S.drawer, L = LINES[S.line], cond = S.cond || CONDITIONS[3];
-    const intro = { Matin: '창을 열고, 미지근한 물로 얼굴을 깨운 뒤 시작하세요.', Midi: '자리에서 잠시 일어나, 숨을 고른 뒤.', Nuit: '따뜻한 물에 몸을 녹인 뒤, 천천히 시작하세요.' }[S.line];
-    const date = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    const H = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+    const hanNum = (n) => String(n).split('').map((c) => H[+c]).join('');
+    const hanMD = (n) => n <= 10 ? (n === 10 ? '十' : H[n]) : (n < 20 ? '十' + H[n - 10] : H[Math.floor(n / 10)] + '十' + (n % 10 ? H[n % 10] : ''));
+    const now = new Date();
+    const dateH = `${hanNum(now.getFullYear())} · ${hanMD(now.getMonth() + 1)} · ${hanMD(now.getDate())}`;
+    const no = 200 + Math.floor(Math.random() * 99);
+    const ORD = { '01': '壹', '02': '貳', '03': '參', '04': '肆' }[d.no];
+    const MOM = { Matin: '朝 · MATIN', Midi: '晝 · MIDI', Nuit: '夜 · NUIT' }[S.line];
+    const ELEM = { '01': 'MÛRIER BLANC · ARGOUSIER', '02': 'ÉGLANTINE · BAKUCHIOL', '03': 'SUREAU · TANAISIE BLEUE', '04': 'TRÉMELLE · VARECH' }[d.no] + ' · ONAGRE';
+    const HAN = { lotion: '水', emulsion: '乳', elixir: '精', creme: '膏', brume: '露' };
+    const SHORT = { lotion: '세 번 감싸기', emulsion: '두 번 펴 바르기', elixir: '세 방울', creme: '데워서 위로', brume: '두 번 칙' };
     stageEl.innerHTML = `<div class="stage ord-wrap">
-      <article class="ord" id="ord">
-        <div class="ord__top"><span class="wordmark">ARCANA</span><span class="ord__title">Ordonnance de Soin</span></div>
-        <dl class="ord__rows">
-          <dt>Nom</dt><dd data-type="${S.name || '당신'}"></dd>
-          <dt>Date</dt><dd data-type="${date}"></dd>
-          <dt>Tiroir</dt><dd data-type="N°${d.no} ${d.fr} · ${d.concern}"></dd>
-          <dt>Base</dt><dd data-type="N°00 L'Arcanum · Onagre"></dd>
-        </dl>
-        <p class="ord__rx">${S.line} N°${d.no}</p>
-        <p class="ord__ko">${L.greet}. ${intro}</p>
-        <ol>${L.steps.map((k) => { const c = catBy(k); return `<li><b>ARCANA N°${d.no} ${c.fr} <small style="font-family:var(--mono);font-size:11px;opacity:.7">— ${c.measure}</small></b><span>${c.how}</span></li>`; }).join('')}</ol>
-        <p class="ord__note">${cond.label} — ${cond.note}</p>
-        <div class="ord__sign"><div><span class="sig">Arcana</span><small>RITUALISTE · 당신을 위해 조제했습니다</small></div></div>
-        <div class="ord__seal" id="ordSeal">${seal(112)}</div>
+      <article class="ord ord--card" id="ord">
+        <div class="ord__in">
+          <span class="ord__mark" aria-hidden="true"></span>
+          <p class="ord__brand">ARCANA</p>
+          <p class="ord__kind">ORDONNANCE DE SOIN</p>
+          <p class="ord__lbl">POUR <span>받는 분</span></p>
+          <p class="ord__name" data-type="${S.name || '당신'}"></p>
+          <div class="ord__pair">
+            <div><p class="ord__lbl">TIROIR <span>서랍</span></p><p class="ord__val ord__val--han">${ORD}</p></div>
+            <div><p class="ord__lbl">MOMENT <span>시간</span></p><p class="ord__val">${MOM}</p></div>
+          </div>
+          <p class="ord__lbl">ÉLÉMENTS <span>원료</span></p>
+          <p class="ord__elem">${ELEM}</p>
+          <div class="ord__steps">${L.steps.map((k) => { const c = catBy(k); return `<div class="ord__step" title="${c.how}"><span class="ord__ring">${HAN[k]}</span><b>${c.fr.toUpperCase()}</b><small>${SHORT[k]}</small></div>`; }).join('')}</div>
+          <p class="ord__say">오늘은 이것만 하면 돼요.</p>
+          <p class="ord__note">${cond.label} — ${cond.note}</p>
+          <p class="ord__no">第 ${hanNum(no)} 號 · ${dateH}</p>
+        </div>
+        <div class="ord__seal" id="ordSeal">${seal(96)}</div>
       </article>
       <div class="ord__actions">
-        <button class="btn btn--primary" id="printOrd">처방전 저장 · 인쇄</button>
-        <button class="btn btn--ghost" id="seeDrawer">N°${d.no} 서랍 보러가기</button>
+        <button class="btn btn--primary" id="seeDrawer">N°${d.no} 서랍 보러가기</button>
         <button class="btn btn--ghost" id="again">다시 상담하기</button>
       </div></div>`;
-    // 타자기 서체로 찍히는 처방 정보
     const fields = $$('[data-type]', stageEl); let fi = 0;
     const typeNext = () => {
       if (fi >= fields.length) { setTimeout(() => { $('#ordSeal').classList.add('is-stamped'); setTimeout(() => Sound.thump(), 420); }, 300); return; }
       const el = fields[fi++], txt = el.dataset.type; let i = 0; el.classList.add('type-caret');
-      const t = setInterval(() => { el.textContent = txt.slice(0, ++i); if (i % 2) Sound.on && Sound.noise(.015, 2600, 8, .12); if (i >= txt.length) { clearInterval(t); el.classList.remove('type-caret'); setTimeout(typeNext, 120); } }, 42);
+      const t = setInterval(() => { el.textContent = txt.slice(0, ++i); if (i >= txt.length) { clearInterval(t); el.classList.remove('type-caret'); setTimeout(typeNext, 120); } }, 110);
       cleanup.push(() => clearInterval(t));
     };
-    setTimeout(typeNext, 500);
-    on($('#printOrd'), 'click', () => window.print());
+    setTimeout(typeNext, 600);
     on($('#seeDrawer'), 'click', () => { closeConsult(); openDrawer(d); });
     on($('#again'), 'click', () => openConsult());
   }
