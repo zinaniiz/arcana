@@ -26,7 +26,7 @@
   if (!reduce && window.Lenis) {
     root.style.scrollBehavior = 'auto';
     lenis = window.__lenis = new window.Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true, wheelMultiplier: .95,
-      prevent: (node) => !!node.closest('.sheet, .consult, .path__track') });
+      prevent: (node) => !!node.closest('.sheet, .consult, .path__track, .plist, .mpanel, .cab, .ordo-lb, .specimens, .plist__chips, .gnav') });
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     // 서랍 패널 · 상담이 열리면 배경 스크롤 정지
