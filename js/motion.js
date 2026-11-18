@@ -25,7 +25,7 @@
   let lenis = null;
   if (!reduce && window.Lenis) {
     root.style.scrollBehavior = 'auto';
-    lenis = new window.Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true, wheelMultiplier: .95,
+    lenis = window.__lenis = new window.Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true, wheelMultiplier: .95,
       prevent: (node) => !!node.closest('.sheet, .consult, .path__track') });
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
@@ -190,4 +190,17 @@
       b.addEventListener('pointerleave', () => { b.style.transform = ''; });
     });
   }
+})();
+
+/* 상단 로고 = 홈: 열린 서랍·상담을 닫고 맨 위로 */
+(() => {
+  const mark = document.querySelector('.nav__mark'); if (!mark) return;
+  mark.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    document.querySelectorAll('[data-close], #consultClose').forEach((b) => { if (b.closest('.is-open')) b.click(); });
+    document.body.classList.remove('is-locked');
+    const top = () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    if (window.__lenis) window.__lenis.scrollTo(0, { duration: 1.4 }); else top();
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {}
+  }, true);
 })();
