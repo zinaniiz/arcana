@@ -884,3 +884,18 @@ body { letter-spacing: -.005em; }
 
 :root { --display: "Cormorant Garamond", "Cormorant", Georgia, "Pretendard Variable", Pretendard, sans-serif !important; }
 html body .sechead__sub:not(.en-cap) { font-family: var(--pt) !important; font-style: normal !important; font-size: 15px !important; }
+
+/* 표본 카드: 크기 통일 + 한 줄 가로 슬라이드 */
+html body .specimens { display: flex !important; flex-wrap: nowrap !important; gap: 18px !important; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 4px 0 14px !important; }
+html body .specimens::-webkit-scrollbar { display: none; }
+html body .specimens > .spec--card { flex: 0 0 calc((100% - 72px) / 5); width: calc((100% - 72px) / 5); min-width: 0; scroll-snap-align: start; }
+.spec--card .spec__stack { width: 100% !important; aspect-ratio: 425 / 678 !important; }
+.spec__meta { height: 22px; }
+.spec__meta span { font-size: 13px !important; letter-spacing: .14em !important; }
+.specimens-hint { display: none; }
+@media (max-width: 1000px) {
+  html body .specimens { margin: 0 calc(var(--gutter) * -1); padding: 4px var(--gutter) 14px !important; scroll-padding-inline: var(--gutter); gap: 14px !important; }
+  html body .specimens > .spec--card { flex-basis: 38vw; width: 38vw; }
+  .specimens-hint { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; font: 500 11px var(--pt); letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+}
+@media (max-width: 620px) { html body .specimens > .spec--card { flex-basis: 58vw; width: 58vw; } }
