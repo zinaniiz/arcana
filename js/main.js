@@ -594,7 +594,7 @@
           <p class="ord__note">${cond.label} — ${cond.note}</p>
           <p class="ord__no">第 ${hanNum(no)} 號 · ${dateH}</p>
         </div>
-        <div class="ord__seal" id="ordSeal">${seal(96)}</div>
+        <div class="ord__seal ord__seal--mark" id="ordSeal"><span class="ord__stamp"></span></div>
       </article>
       <div class="ord__actions">
         <button class="btn btn--primary" id="seeDrawer">N°${d.no} 서랍 보러가기</button>

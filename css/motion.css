@@ -504,3 +504,29 @@ svg.bph { overflow: visible; }
 /* 리추얼 카드도 밝게 */
 .line { border-color: #E8E0D2 !important; }
 html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
+/* 처방전 카드: 글자를 프레임 안쪽으로, 크기 비례 축소 */
+.ord.ord--card { container-type: inline-size; }
+.ord.ord--card .ord__in { left: 25%; right: 25%; top: 15.5%; bottom: 15%; }
+.ord--card .ord__mark { width: 6cqw; height: 5cqw; margin-bottom: 1.2cqw; }
+.ord--card .ord__brand { font-size: 4.4cqw; }
+.ord--card .ord__kind { font-size: 1.75cqw; margin: .6cqw 0 4.2cqw; }
+.ord--card .ord__lbl { font-size: 1.7cqw; }
+.ord--card .ord__name { font-size: 3.9cqw; margin: .4cqw 0 3.4cqw; }
+.ord--card .ord__pair { gap: 8%; margin-bottom: 3.4cqw; }
+.ord--card .ord__val { font-size: 2.9cqw; }
+.ord--card .ord__val--han { font-size: 3.5cqw; }
+.ord--card .ord__elem { font-size: 1.85cqw; margin: .4cqw 0 4cqw; letter-spacing: .1em; }
+.ord--card .ord__steps { gap: 6%; margin-bottom: 3.2cqw; }
+.ord--card .ord__ring { width: 8.2cqw; font-size: 3.1cqw; }
+.ord--card .ord__step b { font-size: 1.5cqw; }
+.ord--card .ord__step small { font-size: 1.85cqw; }
+.ord--card .ord__say { font-size: 2.5cqw; margin-bottom: 1.6cqw; }
+.ord--card .ord__note { font-size: 1.75cqw !important; margin-bottom: 2cqw !important; }
+.ord--card .ord__no { font-size: 1.85cqw; letter-spacing: .22em; }
+/* 실링 대신 로고 심볼 도장 */
+.ord.ord--card .ord__seal--mark { right: 9%; bottom: 8.5%; width: 15cqw; height: 15cqw; background: none !important; box-shadow: none !important; filter: none !important; }
+.ord__stamp { position: absolute; inset: 0; background: #962226; -webkit-mask: url("../assets/img/logo-emblem.png") center / 78% no-repeat, radial-gradient(circle, #000 66%, transparent 67%) center / 100% 100% no-repeat; -webkit-mask-composite: xor; mask: url("../assets/img/logo-emblem.png") center / 78% no-repeat, radial-gradient(circle, #000 66%, transparent 67%) center / 100% 100% no-repeat; mask-composite: exclude; opacity: .82; mix-blend-mode: multiply; transform: rotate(-8deg); animation: stampIn .7s cubic-bezier(.2,.9,.3,1.2) .6s both; }
+.ord__stamp::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(255,255,255,.35) 0 2px, transparent 3px) 0 0 / 9px 11px, radial-gradient(circle at 70% 30%, rgba(255,255,255,.25) 0 1.5px, transparent 2.5px) 0 0 / 13px 7px; }
+@keyframes stampIn { 0% { opacity: 0; transform: rotate(-8deg) scale(1.9); } 60% { opacity: .9; transform: rotate(-8deg) scale(.94); } 100% { opacity: .82; transform: rotate(-8deg) scale(1); } }
+.ord.ord--card .ord__seal--mark { right: 11%; bottom: 5.5%; width: 12cqw; height: 12cqw; }
+.ord__stamp { -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat !important; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat !important; -webkit-mask-composite: source-over !important; mask-composite: add !important; opacity: .86; }
