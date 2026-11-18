@@ -904,3 +904,8 @@ html body .specimens > .spec--card { flex: 0 0 calc((100% - 72px) / 5); width: c
 .dhead { align-items: center; }
 .dhead__img { aspect-ratio: 3 / 4 !important; object-fit: cover !important; background: #F2F0EC; border-radius: 0 !important; border: 1px solid #ECE5D8; max-height: 460px; width: auto !important; max-width: 100%; justify-self: center; }
 .plist__head img { aspect-ratio: 3 / 4 !important; object-fit: cover; max-height: 440px; width: auto !important; max-width: 100%; justify-self: center; background: #F2F0EC; border: 1px solid #ECE5D8; }
+
+/* 원료 패턴: 네모 칸 없이 패턴만 */
+.dhead__img, .plist__head img { background: none !important; border: 0 !important; aspect-ratio: auto !important; object-fit: contain !important; height: auto; max-height: 440px; width: 100% !important; }
+.plist__head.has-img h2 { font-family: var(--kr-head) !important; letter-spacing: -.01em !important; text-transform: none !important; font-weight: 500 !important; }
+.win { background-size: contain !important; background-repeat: no-repeat !important; background-color: transparent !important; }

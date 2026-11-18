@@ -168,7 +168,7 @@
   let pathNo = '02';
   const renderPath = () => {
     const d = DRAWERS.find((x) => x.no === pathNo);
-    $('#pathTabs').innerHTML = DRAWERS.map((x) => `<button role="tab" aria-selected="${x.no === pathNo}" class="${x.no === pathNo ? 'is-on' : ''}" data-no="${x.no}">N°${x.no} <span>${x.concern}</span></button>`).join('');
+    $('#pathTabs').innerHTML = DRAWERS.map((x) => `<button role="tab" aria-selected="${x.no === pathNo}" class="${x.no === pathNo ? 'is-on' : ''}" data-no="${x.no}"><span>${x.ko}</span></button>`).join('');
     track.innerHTML = CATEGORIES.map((c) => `
       <button class="pitem" data-k="${c.key}">
         <span class="pitem__img">${bottle(c.key, d)}</span>

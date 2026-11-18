@@ -27,7 +27,7 @@
     ] }] },
     shop: { title: 'Shop', items: [
       { t: '카테고리', s: '스킨토너 · 로션 · 세럼 · 크림 · 미스트', go: 'shopCat', kr: true },
-      { t: '제품 라인', s: '미백 · 탄력 · 진정 · 장벽', go: 'shopLine', kr: true },
+      { t: '제품 라인', s: '화이트 멀베리 · 로즈힙 · 엘더플라워 · 트레멜라', go: 'shopLine', kr: true },
       { sep: true },
       { t: '코프레 세트', s: 'Coffret · 한 서랍의 5단계', href: '#coffret', kr: true },
       { t: '모든 제품 보기', s: '20 Produits', list: 'all|all', kr: true },
@@ -37,7 +37,7 @@
       { t: '모든 제품 보기', list: 'cat|all', kr: true, all: true },
     ] }] },
     shopLine: { title: '제품 라인', groups: [{ h: '제품 라인', items: [
-      ...DRAWERS.map((d) => ({ t: d.fr, s: `N°${d.no} · ${d.concern} · ${d.ko}`, list: `line|${d.no}` })),
+      ...DRAWERS.map((d) => ({ t: d.ko, s: `${d.fr} · ${d.concern}`, list: `line|${d.no}`, kr: true })),
       { t: '모든 제품 보기', list: 'line|all', kr: true, all: true },
     ] }] },
   };
@@ -182,10 +182,10 @@
     const { m, v } = plState;
     const head = m === 'cat'
       ? (v === 'all' ? { k: '모든 제품', e: 'Tous les produits', p: '같은 병, 다섯 가지 제형. 고민에 맞춰 네 개의 서랍에서 고르세요.' } : (() => { const c = cat(v); return { k: c.ko, e: c.fr, p: c.how }; })())
-      : (v === 'all' ? { k: '모든 라인', e: 'Les Tiroirs', p: '네 개의 서랍, 네 가지 고민. 모든 서랍의 바탕에는 달맞이꽃이 있습니다.' } : (() => { const d = drw(v); return { k: d.fr, e: `N°${d.no} · ${d.concern} · ${d.ko}`, p: d.story, img: d.img }; })());
+      : (v === 'all' ? { k: '모든 라인', e: 'Les Tiroirs', p: '네 개의 서랍, 네 가지 고민. 모든 서랍의 바탕에는 달맞이꽃이 있습니다.' } : (() => { const d = drw(v); return { k: d.ko, e: `${d.fr} · ${d.origin}`, p: d.story, img: d.img }; })());
     const chips = m === 'cat'
       ? [['all', '전체'], ...CATEGORIES.map((c) => [c.key, c.ko])]
-      : [['all', '전체'], ...DRAWERS.map((d) => [d.no, `N°${d.no} ${d.concern}`])];
+      : [['all', '전체'], ...DRAWERS.map((d) => [d.no, d.ko])];
     const list = cards(m, v);
     pl.innerHTML = `
       <div class="plist__bar"><button class="mp-ic" data-pclose aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><p>Shop</p><button class="mp-ic" data-pclose aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
@@ -202,8 +202,8 @@
         <p class="plist__count">${list.length}개의 제품</p>
         <ul class="plist__grid">${list.map(({ d, c }) => `
           <li class="pcard">
-            <button class="pcard__img" data-pp="${d.no}|${c.key}" aria-label="ARCANA N°${d.no} ${c.fr} 자세히 보기"><img src="assets/img/bottle/${c.key}.webp" alt="" loading="lazy" /><span class="pcard__no">N°${d.no}</span></button>
-            <div class="pcard__txt"><small>${c.ko} · ${d.concern}</small><b>ARCANA N°${d.no} ${c.fr}</b><span>${d.ko} · ${c.vol}</span><em>${won(c.price)}</em></div>
+            <button class="pcard__img" data-pp="${d.no}|${c.key}" aria-label="ARCANA N°${d.no} ${c.fr} 자세히 보기"><img src="assets/img/bottle/${c.key}.webp" alt="" loading="lazy" /></button>
+            <div class="pcard__txt"><small>${c.ko} · ${d.ko}</small><b>ARCANA N°${d.no} ${c.fr}</b><span>${d.concern} · ${c.vol}</span><em>${won(c.price)}</em></div>
             <button class="pcard__add" data-pa="${d.no}|${c.key}">서랍장에 담기</button>
           </li>`).join('')}</ul>
       </div>`;
