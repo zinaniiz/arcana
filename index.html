@@ -18,14 +18,25 @@
 <!-- ───────── NAV : 메뉴 자체가 약장 ───────── -->
 <header class="nav" id="nav">
   <a class="nav__mark" href="#top" aria-label="ARCANA 홈"><span class="logo-emblem" aria-hidden="true"></span>ARCANA</a>
-  <nav class="nav__drawers" aria-label="주 메뉴">
-    <a class="nav__drawer" href="#apothicaire"><span>N°01–04</span><i></i></a>
-    <a class="nav__drawer" href="#roles"><span>Le Tiroir</span><i></i></a>
-    <a class="nav__drawer" href="#bottle"><span>Bottle</span><i></i></a>
-    <a class="nav__drawer" href="#coffret"><span>Package</span><i></i></a>
-    <a class="nav__drawer" href="#rituel"><span>Le Rituel</span><i></i></a>
-    <a class="nav__drawer" href="#herbier"><span>L'Herbier</span><i></i></a>
-    <a class="nav__drawer" href="#ordonnance"><span>Ordonnance</span><i></i></a>
+  <nav class="gnav" id="gnav" aria-label="주 메뉴">
+    <div class="gnav__item"><a class="gnav__link" href="#concept">About</a>
+      <div class="gnav__panel gnav__panel--sm"><ul class="gnav__list">
+        <li><a href="#concept"><b>브랜드 스토리</b><small>From Essence to Ritual</small></a></li>
+        <li><a href="#roles"><b>서랍의 철학</b><small>Le Tiroir</small></a></li>
+        <li><a href="#herbier"><b>원료 이야기</b><small>L'Herbier</small></a></li>
+        <li><a href="#coffret"><b>패키지</b><small>Coffret</small></a></li>
+      </ul></div></div>
+    <div class="gnav__item"><a class="gnav__link" href="#apothicaire">Shop</a>
+      <div class="gnav__panel gnav__mega">
+        <div class="gnav__col"><p class="gnav__h">라인별 <span>By Line · 고민과 원료</span></p><ul class="gnav__list gnav__list--line"><li><button data-line="01"><em>N°01</em><b>Mûrier Blanc</b><small>화이트 멀베리 · 미백·톤</small></button></li><li><button data-line="02"><em>N°02</em><b>Églantine</b><small>로즈힙 · 탄력·주름</small></button></li><li><button data-line="03"><em>N°03</em><b>Fleur de Sureau</b><small>엘더플라워 · 진정</small></button></li><li><button data-line="04"><em>N°04</em><b>Trémelle</b><small>트레멜라 · 장벽</small></button></li></ul></div>
+        <div class="gnav__col"><p class="gnav__h">제품별 <span>By Type · 제형</span></p><ul class="gnav__list gnav__list--type"><li><button data-cat="lotion"><em>水</em><b>Lotion</b><small>스킨토너</small></button></li><li><button data-cat="emulsion"><em>乳</em><b>Émulsion</b><small>로션</small></button></li><li><button data-cat="elixir"><em>精</em><b>Élixir</b><small>세럼·에센스</small></button></li><li><button data-cat="creme"><em>膏</em><b>Crème</b><small>크림</small></button></li><li><button data-cat="brume"><em>露</em><b>Brume d'Huile</b><small>오일 미스트</small></button></li></ul></div>
+        <div class="gnav__col gnav__col--side"><p class="gnav__h">세트 · 전체 <span>Collection</span></p>
+          <ul class="gnav__list"><li><a href="#coffret"><b>코프레 세트</b><small>한 서랍의 5단계</small></a></li><li><a href="#apothicaire"><b>전체 약장 보기</b><small>4 서랍 × 5 제형 = 20</small></a></li><li><a href="#bottle"><b>하나의 병</b><small>다섯 가지 투명도</small></a></li></ul>
+          <img src="assets/img/bottle/set.webp" alt="" loading="lazy"/></div>
+      </div></div>
+    <a class="gnav__link" href="#rituel">Rituel</a>
+    <a class="gnav__link" href="#boutique">Espace</a>
+    <a class="gnav__link" href="#ordonnance">Ordonnance</a>
   </nav>
   <div class="nav__tools">
     <div class="timeswitch" role="group" aria-label="시간대 톤">
@@ -34,7 +45,9 @@
       <button data-time="Nuit" title="Nuit · 해 질 녘">Nuit</button>
     </div>
     <button class="soundtoggle" id="soundToggle" aria-pressed="false" title="관리의 소리 켜기">♪</button>
-    <button class="btn btn--seal js-consult">Consultation</button>
+    <a class="gnav__ghost" href="#apothicaire">서랍 보기</a>
+    <button class="btn btn--seal js-consult">처방받기</button>
+    <button class="gnav__burger" id="gnavBurger" aria-label="메뉴" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
 

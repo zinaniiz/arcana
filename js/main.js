@@ -612,4 +612,18 @@
 
   setTime(currentLine); tick(); onScroll();
   window.ArcanaSound = Sound;
+  window.ArcanaOpen = { drawer: (no) => openDrawer(DRAWERS.find((d) => d.no === no)), category: (k) => openCategory(catBy(k)) };
+})();
+/* 상단 메뉴: 라인별 → 서랍 시트, 제품별 → 제형 시트 */
+(() => {
+  const g = document.getElementById('gnav'); if (!g) return;
+  const close = () => { document.documentElement.classList.remove('gnav-open'); g.querySelectorAll('.gnav__item').forEach((i) => i.classList.remove('is-open')); document.getElementById('gnavBurger')?.setAttribute('aria-expanded', 'false'); };
+  g.addEventListener('click', (e) => {
+    const l = e.target.closest('[data-line]'), c = e.target.closest('[data-cat]'), a = e.target.closest('a');
+    if (l) { close(); window.ArcanaOpen.drawer(l.dataset.line); }
+    else if (c) { close(); window.ArcanaOpen.category(c.dataset.cat); }
+    else if (a && a.classList.contains('gnav__link') && a.nextElementSibling && matchMedia('(max-width: 980px)').matches) { e.preventDefault(); e.stopPropagation(); a.parentElement.classList.toggle('is-open'); }
+    else if (a) close();
+  });
+  document.getElementById('gnavBurger')?.addEventListener('click', (e) => { const on = document.documentElement.classList.toggle('gnav-open'); e.currentTarget.setAttribute('aria-expanded', on); });
 })();
