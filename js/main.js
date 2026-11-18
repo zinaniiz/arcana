@@ -106,12 +106,12 @@
 
   /* ───────── TIME : 접속 시간 → Matin · Midi · Nuit ───────── */
   const autoLine = () => { const h = new Date().getHours(); return h >= 5 && h < 11 ? 'Matin' : h >= 11 && h < 17 ? 'Midi' : 'Nuit'; };
-  let currentLine = store.get('arcana-time') || autoLine();
+  let currentLine = autoLine();
   function setTime(line, save) {
     currentLine = line;
     document.documentElement.dataset.time = line;
     $$('.timeswitch button').forEach((b) => b.classList.toggle('is-on', b.dataset.time === line));
-    $('.js-greet').textContent = LINES[line].greet;
+    $('.js-greet').textContent = LINES[autoLine()].greet;
     $$('.line').forEach((el) => el.classList.toggle('is-now', el.dataset.line === line));
     if (save) store.set('arcana-time', line);
     if (typeof tick === 'function') try { tick(); } catch (e) {}
@@ -172,7 +172,7 @@
     track.innerHTML = CATEGORIES.map((c) => `
       <button class="pitem" data-k="${c.key}">
         <span class="pitem__img">${bottle(c.key, d)}</span>
-        <span class="pitem__row"><b>ARCANA N°${d.no} ${c.fr}</b><em>${c.vol}</em></span>
+        <span class="pitem__row"><b>ARCANA N°${d.no} ${c.fr}</b><em>${c.vol}</em></span><span class="pitem__price">₩${c.price.toLocaleString('ko-KR')}</span>
         <span class="pitem__sub">${c.ko} · ${linesFor(c.key).join(' / ')}</span>
       </button>`).join('');
     $$('#pathTabs button').forEach((b) => b.addEventListener('click', () => { pathNo = b.dataset.no; Sound.click(); renderPath(); }));
