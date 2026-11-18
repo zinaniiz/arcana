@@ -808,3 +808,12 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
 .roles .role .cup::after { top: 50% !important; width: 17px !important; height: 17px !important; margin: -9px 0 0 -8.5px !important;
   background: linear-gradient(160deg, #7A5A22, #5B4116) !important; opacity: .85; }
 @media (max-width: 860px) { .roles .role .cup { width: 60px !important; height: 22px !important; } .roles .role .cup::after { width: 14px !important; height: 14px !important; margin: -7px 0 0 -7px !important; } }
+
+/* 손잡이 v4: 화이트 직사각형 + 금박 로고 심볼 */
+.roles .role .cup { width: 64px !important; height: 24px !important; filter: drop-shadow(0 2px 1.5px rgba(80,60,30,.22)) drop-shadow(0 6px 8px rgba(80,60,30,.10)) !important; }
+.roles .role .cup::before { border-radius: 1px !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F2 55%, #EEE7DA 100%) !important;
+  box-shadow: inset 0 1px 0 #fff, inset 0 -2px 2px rgba(120,100,70,.14), inset 0 0 0 1px rgba(200,185,160,.55) !important; }
+.roles .role .cup::after { width: 15px !important; height: 15px !important; margin: -7.5px 0 0 -7.5px !important; opacity: 1 !important;
+  background: linear-gradient(135deg, #F3DFA6 0%, #C9A45C 40%, #A57E37 60%, #E8CD8C 100%) !important; }
+@media (max-width: 860px) { .roles .role .cup { width: 54px !important; height: 20px !important; } .roles .role .cup::after { width: 13px !important; height: 13px !important; margin: -6.5px 0 0 -6.5px !important; } }
