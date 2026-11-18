@@ -304,7 +304,7 @@
       <div class="tray tray--5">
         ${CATEGORIES.map((c) => `<button class="comp" data-p="${d.no}|${c.key}">${bottle(c.key, d)}<b>N°${d.no} ${c.fr}</b><small>${c.ko} · ${c.vol}</small>${lineTags(c.key)}</button>`).join('')}
       </div>
-      <div class="coffret-strip"><img src="assets/img/pkg-tray.jpg" alt="골드 엠보싱 서랍 세트 박스 속 다섯 보틀" loading="lazy"/><div><span class="dhead__no">Coffret N°${d.no}</span><b>${d.fr} 5단계 세트</b><small>한 서랍 = 다섯 보틀. 상자는 간직하고, 보틀만 리필합니다.</small></div></div>
+      <div class="coffret-strip"><img src="assets/img/pkg-coffret.jpg" alt="水乳精膏露 다섯 보틀이 든 ARCANA 코프레" loading="lazy"/><div><span class="dhead__no">Coffret N°${d.no}</span><b>${d.fr} 5단계 세트</b><small>한 서랍 = 다섯 보틀. 상자는 간직하고, 보틀만 리필합니다.</small></div></div>
       <div class="sheet__cta"><p>서랍 세트 박스 — 꽃잎처럼 열리는 자석 플랩, 속은 서랍 트레이, 실버 실링 봉인</p>
         <button class="btn btn--primary" data-consult="${d.no}">이 서랍으로 처방받기</button></div>`);
     bindSheet();

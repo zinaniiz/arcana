@@ -204,3 +204,17 @@
     try { history.replaceState(null, '', location.pathname + location.search); } catch (err) {}
   }, true);
 })();
+
+/* 약장 라벨이 제각각 다른 박자로 빛나도록 */
+document.querySelectorAll('#cabinet .cell').forEach((c, i) => c.style.setProperty('--d', ((i * 0.73) % 4.8).toFixed(2) + 's'));
+document.querySelectorAll('#cabinet .cell').forEach((c) => { if ((+c.dataset.row + +c.dataset.col) % 2) c.classList.add('is-alt'); });
+/* 영문만 있는 제목·부제 → 대문자 로고체 */
+(() => {
+  const SEL = '.sechead__sub, .duo__text, .line h3, .dhead h3, .pdetail h3, .cover__slogan, .hero__slogan, .spec__cap b, .scene-card figcaption b, .promises b, .role__frame small, .role__in .k, .ord__title, em, .label';
+  const tag = () => document.querySelectorAll(SEL).forEach((el) => {
+    const t = el.textContent.trim();
+    el.classList.toggle('en-cap', !!t && /[A-Za-z]/.test(t) && !/[가-힣]/.test(t));
+  });
+  tag();
+  let q; new MutationObserver(() => { clearTimeout(q); q = setTimeout(tag, 60); }).observe(document.body, { childList: true, subtree: true });
+})();

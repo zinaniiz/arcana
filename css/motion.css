@@ -310,3 +310,99 @@ html { background: #FBF9F4; }
 .cursor__label { position: absolute; left: 22px; top: 14px; padding: 4px 9px 3px; background: #962226; color: #FBF6EE; font-size: 11px; letter-spacing: .22em; white-space: nowrap; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .4s var(--ease-out); }
 .cursor.is-label .cursor__label { opacity: 1; transform: none; }
 .ripple { border-color: #962226 !important; }
+
+/* ═════════════════════════════════════════════════════════════
+   약장 = 니치 벽 (亞) — 미색 회벽, 오목하게 파인 亞 모양 칸, 위에서 내려오는 빛
+   라벨은 은은하게 숨 쉬듯 빛나며 떠오른다
+   ═════════════════════════════════════════════════════════════ */
+html[data-time] .lattice-frame { background: linear-gradient(180deg, #F6F1E8, #EFE8DC) !important; padding: clamp(14px, 2vw, 26px) !important; box-shadow: 0 40px 70px -40px rgba(120,90,50,.35), inset 0 0 0 1px rgba(176,145,92,.18) !important; }
+html[data-time] .lattice-frame::before { inset: 8px; border-image: none; border: 1px solid rgba(176,145,92,.28); opacity: 1; }
+html[data-time] #cabinet { background: transparent !important; gap: 0 !important; padding: 0 !important; }
+html[data-time] #cabinet .cab__corner { color: var(--muted) !important; }
+html[data-time] #cabinet .cab__head { background: transparent !important; border: 0 !important; border-image: none !important; color: var(--text) !important; padding: 14px 6px 16px !important; }
+html[data-time] #cabinet .cab__head b { color: var(--text) !important; }
+html[data-time] #cabinet .cab__head:hover, html[data-time] #cabinet .cab__head.is-lit { background: rgba(255,250,238,.7) !important; }
+html[data-time] #cabinet .cab__row { background: #F3EDE2 !important; background-image: none !important; color: var(--text) !important; box-shadow: inset -1px 0 0 rgba(176,145,92,.18) !important; }
+html[data-time] #cabinet .cab__row b { color: var(--text) !important; }
+html[data-time] #cabinet .cab__row small { color: var(--muted) !important; }
+html[data-time] #cabinet .cab__row::before { width: 3px; }
+html[data-time] #cabinet .cab__row:hover, html[data-time] #cabinet .cab__row.is-lit { background: #FBF6EC !important; }
+
+/* 칸: 체커보드 회벽 두 톤 */
+html[data-time] #cabinet .cell { position: relative; background: #F1EADF !important; background-image: none !important; box-shadow: none !important; padding: 10% 10% 14px !important; gap: 12px !important; overflow: visible; }
+html[data-time] #cabinet .cell:nth-child(even) { background: #ECE4D7 !important; }
+html[data-time] #cabinet .cell:hover, html[data-time] #cabinet .cell.is-lit { background: #F6F0E6 !important; }
+/* 니치: 네 모서리가 오목하게 파인 亞 */
+html[data-time] #cabinet .cell .cubby { --r: 22%; height: auto !important; aspect-ratio: 1 / .92; width: 100%; border-radius: 0;
+  background: radial-gradient(120% 90% at 50% -8%, #FFF8EA 0%, #F8EBD3 38%, #E9D9BE 72%, #D9C6A6 100%) !important;
+  box-shadow: none !important;
+  -webkit-mask: radial-gradient(circle at 0 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 0 / 51% 51% no-repeat,
+                radial-gradient(circle at 100% 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 0 / 51% 51% no-repeat,
+                radial-gradient(circle at 0 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 100% / 51% 51% no-repeat,
+                radial-gradient(circle at 100% 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 100% / 51% 51% no-repeat;
+          mask: radial-gradient(circle at 0 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 0 / 51% 51% no-repeat,
+                radial-gradient(circle at 100% 0, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 0 / 51% 51% no-repeat,
+                radial-gradient(circle at 0 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 0 100% / 51% 51% no-repeat,
+                radial-gradient(circle at 100% 100%, #0000 var(--r), #000 calc(var(--r) + .5px)) 100% 100% / 51% 51% no-repeat;
+  transition: filter .6s var(--ease-out); display: grid !important; place-items: end center; position: relative; }
+/* 니치 안쪽 그림자 + 바닥 선반 빛 */
+html[data-time] #cabinet .cell .cubby::before { content: '' !important; display: block !important; position: absolute; inset: 0; left: 0; right: 0; top: 0; height: auto; box-shadow: none !important;
+  background: linear-gradient(180deg, rgba(150,110,60,.22), transparent 22%), linear-gradient(90deg, rgba(150,110,60,.14), transparent 18%, transparent 82%, rgba(150,110,60,.14)); pointer-events: none; }
+html[data-time] #cabinet .cell .cubby::after { content: ''; position: absolute; left: 12%; right: 12%; bottom: 9%; height: 2px; background: #FFF6E2; box-shadow: 0 0 14px 4px rgba(255,226,170,.8); }
+html[data-time] #cabinet .cell .cubby svg { width: 48% !important; height: auto !important; aspect-ratio: 120 / 200; margin-bottom: 10% !important; position: relative; z-index: 1; filter: drop-shadow(0 8px 8px rgba(120,80,40,.22)) !important; }
+html[data-time] #cabinet .cell:hover .cubby, html[data-time] #cabinet .cell.is-lit .cubby { filter: brightness(1.06) saturate(1.06); }
+html[data-time] #cabinet .cell:hover .cubby svg, html[data-time] #cabinet .cell.is-lit .cubby svg { transform: translateY(-6px); }
+html[data-time] #cabinet .cell .cup { display: none !important; }
+
+/* 라벨: 亞 모양으로 모서리를 딴 종이 라벨, 숨 쉬듯 빛나며 살짝 떠오른다 */
+html[data-time] #cabinet .cell .holder { background: none !important; padding: 0 !important; box-shadow: none !important; animation: labelFloat 4.8s ease-in-out infinite; animation-delay: var(--d, 0s); }
+html[data-time] #cabinet .cell .holder::before, html[data-time] #cabinet .cell .holder::after { display: none !important; }
+html[data-time] #cabinet .cell .holder > span { position: relative; display: block; background: #FFFCF5 !important; color: #8A6B3A !important; font-size: 11px !important; letter-spacing: .14em !important; padding: 6px 12px 5px !important; box-shadow: none !important;
+  clip-path: polygon(6px 0, calc(100% - 6px) 0, calc(100% - 6px) 3px, 100% 3px, 100% calc(100% - 3px), calc(100% - 6px) calc(100% - 3px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 3px), 0 calc(100% - 3px), 0 3px, 6px 3px);
+  background-image: linear-gradient(110deg, transparent 30%, rgba(255,236,190,.95) 48%, transparent 66%) !important; background-size: 260% 100% !important; background-repeat: no-repeat !important; background-position: 140% 0 !important;
+  animation: labelSheen 4.8s ease-in-out infinite; animation-delay: var(--d, 0s); transition: color .4s, background-color .4s; }
+html[data-time] #cabinet .cell .holder { filter: drop-shadow(0 0 0 rgba(255,214,150,0)); }
+@keyframes labelFloat {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 1px 1px rgba(150,110,60,.18)) drop-shadow(0 0 0 rgba(255,214,150,0)); }
+  50% { transform: translateY(-3px); filter: drop-shadow(0 2px 2px rgba(150,110,60,.18)) drop-shadow(0 0 10px rgba(255,210,140,.75)); }
+}
+@keyframes labelSheen { 0%, 35% { background-position: 140% 0; } 65%, 100% { background-position: -40% 0; } }
+html[data-time] #cabinet .cell:hover .holder, html[data-time] #cabinet .cell.is-lit .holder { animation-duration: 1.6s; }
+html[data-time] #cabinet .cell:hover .holder > span, html[data-time] #cabinet .cell.is-lit .holder > span { color: #5E4521 !important; background-color: #FFF6E2 !important; }
+html[data-time] #cabinet.is-dim .cell:not(.is-lit) { filter: saturate(.7) brightness(.96) !important; }
+html[data-time] #cabinet.is-dim .cell:not(.is-lit) .holder { animation-play-state: paused; }
+@media (max-width: 860px) { html[data-time] #cabinet .cell .holder > span { font-size: 8.5px !important; padding: 4px 6px 3px !important; letter-spacing: .06em !important; } }
+@media (prefers-reduced-motion: reduce) { html[data-time] #cabinet .cell .holder, html[data-time] #cabinet .cell .holder > span { animation: none !important; } }
+/* Package: 새 패키지 사진 두 장 + 설명 */
+.pkg { grid-template-columns: 1fr 1fr !important; gap: 22px !important; }
+.pkg figure { display: flex; flex-direction: column; gap: 10px; overflow: visible !important; }
+.pkg img { min-height: 0 !important; height: auto !important; aspect-ratio: 16 / 9; object-fit: cover; }
+.pkg__b img { aspect-ratio: 16 / 9; object-fit: cover; object-position: center; }
+.pkg figcaption { font-family: var(--display), var(--kr); font-weight: 600; font-size: 14px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+.pkg__list { grid-column: 1 / -1; display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 0 24px; }
+.pkg__list li:first-child { padding-top: 18px !important; }
+@media (max-width: 760px) { .pkg { grid-template-columns: 1fr !important; } .pkg__list { grid-template-columns: 1fr 1fr; } }
+/* 약장 체커보드: 행+열 기준 */
+html[data-time] #cabinet .cell:nth-child(even) { background: #F1EADF !important; }
+html[data-time] #cabinet .cell.is-alt { background: #EAE2D4 !important; }
+html[data-time] #cabinet .cell:hover, html[data-time] #cabinet .cell.is-lit { background: #F6F0E6 !important; }
+/* Package v2: 서랍 상자 크게 + 코프레·큐브 */
+.pkg__b { grid-column: 1 / -1; order: -1; }
+.pkg__b img { aspect-ratio: 2 / 1 !important; object-fit: contain !important; background: #EDE3D8; }
+.pkg__a img, .pkg__c img { aspect-ratio: 16 / 10 !important; object-fit: cover; }
+.pkg__c img { object-position: center 60%; }
+/* 음표(사운드) 버튼 숨김 */
+.soundtoggle { display: none !important; }
+/* 영문 제목·부제: 로고와 같은 Cormorant Garamond, 정자 대문자 */
+.sechead__sub, .duo__text, .line h3, .dhead h3, .pdetail h3, .cover__slogan, .hero__slogan, .spec__cap b, .spec__big,
+.scene-card figcaption b, .promises b, .role__frame small, .role__in .k, .cab__row small, .ord__title, .tag, .btn--seal,
+.timeswitch button, em, .finale .h2, .onebottle__cols b, .herb__name, .spec__name { font-style: normal !important; }
+.en-cap { font-family: "Cormorant Garamond", Georgia, serif !important; font-style: normal !important; text-transform: uppercase !important; letter-spacing: .16em !important; font-weight: 500 !important; }
+.sechead__sub.en-cap { font-size: 14px !important; letter-spacing: .24em !important; }
+.duo__text.en-cap { font-size: clamp(22px, 2.6vw, 34px) !important; letter-spacing: .2em !important; line-height: 1.4 !important; }
+.line h3.en-cap, .dhead h3.en-cap, .pdetail h3.en-cap { font-size: clamp(26px, 3.2vw, 40px) !important; letter-spacing: .14em !important; }
+.cover__slogan.en-cap { font-size: clamp(22px, 2.8vw, 38px) !important; letter-spacing: .22em !important; }
+.spec__cap b.en-cap, .scene-card figcaption b.en-cap, .promises b.en-cap { font-size: 15px !important; letter-spacing: .2em !important; font-weight: 600 !important; }
+em.en-cap { font-size: .92em !important; letter-spacing: .12em !important; }
+@media (min-width: 761px) { .cover__slogan.en-cap { white-space: nowrap; letter-spacing: .18em !important; } }
+.duo__text.en-cap { text-shadow: 0 1px 18px rgba(40,28,18,.55), 0 0 2px rgba(40,28,18,.4); }
