@@ -817,3 +817,70 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
 .roles .role .cup::after { width: 15px !important; height: 15px !important; margin: -7.5px 0 0 -7.5px !important; opacity: 1 !important;
   background: linear-gradient(135deg, #F3DFA6 0%, #C9A45C 40%, #A57E37 60%, #E8CD8C 100%) !important; }
 @media (max-width: 860px) { .roles .role .cup { width: 54px !important; height: 20px !important; } .roles .role .cup::after { width: 13px !important; height: 13px !important; margin: -6.5px 0 0 -6.5px !important; } }
+
+
+/* ═══════════ TYPE SYSTEM v2 — 제목만 세리프, 본문·UI는 Pretendard ═══════════ */
+:root {
+  --pt: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Helvetica Neue", "Noto Sans KR", sans-serif;
+  --kr-head: "Arita Buri KR", "AritaBuri", "Noto Serif KR", serif;
+  --kr: var(--pt) !important;
+  --sans: var(--pt) !important;
+  --mono: var(--pt) !important;
+}
+html, body { font-family: var(--pt) !important; font-weight: 400; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+body { letter-spacing: -.005em; }
+
+/* 1) 한글 큰 제목만 아리따 부리 */
+.h2, .finale .h2, .plist__head h2, .cab-empty h3, .intro__text, .dhead h3 small { font-family: var(--kr-head) !important; }
+.h2 { font-weight: 500 !important; letter-spacing: -.02em !important; }
+.intro__text { font-weight: 400 !important; }
+
+/* 2) 본문·설명: Pretendard 300~400, 행간 1.7 */
+.sechead__sub, .concept__body p, .hero__lead, .dhead p, .pdetail .how, .promises li, .line__ko, .finale p, .pkg__list span,
+.scene-card figcaption, .espace figcaption, .cover__ko, .plist__lead, .role__in p, .meta dd, .meta dt, .tray small, .comp small,
+.opt b, .opt small, .ask p, .react__copy p, .cab-empty p, .cab-note, .pcard__txt span, .pitem__sub, .line__meta, .line ol, .gnav__list small, .mp-row small {
+  font-family: var(--pt) !important; font-style: normal !important;
+}
+.sechead__sub, .concept__body p, .dhead p, .pdetail .how, .plist__lead, .finale p, .scene-card figcaption, .espace figcaption { font-weight: 300 !important; line-height: 1.75 !important; letter-spacing: -.005em !important; }
+.sechead__sub { font-size: 15px !important; color: #6E665D !important; }
+.dhead p, .pdetail .how, .concept__body p { font-size: 15px !important; color: #4E4842 !important; }
+
+/* 영문 부제(대문자)도 산세리프 라벨로 */
+.sechead__sub.en-cap { font-family: var(--pt) !important; font-weight: 500 !important; font-size: 11.5px !important; letter-spacing: .24em !important; color: var(--muted) !important; }
+
+/* 3) 작은 라벨·UI: Pretendard 500, 대문자, 자간 */
+.label, .dhead__no, .plist__crumb, .plist__en, .pitem__sub, .pitem__row em, .line__meta, .tag, .gnav__h span, .hd-btn span, .hd-link, .hd-cab__lbl,
+.mp-h, .mp-row--kr b, .plist__tabs button, .plist__chips button, .plist__count, .pcard__txt small, .pcard__no, .pcard__add, .pcard__txt em,
+.buy__price, .pitem__price, .cab-item__txt small, .cab-item__right, .cab-sum, .cab-links button, .cab-rm, .cab-qty, .cab-fine,
+.btn, .btn--seal, .btn--primary, .btn--line, .tabbar a, .tabbar button, .timeswitch button, .role__num, .cover__foot, .js-clock,
+.path__title, .path__tabs button, .path__all, .fcol span, .meta dt, .jump button, .espace__no, .gnav__ghost, .nav__drawer span, .scrollcue {
+  font-family: var(--pt) !important; font-style: normal !important;
+}
+.label, .dhead__no, .plist__crumb, .pitem__row em, .pitem__sub, .line__meta, .plist__en, .hd-btn span, .path__title, .path__all, .espace__no, .role__num, .cover__foot {
+  font-weight: 500 !important; font-size: 11.5px !important; letter-spacing: .18em !important; text-transform: uppercase;
+}
+.btn, .btn--seal, .btn--primary, .btn--line, .pcard__add, .hd-link, .hd-cab__lbl { font-weight: 500 !important; letter-spacing: .06em !important; }
+.btn:not(.hd-link) { font-size: 13px !important; }
+.buy__price, .pitem__price, .pcard__txt em, .cab-item__right span { font-weight: 500 !important; letter-spacing: .01em !important; font-variant-numeric: tabular-nums; }
+.buy__price { font-size: 19px !important; }
+.pitem__price { font-size: 14px !important; }
+.meta dt { font-weight: 500 !important; font-size: 12px !important; letter-spacing: .04em !important; color: var(--muted) !important; }
+.meta dd { font-weight: 400 !important; font-size: 14px !important; }
+.tag { font-weight: 500 !important; font-size: 11px !important; letter-spacing: .08em !important; }
+.mp-row--kr b { font-weight: 400 !important; font-size: 16px !important; letter-spacing: -.01em !important; }
+.mp-h { font-weight: 600 !important; font-size: 15px !important; letter-spacing: 0 !important; }
+
+/* 4) 세리프 유지: 영문 제목·제품명·로고 (Cormorant 대문자) */
+.nav__mark, .cover__slogan, .duo__text, .line h3, .pdetail h3, .dhead h3, .plist__head.has-img h2, .mp-row:not(.mp-row--kr) b,
+.pitem__row b, .pcard__txt b, .cab-item__txt b, .espace figcaption b, .scene-card figcaption b, .gnav__list b, .fcol b, .comp b, .spec__cap b {
+  font-family: "Cormorant Garamond", Georgia, serif !important; font-style: normal !important;
+}
+.pitem__row b, .pcard__txt b, .comp b { font-weight: 600 !important; letter-spacing: .06em !important; }
+
+/* 5) 인쇄물 요소는 원래 서체 유지: 처방전, 표본 카드, 서랍 라벨, 상담지 */
+.ord, .ord *, .spec__f, .spec__f *, .holder, .holder *, .role__frame b { font-family: inherit; }
+.ord__name, .ord__say, .ord__note, .ord__step small, .ord__lbl span { font-family: var(--kr-head) !important; }
+.role__frame b { font-family: var(--kr-head) !important; }
+
+:root { --display: "Cormorant Garamond", "Cormorant", Georgia, "Pretendard Variable", Pretendard, sans-serif !important; }
+html body .sechead__sub:not(.en-cap) { font-family: var(--pt) !important; font-style: normal !important; font-size: 15px !important; }
