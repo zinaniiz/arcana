@@ -297,3 +297,16 @@ html { background: #FBF9F4; }
 .ord-wrap { grid-template-columns: 1fr !important; justify-items: center; gap: 22px !important; }
 .ord__actions { flex-direction: row !important; flex-wrap: wrap; justify-content: center; min-width: 0 !important; }
 .spec__meta { flex-wrap: nowrap !important; width: 100%; } .spec__meta span { font-size: 14px !important; letter-spacing: .08em !important; }
+
+/* ── 커서: 인장 (텍스트 없이 엠블럼만) ── */
+@media (hover: hover) and (pointer: fine) {
+  html, body, * { cursor: url("../assets/img/cursor-32.png") 17 17, auto; }
+  a, button, [role="tab"], label, .cell, .cab__row, .cab__head, .pitem, .spec, .opt, .comp, .fcol, .minicab__d, .duo__tile, .role__face, .secret__a, .d3.is-match, .item, .ordo figure, .scene-card { cursor: url("../assets/img/cursor-hover.png") 22 22, pointer !important; }
+  input, textarea, [contenteditable] { cursor: text !important; }
+}
+/* 따라오던 점은 숨기고, 라벨(OPEN · VIEW …)만 인장 옆에 작게 */
+.cursor { background: transparent !important; border: 0 !important; width: 0 !important; height: 0 !important; margin: 0 !important; }
+.cursor.is-link, .cursor.is-down { transform: none; }
+.cursor__label { position: absolute; left: 22px; top: 14px; padding: 4px 9px 3px; background: #962226; color: #FBF6EE; font-size: 11px; letter-spacing: .22em; white-space: nowrap; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .4s var(--ease-out); }
+.cursor.is-label .cursor__label { opacity: 1; transform: none; }
+.ripple { border-color: #962226 !important; }
