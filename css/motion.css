@@ -783,3 +783,28 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
 .roles .role__num { top: 30px !important; left: 34px !important; }
 .roles .role .cup { width: 42px !important; height: 42px !important; margin-top: 8px; }
 @media (max-width: 860px) { .roles .role .cup { width: 34px !important; height: 34px !important; } }
+
+/* 亞 서랍 v3: 모서리는 살짝만 파이게 */
+.roles .role__in, .roles .role__face { clip-path: polygon(10px 0px, calc(100% - 10px) 0px, calc(100% - 10px) 10px, calc(100% - 0px) 10px, calc(100% - 0px) calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) calc(100% - 0px), 10px calc(100% - 0px), 10px calc(100% - 10px), 0px calc(100% - 10px), 0px 10px, 10px 10px) !important; }
+.roles .role__face::after { clip-path: polygon(evenodd, 10px 0px, calc(100% - 10px) 0px, calc(100% - 10px) 10px, calc(100% - 0px) 10px, calc(100% - 0px) calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) calc(100% - 0px), 10px calc(100% - 0px), 10px calc(100% - 10px), 0px calc(100% - 10px), 0px 10px, 10px 10px, 10px 0px, 11.5px 1.5px, 11.5px 11.5px, 1.5px 11.5px, 1.5px calc(100% - 11.5px), 11.5px calc(100% - 11.5px), 11.5px calc(100% - 1.5px), calc(100% - 11.5px) calc(100% - 1.5px), calc(100% - 11.5px) calc(100% - 11.5px), calc(100% - 1.5px) calc(100% - 11.5px), calc(100% - 1.5px) 11.5px, calc(100% - 11.5px) 11.5px, calc(100% - 11.5px) 1.5px, 11.5px 1.5px, 11.5px 1.5px) !important; }
+.roles .role__face::before { clip-path: polygon(evenodd, 15px 8px, calc(100% - 15px) 8px, calc(100% - 15px) 15px, calc(100% - 8px) 15px, calc(100% - 8px) calc(100% - 15px), calc(100% - 15px) calc(100% - 15px), calc(100% - 15px) calc(100% - 8px), 15px calc(100% - 8px), 15px calc(100% - 15px), 8px calc(100% - 15px), 8px 15px, 15px 15px, 15px 8px, 16px 9px, 16px 16px, 9px 16px, 9px calc(100% - 16px), 16px calc(100% - 16px), 16px calc(100% - 9px), calc(100% - 16px) calc(100% - 9px), calc(100% - 16px) calc(100% - 16px), calc(100% - 9px) calc(100% - 16px), calc(100% - 9px) 16px, calc(100% - 16px) 16px, calc(100% - 16px) 9px, 16px 9px, 16px 9px) !important; }
+.roles .role__num { top: 18px !important; left: 22px !important; }
+/* 손잡이: 금속 바 손잡이 + 가운데 로고 심볼 장식판 */
+.roles .role .cup { position: relative; width: 78px !important; height: 30px !important; margin-top: 10px; background: none !important; -webkit-mask: none !important; mask: none !important; border-radius: 0 !important; box-shadow: none !important; filter: drop-shadow(0 3px 2px rgba(80,58,24,.35)) drop-shadow(0 8px 10px rgba(80,58,24,.12)); }
+.roles .role .cup::before { content: '' !important; display: block !important; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; border-radius: 4px; background: linear-gradient(180deg, #F6E6BD 0%, #D6B677 35%, #A07B3A 75%, #C9A766 100%); box-shadow: inset 0 1px 0 rgba(255,250,230,.8); }
+.roles .role .cup::after { content: ''; position: absolute; left: 50%; top: 0; width: 30px; height: 30px; margin-left: -15px; background: linear-gradient(145deg, #FBEFCB 0%, #D9BA7C 35%, #94702F 70%, #E2C88E 100%); -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat; }
+.roles .role .cup { --plate: 1; }
+.roles .role .cup > i { display: none; }
+.roles .role:hover .cup { transform: translateY(2px); }
+@media (max-width: 860px) { .roles .role .cup { width: 62px !important; height: 24px !important; } .roles .role .cup::after { width: 24px; height: 24px; margin-left: -12px; } }
+/* 상단 제품 카드: 흰 네모 칸 없애기 */
+.pitem__img { background: none !important; border: 0 !important; }
+
+/* 손잡이 v3: 금속 당김 손잡이(앞이 살짝 튀어나온 판) + 가운데 로고 각인 */
+.roles .role .cup { width: 74px !important; height: 26px !important; }
+.roles .role .cup::before { top: 0 !important; bottom: 0 !important; height: auto !important; margin: 0 !important; border-radius: 13px 13px 15px 15px / 11px 11px 15px 15px !important;
+  background: linear-gradient(180deg, #FBF0D2 0%, #E3C78E 22%, #C29D5C 58%, #8E6B2E 88%, #B59055 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,252,236,.95), inset 0 -3px 3px rgba(90,62,20,.35), inset 0 0 0 1px rgba(120,90,40,.35) !important; }
+.roles .role .cup::after { top: 50% !important; width: 17px !important; height: 17px !important; margin: -9px 0 0 -8.5px !important;
+  background: linear-gradient(160deg, #7A5A22, #5B4116) !important; opacity: .85; }
+@media (max-width: 860px) { .roles .role .cup { width: 60px !important; height: 22px !important; } .roles .role .cup::after { width: 14px !important; height: 14px !important; margin: -7px 0 0 -7px !important; } }
