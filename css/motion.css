@@ -530,3 +530,6 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
 @keyframes stampIn { 0% { opacity: 0; transform: rotate(-8deg) scale(1.9); } 60% { opacity: .9; transform: rotate(-8deg) scale(.94); } 100% { opacity: .82; transform: rotate(-8deg) scale(1); } }
 .ord.ord--card .ord__seal--mark { right: 11%; bottom: 5.5%; width: 12cqw; height: 12cqw; }
 .ord__stamp { -webkit-mask: url("../assets/img/logo-emblem.png") center / contain no-repeat !important; mask: url("../assets/img/logo-emblem.png") center / contain no-repeat !important; -webkit-mask-composite: source-over !important; mask-composite: add !important; opacity: .86; }
+/* Bottle 섹션: 누끼 다섯 병 */
+.onebottle { background: radial-gradient(ellipse at 50% 85%, #F3ECDF 0%, rgba(253,252,249,0) 62%) !important; padding: clamp(30px, 5vw, 70px) 2% 0 !important; }
+.onebottle img.onebottle__set { width: 100% !important; height: auto !important; aspect-ratio: auto !important; object-fit: contain !important; transform: none !important; filter: drop-shadow(0 22px 22px rgba(90,64,34,.16)); }

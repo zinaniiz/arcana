@@ -60,13 +60,11 @@
 
   /* ARCANA 시그니처 보틀 (PPT 14p): 형태 하나 · 월넛 캡 · 아이보리 라벨 + 골드 엠블럼.
      제형은 유리 마감으로 (Clear · Light · Half frost · Frost · Opal), 서랍은 라벨 아래 라인 컬러로 구분 */
-  /* 실사 보틀: 코프레 사진에서 잘라낸 다섯 제형 (水·乳·精·膏·露) */
+  /* 실사 보틀 누끼 (水·乳·精·膏·露) */
   function bottle(type, d) {
-    const n = ++uid, cat = catBy(type), no = d ? d.no : '00';
+    const cat = catBy(type), no = d ? d.no : '00';
     return `<svg class="bph" viewBox="0 0 120 200" role="img" aria-label="ARCANA N°${no} ${cat.fr}">
-      <defs><radialGradient id="bf${n}" cx=".5" cy=".52" r=".62"><stop offset=".62" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
-      <mask id="bm${n}"><rect width="120" height="200" fill="url(#bf${n})"/></mask></defs>
-      <image href="assets/img/bottle/${cat.key}.jpg" width="120" height="200" preserveAspectRatio="xMidYMid slice" mask="url(#bm${n})"/>
+      <image href="assets/img/bottle/${cat.key}.webp" x="-14" y="0" width="148" height="200" preserveAspectRatio="xMidYMax meet"/>
     </svg>`;
   }
 
@@ -362,7 +360,7 @@
   /* ───────── PACKAGE ───────── */
   const fc = $('#finishCols');
   if (fc) {
-    const order = ['lotion', 'brume', 'elixir', 'emulsion', 'creme'];
+    const order = ['lotion', 'emulsion', 'elixir', 'creme', 'brume'];
     fc.innerHTML = order.map((k, i) => { const c = catBy(k); return `<button class="fcol" data-k="${k}"><b>${c.fr}</b><span>${i + 1} · ${c.ko} · ${c.finish}</span></button>`; }).join('');
     $$('.fcol', fc).forEach((b) => b.addEventListener('click', () => openCategory(catBy(b.dataset.k))));
   }
