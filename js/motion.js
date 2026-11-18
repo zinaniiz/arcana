@@ -218,3 +218,11 @@ document.querySelectorAll('#cabinet .cell').forEach((c) => { if ((+c.dataset.row
   tag();
   let q; new MutationObserver(() => { clearTimeout(q); q = setTimeout(tag, 60); }).observe(document.body, { childList: true, subtree: true });
 })();
+/* 처방전 갤러리 확대 */
+(() => {
+  const lb = document.createElement('div'); lb.className = 'ordo-lb'; lb.innerHTML = '<img alt=""/>'; document.body.appendChild(lb);
+  const im = lb.querySelector('img');
+  document.querySelectorAll('.ordo--gallery img').forEach((g) => g.closest('figure').addEventListener('click', () => { im.src = g.src; im.alt = g.alt; lb.classList.add('is-on'); }));
+  lb.addEventListener('click', () => lb.classList.remove('is-on'));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('is-on'); });
+})();

@@ -406,3 +406,14 @@ html[data-time] #cabinet .cell:hover, html[data-time] #cabinet .cell.is-lit { ba
 em.en-cap { font-size: .92em !important; letter-spacing: .12em !important; }
 @media (min-width: 761px) { .cover__slogan.en-cap { white-space: nowrap; letter-spacing: .18em !important; } }
 .duo__text.en-cap { text-shadow: 0 1px 18px rgba(40,28,18,.55), 0 0 2px rgba(40,28,18,.4); }
+/* 처방전: 분류 없이 갤러리 */
+.ordo--gallery { grid-template-columns: repeat(4, 1fr) !important; gap: clamp(14px, 2vw, 28px) !important; align-items: start; }
+.ordo--gallery figure { cursor: zoom-in; }
+.ordo--gallery figure:nth-child(even) { margin-top: clamp(28px, 5vw, 72px); }
+.ordo--gallery img { aspect-ratio: auto !important; object-fit: contain !important; height: auto; filter: drop-shadow(0 22px 26px rgba(80,60,30,.14)); }
+.ordo--gallery figure:hover img { transform: translateY(-8px) rotate(-.4deg); }
+.ordo-lb { position: fixed; inset: 0; z-index: 9000; background: rgba(246,241,230,.94); display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .5s var(--ease-out); cursor: zoom-out; }
+.ordo-lb.is-on { opacity: 1; pointer-events: auto; }
+.ordo-lb img { max-width: 88vw; max-height: 88vh; filter: drop-shadow(0 30px 40px rgba(80,60,30,.2)); transform: scale(.96); transition: transform .6s var(--ease-out); }
+.ordo-lb.is-on img { transform: none; }
+@media (max-width: 760px) { .ordo--gallery { grid-template-columns: 1fr 1fr !important; } }
