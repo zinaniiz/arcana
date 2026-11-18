@@ -52,15 +52,15 @@ const DRAWERS = [
 ];
 
 const CATEGORIES = [
-  { key: 'lotion',   fr: 'Lotion',        ko: '스킨토너',   vessel: '시그니처 보틀 · 월넛 캡', vol: '150ml', finish: 'Clear', liquid: '#F3EEE4', glass: 'clear',
+  { key: 'lotion', price: 68000,   fr: 'Lotion',        ko: '스킨토너',   vessel: '시그니처 보틀 · 월넛 캡', vol: '150ml', finish: 'Clear', liquid: '#F3EEE4', glass: 'clear',
     measure: '코튼 한 장', how: '코튼에 넉넉히 적셔 결을 따라 사락사락 쓸어내리세요.', sound: '사락사락' },
-  { key: 'emulsion', fr: 'Émulsion',      ko: '로션',       vessel: '시그니처 보틀 · 월넛 캡', vol: '100ml', finish: 'Frost', liquid: '#F1ECE2', glass: 'frost',
+  { key: 'emulsion', price: 72000, fr: 'Émulsion',      ko: '로션',       vessel: '시그니처 보틀 · 월넛 캡', vol: '100ml', finish: 'Frost', liquid: '#F1ECE2', glass: 'frost',
     measure: '펌프 두 번', how: '손바닥에 펼쳐 얼굴 안쪽에서 바깥으로 얇게 펴 바르세요.', sound: '스윽' },
-  { key: 'elixir',   fr: 'Élixir',        ko: '세럼·에센스', vessel: '시그니처 보틀 · 월넛 캡', vol: '30ml', finish: 'Half frost', liquid: '#E8B9A2', glass: 'half',
+  { key: 'elixir', price: 98000,   fr: 'Élixir',        ko: '세럼·에센스', vessel: '시그니처 보틀 · 월넛 캡', vol: '30ml', finish: 'Half frost', liquid: '#E8B9A2', glass: 'half',
     measure: '세 방울', how: '세 방울을 손바닥에 데워, 얼굴을 감싸듯 톡톡 눌러 스며들게 하세요.', sound: '톡톡' },
-  { key: 'creme',    fr: 'Crème',         ko: '크림',       vessel: '시그니처 보틀 · 월넛 캡', vol: '50ml', finish: 'Opal', liquid: '#F6F3EC', glass: 'opal',
+  { key: 'creme', price: 88000,    fr: 'Crème',         ko: '크림',       vessel: '시그니처 보틀 · 월넛 캡', vol: '50ml', finish: 'Opal', liquid: '#F6F3EC', glass: 'opal',
     measure: '콩 한 알', how: '손끝 온도로 녹인 뒤, 천천히 눌러 감싸 마무리하세요.', sound: '스르륵' },
-  { key: 'brume',    fr: "Brume d'Huile", ko: '오일 미스트', vessel: '시그니처 보틀 · 월넛 캡', vol: '50ml', finish: 'Light', liquid: '#E7BE63', glass: 'light',
+  { key: 'brume', price: 64000,    fr: "Brume d'Huile", ko: '오일 미스트', vessel: '시그니처 보틀 · 월넛 캡', vol: '50ml', finish: 'Light', liquid: '#E7BE63', glass: 'light',
     measure: '두 번 칙—', how: '흔들어 두 층을 섞은 뒤, 얼굴에서 한 뼘 떨어져 뿌리세요.', sound: '칙' },
 ];
 
@@ -92,3 +92,5 @@ const ROLES = [
   { ko: '내 영역이 된다', en: 'Private', meaning: '남이 함부로 열지 않는 사적인 공간', arcana: '나만을 위한 시간, 조용한 럭셔리' },
 ];
 
+
+const COFFRET_PRICE = 360000;

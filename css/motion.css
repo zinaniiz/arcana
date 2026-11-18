@@ -591,3 +591,106 @@ html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }
   .nav .btn--seal { padding: 9px 14px !important; font-size: 12.5px !important; }
   .gnav { top: 64px !important; height: calc(100dvh - 64px); bottom: auto !important; }
 }
+
+/* ═══ 샤넬식 헤더: ☰ MENU · 가운데 로고 · 처방받기 / 서랍장 ═══ */
+.nav.nav--chanel { display: grid !important; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0 !important; height: 68px; padding-block: 0 !important; }
+.nav__left { display: flex; align-items: center; gap: 6px; }
+.nav--chanel .nav__mark { justify-self: center; font-size: 20px; letter-spacing: .34em; }
+.nav--chanel .nav__tools { justify-self: end; display: flex; align-items: center; gap: 14px; margin: 0; }
+.hd-btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px; background: none; border: 0; color: inherit; cursor: pointer; position: relative; }
+.hd-btn svg, .tabbar svg, .mp-ic svg, .mp-row svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.hd-btn span { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 13px; letter-spacing: .26em; text-transform: uppercase; }
+.hd-cab__lbl { font-family: var(--kr) !important; letter-spacing: .04em !important; text-transform: none !important; font-size: 13px !important; font-weight: 500 !important; }
+.hd-link { background: none; border: 0; color: inherit; cursor: pointer; font-family: var(--kr); font-size: 13px; letter-spacing: .04em; padding: 8px 2px; border-bottom: 1px solid transparent; transition: border-color .4s; }
+.hd-link:hover { border-color: currentColor; }
+.hd-count { position: absolute; top: 3px; left: 22px; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: #2B2825; color: #FBF8F2; font: 600 10px/17px var(--kr); text-align: center; }
+.hd-btn.is-bump, .tabbar .is-bump { animation: bump .5s var(--spring, ease); }
+@keyframes bump { 40% { transform: scale(1.18); } }
+.timeswitch { display: inline-flex !important; }
+.nav .timeswitch { display: none !important; }
+
+/* 메뉴 패널 & 서랍장 공통 */
+.mpanel, .cab { position: fixed; inset: 0; z-index: 8000; pointer-events: none; }
+.mpanel__scrim, .cab__scrim { position: absolute; inset: 0; background: rgba(43,40,37,.32); opacity: 0; transition: opacity .5s; }
+.mpanel__box, .cab__box { position: absolute; top: 0; bottom: 0; width: min(440px, 88vw); background: #FDFCF9; color: var(--text); display: flex; flex-direction: column; transition: transform .6s cubic-bezier(.2,.8,.2,1); box-shadow: 0 0 60px rgba(43,40,37,.12); }
+.mpanel__box { left: 0; transform: translateX(-102%); }
+.cab__box { right: 0; transform: translateX(102%); width: min(480px, 92vw); }
+.mpanel.is-on, .cab.is-on { pointer-events: auto; }
+.mpanel.is-on .mpanel__scrim, .cab.is-on .cab__scrim { opacity: 1; }
+.mpanel.is-on .mpanel__box, .cab.is-on .cab__box { transform: none; }
+.is-locked body { overflow: hidden; }
+.mpanel__head { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; height: 74px; padding: 0 16px; border-bottom: 1px solid var(--rule); }
+.mpanel__head p { margin: 0; text-align: center; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: .3em; text-transform: uppercase; }
+.cab__box .mpanel__head p { font-family: var(--kr); font-size: 17px; letter-spacing: .04em; text-transform: none; font-weight: 600; }
+.cab__box .mpanel__head small { font-family: "Cormorant Garamond", Georgia, serif; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-left: 6px; font-weight: 600; }
+.mp-ic { width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; color: inherit; cursor: pointer; }
+.mp-ic[hidden] { visibility: hidden; display: grid; }
+.mpanel__views { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 8px 32px 30px; }
+.mp-view { transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .45s; }
+.mp-view.from-r { transform: translateX(30px); opacity: 0; transition: none; }
+.mp-view.from-l { transform: translateX(-30px); opacity: 0; transition: none; }
+.mp-h { margin: 30px 0 6px; font-family: var(--kr); font-weight: 700; font-size: 16px; color: var(--text); }
+.mp-list { list-style: none; margin: 0; padding: 0; }
+.mp-sep { height: 1px; background: var(--rule); margin: 14px 0; }
+.mp-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 15px 0; background: none; border: 0; text-align: left; cursor: pointer; color: var(--text); font: inherit; }
+.mp-row span { display: flex; flex-direction: column; gap: 3px; }
+.mp-row b { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: .2em; text-transform: uppercase; transition: color .3s; }
+.mp-row--kr b { font-family: var(--kr); font-weight: 400; font-size: 17px; letter-spacing: .02em; text-transform: none; }
+.mp-row small { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.mp-row--all b { font-size: 15px; color: var(--muted); }
+.mp-row:hover b { color: var(--gold); }
+.mp-row svg { width: 18px; height: 18px; color: var(--muted); }
+.mpanel__foot { padding: 18px 32px 26px; border-top: 1px solid var(--rule); }
+.mpanel__foot .timeswitch button { color: var(--text); }
+
+/* 서랍장 내용 */
+.cab__body { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+.cab-empty { text-align: center; padding: 0 0 30px; }
+.cab-empty img { width: calc(100% + 56px); margin: 0 -28px 30px; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.cab-empty h3 { margin: 0 0 22px; font-family: var(--kr); font-weight: 500; font-size: 24px; }
+.cab-empty p { margin: 0 0 26px; color: var(--gold); font-size: 14px; line-height: 1.8; }
+.cab-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.cab-links button { background: none; border: 0; padding: 10px; font: 500 16px var(--kr); color: var(--text); cursor: pointer; }
+.cab-links button::after { content: ' ›'; }
+.cab-note { margin: 22px 0 6px; font-size: 13px; color: var(--muted); }
+.cab-list { list-style: none; margin: 0; padding: 0; }
+.cab-item { display: grid; grid-template-columns: 84px 1fr auto; gap: 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.cab-item__img { width: 84px; height: 96px; padding: 6px; background: #F6F2EA; border: 0; cursor: pointer; display: grid; place-items: center; }
+.cab-item__img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.cab-item--set .cab-item__img img { width: 100%; height: 100%; object-fit: cover; }
+.cab-item__txt b { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 14.5px; letter-spacing: .08em; }
+.cab-item__txt small { display: block; margin: 3px 0 10px; font-size: 12px; color: var(--muted); }
+.cab-qty { display: inline-flex; align-items: center; border: 1px solid var(--rule); }
+.cab-qty button { width: 30px; height: 28px; background: none; border: 0; cursor: pointer; color: var(--text); font-size: 15px; }
+.cab-qty span { min-width: 24px; text-align: center; font-size: 13px; }
+.cab-item__right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-size: 14px; }
+.cab-rm { background: none; border: 0; padding: 0; font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.cab-sum { padding-top: 22px; }
+.cab-sum dl { display: grid; grid-template-columns: 1fr auto; row-gap: 10px; margin: 0 0 22px; font-size: 14px; }
+.cab-sum dt { color: var(--muted); } .cab-sum dd { margin: 0; text-align: right; }
+.cab-sum .cab-total { color: var(--text); font-weight: 600; font-size: 16px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.cab-go { width: 100%; justify-content: center; padding: 16px !important; }
+.cab-fine { margin: 12px 0 0; font-size: 11.5px; color: var(--muted); text-align: center; }
+.cab-fly { position: fixed; z-index: 9500; width: 48px; pointer-events: none; transition: transform .75s cubic-bezier(.5,0,.3,1), opacity .75s; }
+
+/* 상품 시트: 가격 + 담기 */
+.buy { display: flex; align-items: center; gap: 18px; margin: 22px 0 6px; flex-wrap: wrap; }
+.buy__price { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: .06em; }
+.coffret-strip .buy { margin: 10px 0 0; }
+.coffret-strip .buy__price { font-size: 17px; }
+.btn--line { background: transparent; border: 1px solid #2B2825; color: #2B2825; padding: 10px 18px; cursor: pointer; font-family: var(--kr); font-size: 13px; letter-spacing: .06em; }
+.btn--line:hover { background: #2B2825; color: #FBF8F2; }
+
+/* 모바일 하단 탭 (샤넬 앱처럼) */
+.tabbar { display: none; }
+@media (max-width: 760px) {
+  .nav.nav--chanel { height: 58px; grid-template-columns: 1fr auto 1fr; }
+  .hd-btn span:not(.hd-cab__lbl), .hd-link, .hd-cab { display: none !important; }
+  .nav--chanel .nav__mark { font-size: 17px; }
+  .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 7000; background: rgba(253,252,249,.97); border-top: 1px solid var(--rule); padding: 8px 0 calc(8px + env(safe-area-inset-bottom)); }
+  .tabbar a, .tabbar button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; background: none; border: 0; color: var(--text); text-decoration: none; font: 400 11px var(--kr); cursor: pointer; padding: 2px 0; }
+  .tabbar .hd-count { top: -2px; left: calc(50% + 4px); }
+  body { padding-bottom: 66px; }
+  .mpanel__box { width: 86vw; } .cab__box { width: 100vw; }
+  .mpanel__views { padding: 4px 24px 30px; }
+}

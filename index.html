@@ -16,40 +16,49 @@
 <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
 <!-- ───────── NAV : 메뉴 자체가 약장 ───────── -->
-<header class="nav" id="nav">
+<header class="nav nav--chanel" id="nav">
+  <div class="nav__left">
+    <button class="hd-btn" id="menuOpen" aria-label="메뉴 열기" aria-controls="mpanel" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg><span>Menu</span></button>
+  </div>
   <a class="nav__mark" href="#top" aria-label="ARCANA 홈"><span class="logo-emblem" aria-hidden="true"></span>ARCANA</a>
-  <nav class="gnav" id="gnav" aria-label="주 메뉴">
-    <div class="gnav__item"><a class="gnav__link" href="#concept">About</a>
-      <div class="gnav__panel gnav__panel--sm"><ul class="gnav__list">
-        <li><a href="#concept"><b>브랜드 스토리</b><small>From Essence to Ritual</small></a></li>
-        <li><a href="#roles"><b>서랍의 철학</b><small>Le Tiroir</small></a></li>
-        <li><a href="#herbier"><b>원료 이야기</b><small>L'Herbier</small></a></li>
-        <li><a href="#coffret"><b>패키지</b><small>Coffret</small></a></li>
-      </ul></div></div>
-    <div class="gnav__item"><a class="gnav__link" href="#apothicaire">Shop</a>
-      <div class="gnav__panel gnav__mega">
-        <div class="gnav__col"><p class="gnav__h">라인별 <span>By Line · 고민과 원료</span></p><ul class="gnav__list gnav__list--line"><li><button data-line="01"><em>N°01</em><b>Mûrier Blanc</b><small>화이트 멀베리 · 미백·톤</small></button></li><li><button data-line="02"><em>N°02</em><b>Églantine</b><small>로즈힙 · 탄력·주름</small></button></li><li><button data-line="03"><em>N°03</em><b>Fleur de Sureau</b><small>엘더플라워 · 진정</small></button></li><li><button data-line="04"><em>N°04</em><b>Trémelle</b><small>트레멜라 · 장벽</small></button></li></ul></div>
-        <div class="gnav__col"><p class="gnav__h">제품별 <span>By Type · 제형</span></p><ul class="gnav__list gnav__list--type"><li><button data-cat="lotion"><em>水</em><b>Lotion</b><small>스킨토너</small></button></li><li><button data-cat="emulsion"><em>乳</em><b>Émulsion</b><small>로션</small></button></li><li><button data-cat="elixir"><em>精</em><b>Élixir</b><small>세럼·에센스</small></button></li><li><button data-cat="creme"><em>膏</em><b>Crème</b><small>크림</small></button></li><li><button data-cat="brume"><em>露</em><b>Brume d'Huile</b><small>오일 미스트</small></button></li></ul></div>
-        <div class="gnav__col gnav__col--side"><p class="gnav__h">세트 · 전체 <span>Collection</span></p>
-          <ul class="gnav__list"><li><a href="#coffret"><b>코프레 세트</b><small>한 서랍의 5단계</small></a></li><li><a href="#apothicaire"><b>전체 약장 보기</b><small>4 서랍 × 5 제형 = 20</small></a></li><li><a href="#bottle"><b>하나의 병</b><small>다섯 가지 투명도</small></a></li></ul>
-          <img src="assets/img/bottle/set.webp" alt="" loading="lazy"/></div>
-      </div></div>
-    <a class="gnav__link" href="#rituel">Rituel</a>
-    <a class="gnav__link" href="#boutique">Espace</a>
-    <a class="gnav__link" href="#ordonnance">Ordonnance</a>
-  </nav>
   <div class="nav__tools">
-    <div class="timeswitch" role="group" aria-label="시간대 톤">
-      <button data-time="Matin" title="Matin · 아침빛">Matin</button>
-      <button data-time="Midi" title="Midi · 한낮">Midi</button>
-      <button data-time="Nuit" title="Nuit · 해 질 녘">Nuit</button>
-    </div>
-    <button class="soundtoggle" id="soundToggle" aria-pressed="false" title="관리의 소리 켜기">♪</button>
-    <a class="gnav__ghost" href="#apothicaire">서랍 보기</a>
-    <button class="btn btn--seal js-consult">처방받기</button>
-    <button class="gnav__burger" id="gnavBurger" aria-label="메뉴" aria-expanded="false"><i></i><i></i></button>
+    <button class="soundtoggle" id="soundToggle" aria-pressed="false" hidden>♪</button>
+    <button class="hd-link js-consult">처방받기</button>
+    <button class="hd-btn hd-cab" id="cabOpen" aria-label="서랍장 열기"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M3.5 9.2h17M3.5 14.8h17M10 6.4h4M10 12h4M10 17.6h4"/></svg><span class="hd-cab__lbl">서랍장</span><b class="hd-count" id="cabCount" hidden>0</b></button>
   </div>
 </header>
+
+<!-- 메뉴 패널 (샤넬 앱처럼 왼쪽에서 열리고, 단계별로 들어감) -->
+<div class="mpanel" id="mpanel" aria-hidden="true">
+  <div class="mpanel__scrim" data-close></div>
+  <aside class="mpanel__box" role="dialog" aria-label="메뉴">
+    <div class="mpanel__head"><button class="mp-ic" id="mpBack" aria-label="뒤로" hidden><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><p id="mpTitle">ARCANA</p><button class="mp-ic" data-close aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+    <div class="mpanel__views" id="mpViews"></div>
+    <div class="mpanel__foot">
+      <div class="timeswitch" role="group" aria-label="시간대 톤">
+        <button data-time="Matin" title="Matin · 아침빛">Matin</button><button data-time="Midi" title="Midi · 한낮">Midi</button><button data-time="Nuit" title="Nuit · 해 질 녘">Nuit</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- 서랍장 (장바구니) -->
+<div class="cab" id="cab" aria-hidden="true">
+  <div class="cab__scrim" data-cclose></div>
+  <aside class="cab__box" role="dialog" aria-label="서랍장">
+    <div class="mpanel__head"><span></span><p>서랍장 <small>Mon Cabinet</small></p><button class="mp-ic" data-cclose aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+    <div class="cab__body" id="cabBody"></div>
+  </aside>
+</div>
+
+<!-- 모바일 하단 탭 -->
+<nav class="tabbar" aria-label="빠른 메뉴">
+  <a href="#top"><svg viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5V20h-5.5v-5h-5v5H4z"/></svg>홈</a>
+  <button data-tab="shop"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.6 11H5.6z"/><path d="M8.5 8a3.5 3.5 0 017 0"/></svg>쇼핑하기</button>
+  <button class="js-consult"><svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="1"/><path d="M8.5 8h7M8.5 11.5h7M8.5 15h4"/></svg>처방받기</button>
+  <button data-tab="cab"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M3.5 9.2h17M3.5 14.8h17M10 6.4h4M10 12h4M10 17.6h4"/></svg>서랍장<b class="hd-count" data-count hidden>0</b></button>
+  <a href="#rituel"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><path d="M12 7.5V12l3 2"/></svg>리추얼</a>
+</nav>
 
 <main id="top">
 
@@ -319,6 +328,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/cabinet.js"></script>
 <script src="js/vendor/lenis.min.js"></script>
 <script src="js/motion.js"></script>
 </body>

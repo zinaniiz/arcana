@@ -275,7 +275,7 @@
       <div class="tray tray--5">
         ${CATEGORIES.map((c) => `<button class="comp" data-p="${d.no}|${c.key}">${bottle(c.key, d)}<b>N°${d.no} ${c.fr}</b><small>${c.ko} · ${c.vol}</small>${lineTags(c.key)}</button>`).join('')}
       </div>
-      <div class="coffret-strip"><img src="assets/img/pkg-coffret.jpg" alt="水乳精膏露 다섯 보틀이 든 ARCANA 코프레" loading="lazy"/><div><span class="dhead__no">Coffret N°${d.no}</span><b>${d.fr} 5단계 세트</b><small>한 서랍 = 다섯 보틀. 상자는 간직하고, 보틀만 리필합니다.</small></div></div>
+      <div class="coffret-strip"><img src="assets/img/pkg-coffret.jpg" alt="水乳精膏露 다섯 보틀이 든 ARCANA 코프레" loading="lazy"/><div><span class="dhead__no">Coffret N°${d.no}</span><b>${d.fr} 5단계 세트</b><small>한 서랍 = 다섯 보틀. 상자는 간직하고, 보틀만 리필합니다.</small><span class="buy"><span class="buy__price">₩${COFFRET_PRICE.toLocaleString('ko-KR')}</span><button class="btn btn--line" data-add="${d.no}|coffret">코프레 담기</button></span></div></div>
       <div class="sheet__cta"><p>서랍 세트 박스 — 꽃잎처럼 열리는 자석 플랩, 속은 서랍 트레이, 실버 실링 봉인</p>
         <button class="btn btn--primary" data-consult="${d.no}">이 서랍으로 처방받기</button></div>`);
     bindSheet();
@@ -311,6 +311,7 @@
             <dt>용기 · 용량</dt><dd>${c.vessel} · ${c.vol}</dd><dt>Measure</dt><dd>${c.measure}</dd>
             <dt>사용 시간대</dt><dd>${linesFor(c.key).join(' · ')}</dd>
           </dl>
+          <div class="buy"><span class="buy__price">₩${c.price.toLocaleString('ko-KR')}</span><button class="btn btn--primary" data-add="${d.no}|${c.key}">서랍장에 담기</button></div>
           <div class="jump"><button data-jd="${d.no}">N°${d.no} 서랍 전체 보기</button><button data-jc="${c.key}">${c.fr} 4종 보기</button></div>
         </div>
       </div>`);
@@ -320,6 +321,7 @@
     $$('#sheetBody [data-p]').forEach((b) => b.addEventListener('click', () => { const [no, k] = b.dataset.p.split('|'); openProduct(DRAWERS.find((d) => d.no === no), catBy(k)); }));
     $$('#sheetBody [data-jd]').forEach((b) => b.addEventListener('click', () => openDrawer(DRAWERS.find((d) => d.no === b.dataset.jd))));
     $$('#sheetBody [data-jc]').forEach((b) => b.addEventListener('click', () => openCategory(catBy(b.dataset.jc))));
+    $$('#sheetBody [data-add]').forEach((b) => b.addEventListener('click', () => { const [no, k] = b.dataset.add.split('|'); window.ArcanaCart && window.ArcanaCart.add(no, k, b); }));
     $$('#sheetBody [data-consult]').forEach((b) => b.addEventListener('click', () => { closeSheet(); openConsult(b.dataset.consult); }));
   }
 
@@ -612,18 +614,5 @@
 
   setTime(currentLine); tick(); onScroll();
   window.ArcanaSound = Sound;
-  window.ArcanaOpen = { drawer: (no) => openDrawer(DRAWERS.find((d) => d.no === no)), category: (k) => openCategory(catBy(k)) };
-})();
-/* 상단 메뉴: 라인별 → 서랍 시트, 제품별 → 제형 시트 */
-(() => {
-  const g = document.getElementById('gnav'); if (!g) return;
-  const close = () => { document.documentElement.classList.remove('gnav-open'); g.querySelectorAll('.gnav__item').forEach((i) => i.classList.remove('is-open')); document.getElementById('gnavBurger')?.setAttribute('aria-expanded', 'false'); };
-  g.addEventListener('click', (e) => {
-    const l = e.target.closest('[data-line]'), c = e.target.closest('[data-cat]'), a = e.target.closest('a');
-    if (l) { close(); window.ArcanaOpen.drawer(l.dataset.line); }
-    else if (c) { close(); window.ArcanaOpen.category(c.dataset.cat); }
-    else if (a && a.classList.contains('gnav__link') && a.nextElementSibling && matchMedia('(max-width: 980px)').matches) { e.preventDefault(); e.stopPropagation(); a.parentElement.classList.toggle('is-open'); }
-    else if (a) close();
-  });
-  document.getElementById('gnavBurger')?.addEventListener('click', (e) => { const on = document.documentElement.classList.toggle('gnav-open'); e.currentTarget.setAttribute('aria-expanded', on); });
+  window.ArcanaOpen = { drawer: (no) => openDrawer(DRAWERS.find((d) => d.no === no)), category: (k) => openCategory(catBy(k)), product: (no, k) => openProduct(DRAWERS.find((d) => d.no === no), catBy(k)), consult: () => openConsult(), closeSheet: () => closeSheet() };
 })();
