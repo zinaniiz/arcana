@@ -169,7 +169,7 @@
     window.addEventListener('pointerup', () => cur.classList.remove('is-down'));
     const loop = () => { cx += (x - cx) * .2; cy += (y - cy) * .2; cur.style.transform = `translate3d(${cx}px, ${cy}px, 0)` + (cur.classList.contains('is-down') ? ' scale(.82)' : ''); requestAnimationFrame(loop); };
     loop();
-    const LABELS = [['.cell, .cab__row, .minicab__d', 'OPEN'], ['.spec', 'TURN'], ['.scene-card, .onebottle, .pkg figure', 'VIEW'], ['.pitem', 'SEE'], ['.cover', 'DRAG']];
+    const LABELS = [['.cell, .cab__row, .minicab__d', 'OPEN'], ['.spec', 'TURN'], ['.scene-card, .onebottle, .pkg figure', 'VIEW'], ['.pitem', 'SEE']];
     document.addEventListener('pointerover', (e) => {
       const l = LABELS.find(([s]) => e.target.closest(s));
       const link = e.target.closest('a, button, [role="tab"], .role__face, .opt, .comp, .fcol, .secret__a, .cab__head');
