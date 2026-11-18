@@ -121,8 +121,8 @@
     targets.forEach(([el]) => io.observe(el));
   }
 
-  /* ── 5. 패럴랙스 ── */
-  if (!reduce) {
+  /* ── 5. 패럴랙스: 꺼짐 — 글자와 사진이 같은 속도로 스크롤 ── */
+  if (false) {
     const px = $$('.onebottle img, .pkg img, .scene-card img, .finale__img, .cover__in').map((el) => ({ el, k: el.classList.contains('cover__in') ? -.18 : el.classList.contains('finale__img') ? .12 : .08 }));
     px.forEach(({ el }) => el.classList.add('px'));
     let ticking = false;
@@ -226,3 +226,4 @@ document.querySelectorAll('#cabinet .cell').forEach((c) => { if ((+c.dataset.row
   lb.addEventListener('click', () => lb.classList.remove('is-on'));
   addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('is-on'); });
 })();
+document.querySelectorAll('.role').forEach((r, i) => r.style.setProperty('--d', ((i * 0.9) % 3.6).toFixed(2) + 's'));

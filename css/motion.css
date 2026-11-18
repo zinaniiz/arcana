@@ -417,3 +417,90 @@ em.en-cap { font-size: .92em !important; letter-spacing: .12em !important; }
 .ordo-lb img { max-width: 88vw; max-height: 88vh; filter: drop-shadow(0 30px 40px rgba(80,60,30,.2)); transform: scale(.96); transition: transform .6s var(--ease-out); }
 .ordo-lb.is-on img { transform: none; }
 @media (max-width: 760px) { .ordo--gallery { grid-template-columns: 1fr 1fr !important; } }
+
+/* ═══ L'Espace — 매장 공간 소개 ═══ */
+.espace__hero { margin: 0 0 clamp(40px, 6vw, 88px); position: relative; }
+.espace__hero img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; display: block; }
+.espace figcaption { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 4px; padding-top: 18px; font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.espace figcaption b { grid-column: 2; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 14px; letter-spacing: .26em; text-transform: uppercase; color: var(--text); }
+.espace figcaption > :not(b):not(.espace__no) { grid-column: 2; }
+.espace__no { grid-row: span 2; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; font-size: 13px; letter-spacing: .1em; color: var(--gold); padding-top: 1px; min-width: 22px; border-right: 1px solid var(--rule); padding-right: 12px; }
+.espace__hero figcaption { max-width: 560px; }
+.espace__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 36px); }
+.espace__row figure { margin: 0; }
+.espace__row figure:nth-child(2) { margin-top: clamp(30px, 5vw, 80px); }
+.espace__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.espace__row figure:nth-child(3) img { object-position: 50% 60%; }
+.espace img { transition: transform 1.6s var(--ease-out), filter 1.2s; filter: saturate(.92) brightness(1.02); }
+.espace figure { overflow: visible; }
+.espace__hero, .espace__row figure > img { clip-path: inset(0); }
+.espace figure:hover img { transform: scale(1.025); filter: saturate(1) brightness(1.04); }
+@media (max-width: 760px) { .espace__row { grid-template-columns: 1fr; } .espace__row figure:nth-child(2) { margin-top: 0; } .espace__hero img { aspect-ratio: 4 / 3; } }
+
+/* ═══ White luxury — 전체 톤을 더 밝고 깨끗한 하얀 약방으로 ═══ */
+:root, html[data-time], html[data-time="Nuit"], html[data-time="Matin"], html[data-time="Midi"] {
+  --bg: #FDFCF9 !important; --bg-2: #F8F5EF !important; --surface: #FFFFFF !important; --card: #FFFFFF !important;
+  --text: #2B2825 !important; --muted: #948B80 !important; --line: rgba(43,40,37,.07) !important; --rule: #ECE5D8 !important;
+  --gold: #B3955F !important;
+  --wood: #F6F2EA !important; --wood-edge: #2B2825 !important; --on-wood: #FBF8F2 !important;
+}
+.aura { background: #FCFBF7 !important; }
+.aura__b { opacity: .38 !important; }
+.aura::after { opacity: .18 !important; }
+/* 섹션 여백 넉넉히, 구분선 가늘게 */
+.concept, .roles, .apo, .bottle-sec, .pkg-sec, .rituel, .herbier, .boutique, .ordo-sec { padding-block: clamp(110px, 13vw, 190px) !important; }
+.sechead { border-bottom-color: var(--rule) !important; }
+.label { color: var(--gold) !important; }
+.h2 { font-weight: 500 !important; letter-spacing: -.01em; }
+/* 서랍의 역할: 짙은 회갈색 대신 하얀 석고 서랍 */
+.role__face { background: linear-gradient(180deg, #FFFFFF, #F4EFE6) !important; border: 1px solid #E8E0D2 !important; box-shadow: 0 1px 0 #fff inset, 0 18px 30px -22px rgba(90,70,40,.22) !important; }
+.chest, .roles .chest { background: #EFE8DC !important; padding: 10px !important; box-shadow: 0 30px 60px -40px rgba(90,70,40,.3) !important; }
+.role__frame { background: #FFFEFB !important; border: 1px solid #DCCDB2 !important; box-shadow: none !important; }
+.role__face::after { background: radial-gradient(circle at 35% 30%, #F3E6C9, #B3955F) !important; }
+/* 버튼: 얇은 선의 차분한 버튼 */
+.btn--primary, html[data-time="Nuit"] .btn--primary, .hero .btn--primary { background: #2B2825 !important; color: #FBF8F2 !important; border: 1px solid #2B2825 !important; letter-spacing: .22em !important; transition: background .5s, color .5s !important; }
+.btn--primary:hover { background: transparent !important; color: #2B2825 !important; }
+/* 마지막 화면: 어두운 막 대신 하얀 베일 */
+.finale { color: var(--text) !important; }
+.finale::before { background: linear-gradient(90deg, rgba(253,252,249,.92) 0%, rgba(253,252,249,.78) 42%, rgba(253,252,249,.2) 100%) !important; }
+.finale__img { filter: none !important; transform: none !important; }
+.finale .btn--primary { background: #2B2825 !important; color: #FBF8F2 !important; border-color: #2B2825 !important; }
+.finale .btn--primary:hover { background: transparent !important; color: #2B2825 !important; }
+.finale .logo-lock { filter: none !important; }
+.foot { background: transparent !important; border-top: 1px solid var(--rule) !important; }
+/* 실사 보틀 SVG: 그림자 부드럽게 */
+svg.bph { overflow: visible; }
+.pitem__img svg.bph, .comp svg.bph, html[data-time] #cabinet .cell .cubby svg.bph, .niche svg.bph, .item svg.bph { filter: drop-shadow(0 10px 12px rgba(90,64,34,.16)) !important; }
+/* 마지막 화면 글자색 */
+.finale .h2, .finale__inner p { color: var(--text) !important; }
+.finale .logo-lock { background-color: var(--gold) !important; }
+
+/* 서랍의 역할: 라벨이 은은하게 빛나며 깜빡 — 눌러보고 싶게 */
+.role__frame { position: relative; overflow: hidden; animation: roleGlow 3.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.role__frame::after { content: ''; position: absolute; inset: -20% -60%; background: linear-gradient(105deg, transparent 40%, rgba(255,246,222,.95) 50%, transparent 60%); transform: translateX(-70%); animation: roleSheen 3.6s ease-in-out infinite; animation-delay: var(--d, 0s); pointer-events: none; mix-blend-mode: screen; }
+@keyframes roleGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(179,149,95,.25), 0 0 0 0 rgba(232,205,150,0); border-color: #DCCDB2; }
+  45% { box-shadow: 0 0 0 1px rgba(179,149,95,.55), 0 0 18px 4px rgba(236,208,150,.55); border-color: #C9AE7C; }
+  55% { box-shadow: 0 0 0 1px rgba(179,149,95,.35), 0 0 8px 1px rgba(236,208,150,.3); }
+}
+@keyframes roleSheen { 0%, 30% { transform: translateX(-70%); } 60%, 100% { transform: translateX(70%); } }
+.role__frame b { animation: roleInk 3.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+@keyframes roleInk { 0%, 100% { color: #3A3632; } 45% { color: #8C6A35; } }
+.role:hover .role__frame { animation-duration: 1.4s; }
+.role:hover .role__frame::after { animation-duration: 1.4s; }
+.role.is-open .role__frame, .role.is-open .role__frame::after, .role.is-open .role__frame b { animation: none; }
+@media (prefers-reduced-motion: reduce) { .role__frame, .role__frame::after, .role__frame b { animation: none !important; } }
+/* 스크롤 리빌: 글자·사진이 함께, 짧고 부드러운 페이드만 */
+.rv-pre, .stagger-pre > * { opacity: 0 !important; transform: translateY(14px) !important; }
+.rv-in, .stagger-in > * { transition: opacity 1s var(--ease-out), transform 1s var(--ease-out) !important; transition-delay: 0s !important; }
+.split-pre .split-w > span { transform: none !important; opacity: 0; }
+.split-in .split-w > span { opacity: 1; transition: opacity .9s var(--ease-out) !important; transition-delay: 0s !important; }
+.img-pre::before, .img-in::before { display: none !important; }
+.img-pre { opacity: 0; transform: translateY(14px); }
+.img-in { opacity: 1; transform: none; transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.img-pre img, .img-in img { transform: none !important; }
+.px { transform: none !important; }
+.cover__in { transform: none !important; opacity: 1 !important; }
+/* 리추얼 카드도 밝게 */
+.line { border-color: #E8E0D2 !important; }
+html[data-time] .line.is-now, .line--nuit, .line[data-line="Nuit"] { }

@@ -60,40 +60,13 @@
 
   /* ARCANA 시그니처 보틀 (PPT 14p): 형태 하나 · 월넛 캡 · 아이보리 라벨 + 골드 엠블럼.
      제형은 유리 마감으로 (Clear · Light · Half frost · Frost · Opal), 서랍은 라벨 아래 라인 컬러로 구분 */
+  /* 실사 보틀: 코프레 사진에서 잘라낸 다섯 제형 (水·乳·精·膏·露) */
   function bottle(type, d) {
-    const n = ++uid, cat = catBy(type), g = cat.glass, no = d ? d.no : '00';
-    const mark = d ? d.mark : '#C9B98A';
-    const body = 'M12 74 L108 74 Q95 118 108 162 L12 162 Q25 118 12 74 Z';
-    const inner = 'M20 80 L100 80 Q89 118 100 156 L20 156 Q31 118 20 80 Z';
-    const fills = {
-      clear: { glass: 'rgba(255,255,255,.28)', liq: '#F6F1E7', lo: .35 },
-      light: { glass: 'rgba(255,248,230,.3)', liq: '#E5B85A', lo: .92 },
-      half:  { glass: 'rgba(255,240,232,.45)', liq: '#E6B39C', lo: .9 },
-      frost: { glass: '#EEE9DF', liq: '#F2EDE3', lo: .95 },
-      opal:  { glass: '#F7F4EE', liq: '#FBF9F4', lo: 1 },
-    }[g] || { glass: '#EEE9DF', liq: cat.liquid, lo: .9 };
-    const frosted = g === 'frost' || g === 'opal' || g === 'half';
-    return `<svg viewBox="0 0 120 200" role="img" aria-label="ARCANA N°${no} ${cat.fr}">
-      <defs>
-        <linearGradient id="hl${n}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".12" stop-color="#fff" stop-opacity=".15"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset=".88" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".8"/></linearGradient>
-        <linearGradient id="wd${n}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B4A33"/><stop offset=".5" stop-color="#4E3424"/><stop offset="1" stop-color="#3B271B"/></linearGradient>
-        <linearGradient id="lq${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${fills.liq}" stop-opacity="${fills.lo * .85}"/><stop offset="1" stop-color="${fills.liq}" stop-opacity="${fills.lo}"/></linearGradient>
-      </defs>
-      <rect x="40" y="160" width="40" height="22" fill="${frosted ? '#EFEAE0' : 'rgba(255,255,255,.35)'}" stroke="rgba(70,50,30,.28)" stroke-width=".8"/>
-      <rect x="32" y="181" width="56" height="5" fill="rgba(255,255,255,.5)" stroke="rgba(70,50,30,.28)" stroke-width=".7"/>
-      <path d="${body}" fill="${fills.glass}" stroke="rgba(70,50,30,.38)" stroke-width="1"/>
-      <path d="${inner}" fill="url(#lq${n})"/>
-      ${g === 'half' ? `<path d="M20 80 L100 80 Q94 100 96 112 L24 112 Q26 100 20 80 Z" fill="#fff" opacity=".35"/>` : ''}
-      <path d="${body}" fill="url(#hl${n})"/>
-      <path d="M12 74 L108 74" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
-      <rect x="42" y="64" width="36" height="10" fill="${frosted ? '#ECE6DB' : 'rgba(255,255,255,.4)'}" stroke="rgba(70,50,30,.3)" stroke-width=".7"/>
-      <rect x="44" y="40" width="32" height="25" fill="url(#wd${n})"/>
-      <rect x="18" y="32" width="84" height="9" rx="1" fill="url(#wd${n})"/>
-      <rect x="18" y="32" width="84" height="2" fill="#fff" opacity=".18"/>
-      <rect x="40" y="96" width="40" height="40" fill="#F5F0E6" stroke="rgba(70,50,30,.2)" stroke-width=".6"/>
-      <rect x="43.5" y="99.5" width="33" height="33" fill="none" stroke="#C3A56B" stroke-width=".8"/>
-      <image href="assets/img/logo-emblem.png" x="50" y="106" width="20" height="17"/>
-      <rect x="46" y="128" width="28" height="1.6" fill="${mark}"/>
+    const n = ++uid, cat = catBy(type), no = d ? d.no : '00';
+    return `<svg class="bph" viewBox="0 0 120 200" role="img" aria-label="ARCANA N°${no} ${cat.fr}">
+      <defs><radialGradient id="bf${n}" cx=".5" cy=".52" r=".62"><stop offset=".62" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+      <mask id="bm${n}"><rect width="120" height="200" fill="url(#bf${n})"/></mask></defs>
+      <image href="assets/img/bottle/${cat.key}.jpg" width="120" height="200" preserveAspectRatio="xMidYMid slice" mask="url(#bm${n})"/>
     </svg>`;
   }
 
