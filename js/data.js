@@ -6,7 +6,7 @@ const BASE = {
   fr: "L'Arcanum · Onagre",
   ko: '달맞이꽃',
   origin: '북아메리카 들판',
-  img: 'assets/img/onagre.jpg',
+  img: 'assets/img/illust/00.jpg',
   story:
     '해가 지평선 아래로 내려가면 달맞이꽃은 몇 분 만에 꽃잎을 연다. 낮 동안 꼭 닫혀 있던 꽃은 달빛 아래에서만 피어나, 밤의 나방에게만 비밀을 열어 보이고 아침이 오면 진다. 유럽에 닿은 뒤에는 ‘왕의 만병통치약(King’s cure-all)’이라 불렸다. ARCANA의 모든 처방은 이 꽃에서 시작된다.',
   benefit: '종자유의 감마리놀렌산(GLA)·리놀레산이 장벽을 채우고 보습·탄력을 돕는다. 어떤 서랍을 열든 공통으로 깔리는 바탕.',
@@ -17,7 +17,7 @@ const DRAWERS = [
     no: '01', fr: 'Mûrier Blanc', ko: '화이트 멀베리 뿌리', concern: '미백·톤', concernEn: 'Tone & Clarity',
     origin: '사마르칸트, 우즈베키스탄', sound: '스르륵', co: '시벅턴',
     coNote: '히말라야 라다크 고원의 강한 햇빛을 견딘 주황빛 열매. 지친 얼굴에 생기 어린 빛을 더한다.',
-    petal: '#EDE4B5', accent: '#C9B98A', line: '#EDE4B5', mark: '#E6DED0', img: 'assets/img/murier.jpg',
+    petal: '#EDE4B5', accent: '#C9B98A', line: '#EDE4B5', mark: '#E6DED0', img: 'assets/img/illust/01.jpg',
     ask: '톤이 칙칙하고 잡티가 신경 쓰여요',
     story:
       '실크로드의 오아시스 도시 사마르칸트, 오래된 길을 따라 하얀 뽕나무가 줄지어 서 있다. 천 년 넘게 이 나무의 잎은 누에를 길러 세상에서 가장 매끄러운 비단을 만들었다. 비단을 키워낸 나무의 뿌리로, ARCANA는 피부에 비단처럼 맑고 고른 결을 입힌다.',
@@ -26,7 +26,7 @@ const DRAWERS = [
     no: '02', fr: 'Églantine', ko: '로즈힙', concern: '탄력·주름', concernEn: 'Firmness',
     origin: '파타고니아, 칠레', sound: '톡', co: '바쿠치올',
     coNote: '식물에서 얻은 레티놀 대안. 밤사이 결을 단단하게 다진다.',
-    petal: '#D9C7AE', accent: '#6A1F2B', line: '#D9C7AE', mark: '#6A1F2B', img: 'assets/img/eglantine.jpg',
+    petal: '#D9C7AE', accent: '#6A1F2B', line: '#D9C7AE', mark: '#6A1F2B', img: 'assets/img/illust/02.jpg',
     ask: '탄력이 예전 같지 않아요',
     story:
       '안데스산맥 아래 파타고니아의 거친 바람 속에서 야생 장미가 자란다. 꽃잎이 모두 지고 난 자리에 붉은 열매가 맺힌다. 로즈힙은 꽃이 진 뒤에야 비로소 완성되는 아름다움. 지는 것이 아니라 영그는 것, 그것이 우리가 말하는 에이징이다.',
@@ -35,7 +35,7 @@ const DRAWERS = [
     no: '03', fr: 'Fleur de Sureau', ko: '엘더플라워', concern: '진정', concernEn: 'Calm',
     origin: '스웨덴 서해안', sound: '사락', co: '블루 탄지',
     coNote: '푸른빛 오일을 품은 작은 들꽃. 붉어진 피부의 열을 가라앉힌다.',
-    petal: '#B9BCBF', accent: '#7E8C72', line: '#B9BCBF', mark: '#9BA98E', img: 'assets/img/sureau.jpg',
+    petal: '#B9BCBF', accent: '#7E8C72', line: '#B9BCBF', mark: '#9BA98E', img: 'assets/img/illust/03.jpg',
     ask: '피부가 예민하고 쉽게 붉어져요',
     story:
       '스웨덴 서해안, 하지가 다가오면 엘더나무에 하얀 꽃송이가 구름처럼 피어난다. 북유럽 사람들은 이 꽃으로 차와 시럽을 만들어 일 년의 평온을 담아두었다. 가장 짧은 밤에 피어나는 이 작은 꽃으로, ARCANA는 예민해진 피부와 마음을 함께 가라앉힌다.',
@@ -44,7 +44,7 @@ const DRAWERS = [
     no: '04', fr: 'Trémelle', ko: '트레멜라', concern: '장벽', concernEn: 'Barrier',
     origin: '푸젠 산맥, 중국', sound: '똑', co: '씨 켈프',
     coNote: '차가운 바다의 미네랄을 머금은 해조. 수분이 빠져나가지 않도록 막을 친다.',
-    petal: '#F4EFE6', accent: '#22332B', line: '#E4DCCB', mark: '#22332B', img: 'assets/img/tremelle.jpg',
+    petal: '#F4EFE6', accent: '#22332B', line: '#E4DCCB', mark: '#22332B', img: 'assets/img/illust/04.jpg',
     ask: '건조하고 세안 후 쉽게 당겨요',
     story:
       '푸젠의 안개 낀 산속, 비가 그친 고목 위에 반투명한 꽃 같은 버섯이 피어난다. 자기 무게의 수백 배에 달하는 물을 머금는 트레멜라. 물을 품고 놓지 않는 이 원료처럼, ARCANA는 피부가 스스로를 지키는 단단한 결을 만든다.',

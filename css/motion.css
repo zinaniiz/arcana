@@ -899,3 +899,8 @@ html body .specimens > .spec--card { flex: 0 0 calc((100% - 72px) / 5); width: c
   .specimens-hint { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; font: 500 11px var(--pt); letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
 }
 @media (max-width: 620px) { html body .specimens > .spec--card { flex-basis: 58vw; width: 58vw; } }
+
+/* 원료 이미지: 블러 사진 → 일러스트 패턴 */
+.dhead { align-items: center; }
+.dhead__img { aspect-ratio: 3 / 4 !important; object-fit: cover !important; background: #F2F0EC; border-radius: 0 !important; border: 1px solid #ECE5D8; max-height: 460px; width: auto !important; max-width: 100%; justify-self: center; }
+.plist__head img { aspect-ratio: 3 / 4 !important; object-fit: cover; max-height: 440px; width: auto !important; max-width: 100%; justify-self: center; background: #F2F0EC; border: 1px solid #ECE5D8; }
